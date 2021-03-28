@@ -1,0 +1,119 @@
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcatap: <http://data.europa.eu/r5r/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dpv: <http://w3.org/ns/dpv#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix alpha: <http://example.com/alpha/> .
+@prefix : <http://example.com/alpha/marketing/> .
+
+:recordscatalog a dcat:Dataset, dcat:Catalog ;
+    dct:title "Processing Records for Marketing" ;
+    dct:description "Collated records for Marketing Department" ;
+    dct:publisher alpha:Alpha ;
+    dct:creator alpha:Marketing ;
+    dct:issued "2021-03-28"^^xsd:date ;
+    dcat:dataset :Record001, :Record002, :Record003 .
+
+:Record001 a dcat:Dataset ;
+    dct:title "Record001" ;
+    dct:description "Processing Activities Record001" ;
+    dcat:contactPoint [
+        a foaf:Agent, vcard:Kind ;
+        foaf:name "Emily" ;
+        dpv:hasContact "emily@example.com" ;
+        ] ;
+    dct:spatial [ a dct:Location ; dct:title "EU" ] ;
+    dct:temporal [
+        a dct:PeriodOfTime ;
+        dct:startDate "2001-01-01"^^xsd:date ;
+        dct:endDate "2001-12-13"^^xsd:date ;
+        ] ;
+    dct:publisher alpha:Alpha ;
+    dct:creator alpha:Marketing ;
+    dpv:hasPurpose [
+        a dpv:DirectMarketing ;
+        dct:title "Direct Marketing via Email" ;
+        ] ;
+    dpv:hasDataSubject alpha:Customers ;
+    dpv:hasPersonalDataCategory dpv:EmailAddress ;
+    dpv:hasDuration [
+        a dpv:StorageDuration, time:GeneralDurationDescription ;
+        time:years "1"^^xsd:deciman ;
+        ] ;
+    dpv:hasTechnicalOrganisationalMeasures alpha:StandardTechnicalMeasures ;
+    rdfs:comment "test comment for closing instance data" .
+
+:Record002 a dcat:Dataset ;
+    dct:title "Record002" ;
+    dct:description "Processing Activities Record002" ;
+    dcat:contactPoint [
+        a foaf:Agent, vcard:Kind ;
+        foaf:name "Emily" ;
+        dpv:hasContact "emily@example.com" ;
+        ] ;
+    dct:spatial [ a dct:Location ; dct:title "EU" ] ;
+    dct:temporal [
+        a dct:PeriodOfTime ;
+        dct:startDate "2002-01-01"^^xsd:date ;
+        dct:endDate "2002-12-13"^^xsd:date ;
+        ] ;
+    dct:publisher alpha:Alpha ;
+    dct:creator alpha:Marketing ;
+    dpv:hasPurpose [
+        a dpv:DirectMarketing ;
+        dct:title "Direct Marketing via Telephone" ;
+        ] ;
+    dpv:hasDataSubject alpha:Customers ;
+    dpv:hasPersonalDataCategory dpv:TelephoneNumber ;
+    dpv:hasDuration [
+        a dpv:StorageDuration, time:GeneralDurationDescription ;
+        time:years "1"^^xsd:deciman ;
+        ] ;
+    dpv:hasTechnicalOrganisationalMeasures alpha:StandardTechnicalMeasures ;
+    rdfs:comment "test comment for closing instance data" .
+
+:Record003 a dcat:Dataset ;
+    dct:title "Record003" ;
+    dct:description "Processing Activities Record003" ;
+    dcat:contactPoint [
+        a foaf:Agent, vcard:Kind ;
+        foaf:name "Emily" ;
+        dpv:hasContact "emily@example.com" ;
+        ] ;
+    dct:spatial [ a dct:Location ; dct:title "EU" ] ;
+    dct:temporal [
+        a dct:PeriodOfTime ;
+        dct:startDate "2003-01-01"^^xsd:date ;
+        dct:endDate "2003-12-13"^^xsd:date ;
+        ] ;
+    dct:publisher alpha:Alpha ;
+    dct:creator alpha:Marketing ;
+    dpv:hasPurpose [
+        a dpv:DirectMarketing ;
+        dct:title "Direct Marketing via Post" ;
+        ] ;
+    dpv:hasDataSubject alpha:Customers ;
+    dpv:hasPersonalDataCategory dpv:PhysicalAddress ;
+    dpv:hasDuration [
+        a dpv:StorageDuration, time:GeneralDurationDescription ;
+        time:years "1"^^xsd:deciman ;
+        ] ;
+    dpv:hasTechnicalOrganisationalMeasures alpha:StandardTechnicalMeasures ;
+    rdfs:comment "test comment for closing instance data" .
+
