@@ -1,32 +1,49 @@
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dct: <http://purl.org/dc/terms/>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-PREFIX dpv: <http://w3.org/ns/dpv#>
+PREFIX dpv: <http://www.w3.org/ns/dpv#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX time: <http://www.w3.org/2006/time#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-select DISTINCT ?title ?purpose ?purpose_category ?datasubject ?personaldata ?storageyears ?measures ?period_start ?period_end ?department ?contactname ?contactemail where { 
+select DISTINCT ?department ?title ?purpose ?purpose_category ?datasubject ?personaldata ?recipient ?recipient_category ?recipient_location ?storageyears ?measures ?period_start ?period_end ?department ?contactname ?contactemail where { 
+    
 #    dataset metadata
     ?dataset a dcat:Dataset .
     ?dataset dct:title ?title .
+    
 #    processing period of operation
     ?dataset dct:temporal ?period .
     ?period dct:startDate ?period_start .
     ?period dct:endDate ?period_end .
+    
 #    processing point of contact
-    ?dataset dct:creator ?department .
+    ?dataset dct:creator/foaf:name ?department .
     ?dataset dcat:contactPoint/foaf:name ?contactname .
     ?dataset dcat:contactPoint/dpv:hasContact ?contactemail .
+    
 ##    processing metadata
+#    purpose
     ?dataset dpv:hasPurpose/dct:title ?purpose .
-    ?dataset dpv:hasPurpose/rdf:type ?purpose_category .
+    ?dataset dpv:hasPurpose/rdf:type ?purpose_category_i .
+    ?purpose_category_i rdfs:subClassOf* dpv:Purpose .
+    ?purpose_category_i rdfs:label ?purpose_category .
+#    data subject
     ?dataset dpv:hasDataSubject/dct:title ?datasubject .
-    ?dataset dpv:hasPersonalDataCategory ?personaldata .
+#    personal data
+    ?dataset dpv:hasPersonalDataCategory ?personaldata_i .
+    ?personaldata_i rdfs:subClassOf* dpv:PersonalDataCategory .
+    ?personaldata_i rdfs:label|dct:title ?personaldata .
+#    duration
     ?dataset dpv:hasDuration ?duration .
     ?duration a dpv:StorageDuration .
     { ?duration time:years ?storageyears . } UNION { FILTER NOT EXISTS { ?duration time:years ?storageyears } . ?duration dct:title ?storageyears }
-    ?dataset dpv:hasTechnicalOrganisationalMeasures ?measures .
-##    optional recipients
-    OPTIONAL { ?dataset dpv:hasRecipient ?recipient . ?recipient a ?recipient_category . }
+    ?dataset dpv:hasTechnicalOrganisationalMeasures/dct:title ?measures .
+#    optional recipients
+    OPTIONAL { 
+        ?dataset dpv:hasRecipient ?recipiententity .
+        ?recipiententity dct:title ?recipient . 
+        ?recipiententity a/dct:title|a/rdfs:label ?recipient_category .
+        OPTIONAL { ?recipiententity dpv:hasLocation ?recipient_location }
+    }
     
 } ORDER BY ?department ?title

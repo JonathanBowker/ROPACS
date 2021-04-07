@@ -1,14 +1,14 @@
-title,purpose,purpose_category,datasubject,personaldata,storageyears,measures,period_start,period_end,department,contactname,contactemail
-Record001,Recording of customer calls,http://w3.org/ns/dpv#CustomerCare,Customers,http://w3.org/ns/dpv#Contact,2.0,http://example.com/alpha/StandardTechnicalMeasures,2019-01-01,2022-12-13,http://example.com/alpha/CustomerService,Alice,alice@example.com
-Record001,Recording of customer calls,http://w3.org/ns/dpv#CustomerCare,Customers,http://w3.org/ns/dpv#VoiceCommunicationRecording,2.0,http://example.com/alpha/StandardTechnicalMeasures,2019-01-01,2022-12-13,http://example.com/alpha/CustomerService,Alice,alice@example.com
-Record002,Storage of customer data on CRM system,http://w3.org/ns/dpv#CustomerCare,Customers,http://w3.org/ns/dpv#Contact,2.0,http://example.com/alpha/StandardTechnicalMeasures,2019-01-01,2022-12-13,http://example.com/alpha/CustomerService,Alice,alice@example.com
-Record002,Storage of customer data on CRM system,http://w3.org/ns/dpv#CustomerCare,Customers,http://w3.org/ns/dpv#VoiceCommunicationRecording,2.0,http://example.com/alpha/StandardTechnicalMeasures,2019-01-01,2022-12-13,http://example.com/alpha/CustomerService,Alice,alice@example.com
-Record003,Outbound calls to customers,http://w3.org/ns/dpv#CustomerCare,Customers,http://w3.org/ns/dpv#Contact,2.0,http://example.com/alpha/StandardTechnicalMeasures,2019-01-01,2022-12-13,http://example.com/alpha/CustomerService,Alice,alice@example.com
-Record001,Recruitment of staff,http://w3.org/ns/dpv#HR,Candidates,http://example.com/alpha/hr/CV,1.0,http://example.com/alpha/StandardTechnicalMeasures,2019-01-01,2022-12-13,http://example.com/alpha/HR,Bob,bob@example.com
-Record001,Recruitment of staff,http://w3.org/ns/dpv#HR,Candidates,http://example.com/alpha/hr/References,1.0,http://example.com/alpha/StandardTechnicalMeasures,2019-01-01,2022-12-13,http://example.com/alpha/HR,Bob,bob@example.com
-Record002,Payroll activities,http://w3.org/ns/dpv#HR,Employees,http://w3.org/ns/dpv#Financial,End of Contract,http://example.com/alpha/StandardTechnicalMeasures,2019-01-01,2022-12-13,http://example.com/alpha/HR,Bob,bob@example.com
-Record003,Pension activities,http://w3.org/ns/dpv#HR,Employees,http://w3.org/ns/dpv#Financial,End of Contract,http://example.com/alpha/StandardTechnicalMeasures,2019-01-01,2022-12-13,http://example.com/alpha/HR,Bob,bob@example.com
-Record004,Expenses Payments,http://w3.org/ns/dpv#HR,Employees,http://w3.org/ns/dpv#Financial,7.0,http://example.com/alpha/StandardTechnicalMeasures,2019-01-01,2022-12-13,http://example.com/alpha/HR,Bob,bob@example.com
-Record001,Direct Marketing via Email,http://w3.org/ns/dpv#DirectMarketing,Customers,http://w3.org/ns/dpv#EmailAddress,1.0,http://example.com/alpha/StandardTechnicalMeasures,2019-01-01,2022-12-13,http://example.com/alpha/Marketing,Emily,emily@example.com
-Record002,Direct Marketing via Telephone,http://w3.org/ns/dpv#DirectMarketing,Customers,http://w3.org/ns/dpv#TelephoneNumber,1.0,http://example.com/alpha/StandardTechnicalMeasures,2019-01-01,2019-12-13,http://example.com/alpha/Marketing,Emily,emily@example.com
-Record003,Direct Marketing via Post,http://w3.org/ns/dpv#DirectMarketing,Customers,http://w3.org/ns/dpv#PhysicalAddress,1.0,http://example.com/alpha/StandardTechnicalMeasures,2020-01-01,2021-12-13,http://example.com/alpha/Marketing,Emily,emily@example.com
+department,title,purpose,purpose_category,datasubject,personaldata,recipient,recipient_category,recipient_location,storageyears,measures,period_start,period_end,contactname,contactemail
+Customer Service Dept.,Record001,Recording of customer calls,Customer Care,Customers,Contact,,,,2.0,Standard,2019-01-01,2022-12-13,Alice,alice@example.com
+Customer Service Dept.,Record001,Recording of customer calls,Customer Care,Customers,Voice Communication Recording,,,,2.0,Standard,2019-01-01,2022-12-13,Alice,alice@example.com
+Customer Service Dept.,Record002,Storage of customer data on CRM system,Customer Care,Customers,Contact,,,,2.0,Standard,2019-01-01,2022-12-13,Alice,alice@example.com
+Customer Service Dept.,Record002,Storage of customer data on CRM system,Customer Care,Customers,Voice Communication Recording,,,,2.0,Standard,2019-01-01,2022-12-13,Alice,alice@example.com
+Customer Service Dept.,Record003,Outbound calls to customers,Customer Care,Customers,Contact,,,,2.0,Standard,2019-01-01,2022-12-13,Alice,alice@example.com
+HR Dept.,Record001,Recruitment of staff,Service Provision,Candidates,CV,,,,1.0,Standard,2019-01-01,2022-12-13,Bob,bob@example.com
+HR Dept.,Record001,Recruitment of staff,Service Provision,Candidates,References,,,,1.0,Standard,2019-01-01,2022-12-13,Bob,bob@example.com
+HR Dept.,Record002,Payroll activities,Service Provision,Employees,Financial,Revenue Commissioners,Tax Authority,,End of Contract,Standard,2019-01-01,2022-12-13,Bob,bob@example.com
+HR Dept.,Record003,Pension activities,Purpose,Employees,Financial,Irish Life,Pension Provider,,End of Contract,Standard,2019-01-01,2022-12-13,Bob,bob@example.com
+HR Dept.,Record004,Expenses Payments,Service Provision,Employees,Financial,Beta Ltd.,Data Processor,Canada,7.0,Standard,2019-01-01,2022-12-13,Bob,bob@example.com
+Marketing Dept.,Record001,Direct Marketing via Email,Direct Marketing,Customers,Email Address,,,,1.0,Standard,2019-01-01,2022-12-13,Emily,emily@example.com
+Marketing Dept.,Record002,Direct Marketing via Telephone,Direct Marketing,Customers,Telephone Number,,,,1.0,Standard,2019-01-01,2019-12-13,Emily,emily@example.com
+Marketing Dept.,Record003,Direct Marketing via Post,Direct Marketing,Customers,Physical Address,,,,1.0,Standard,2020-01-01,2021-12-13,Emily,emily@example.com
