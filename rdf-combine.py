@@ -5,8 +5,10 @@ from rdflib import Graph
 
 G = Graph()
 DATAFILES = (
-    'alpha.ttl',
-    'marketing.ttl'
+    'datasets/alpha.ttl',
+    'datasets/marketing.ttl',
+    'datasets/customer_service.ttl',
+    'datasets/hr.ttl',
     )
 
 for data in DATAFILES:
@@ -14,4 +16,4 @@ for data in DATAFILES:
     g.load(data, format='ttl')
     G += g
 
-G.serialize('data.ttl', format='ttl')
+G.serialize('data-combined.ttl', format='ttl')

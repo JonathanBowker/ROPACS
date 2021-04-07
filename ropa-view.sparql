@@ -1,0 +1,32 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX dpv: <http://w3.org/ns/dpv#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+select DISTINCT ?title ?purpose ?purpose_category ?datasubject ?personaldata ?storageyears ?measures ?period_start ?period_end ?department ?contactname ?contactemail where { 
+#    dataset metadata
+    ?dataset a dcat:Dataset .
+    ?dataset dct:title ?title .
+#    processing period of operation
+    ?dataset dct:temporal ?period .
+    ?period dct:startDate ?period_start .
+    ?period dct:endDate ?period_end .
+#    processing point of contact
+    ?dataset dct:creator ?department .
+    ?dataset dcat:contactPoint/foaf:name ?contactname .
+    ?dataset dcat:contactPoint/dpv:hasContact ?contactemail .
+##    processing metadata
+    ?dataset dpv:hasPurpose/dct:title ?purpose .
+    ?dataset dpv:hasPurpose/rdf:type ?purpose_category .
+    ?dataset dpv:hasDataSubject/dct:title ?datasubject .
+    ?dataset dpv:hasPersonalDataCategory ?personaldata .
+    ?dataset dpv:hasDuration ?duration .
+    ?duration a dpv:StorageDuration .
+    { ?duration time:years ?storageyears . } UNION { FILTER NOT EXISTS { ?duration time:years ?storageyears } . ?duration dct:title ?storageyears }
+    ?dataset dpv:hasTechnicalOrganisationalMeasures ?measures .
+##    optional recipients
+    OPTIONAL { ?dataset dpv:hasRecipient ?recipient . ?recipient a ?recipient_category . }
+    
+} ORDER BY ?department ?title

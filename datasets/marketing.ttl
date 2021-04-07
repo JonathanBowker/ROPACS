@@ -41,8 +41,8 @@
     dct:spatial [ a dct:Location ; dct:title "EU" ] ;
     dct:temporal [
         a dct:PeriodOfTime ;
-        dct:startDate "2001-01-01"^^xsd:date ;
-        dct:endDate "2001-12-13"^^xsd:date ;
+        dct:startDate "2019-01-01"^^xsd:date ;
+        dct:endDate "2022-12-13"^^xsd:date ;
         ] ;
     dct:publisher alpha:Alpha ;
     dct:creator alpha:Marketing ;
@@ -54,7 +54,7 @@
     dpv:hasPersonalDataCategory dpv:EmailAddress ;
     dpv:hasDuration [
         a dpv:StorageDuration, time:GeneralDurationDescription ;
-        time:years "1"^^xsd:deciman ;
+        time:years "1"^^xsd:decimal ;
         ] ;
     dpv:hasTechnicalOrganisationalMeasures alpha:StandardTechnicalMeasures ;
     rdfs:comment "test comment for closing instance data" .
@@ -70,8 +70,8 @@
     dct:spatial [ a dct:Location ; dct:title "EU" ] ;
     dct:temporal [
         a dct:PeriodOfTime ;
-        dct:startDate "2002-01-01"^^xsd:date ;
-        dct:endDate "2002-12-13"^^xsd:date ;
+        dct:startDate "2019-01-01"^^xsd:date ;
+        dct:endDate "2019-12-13"^^xsd:date ;
         ] ;
     dct:publisher alpha:Alpha ;
     dct:creator alpha:Marketing ;
@@ -83,7 +83,7 @@
     dpv:hasPersonalDataCategory dpv:TelephoneNumber ;
     dpv:hasDuration [
         a dpv:StorageDuration, time:GeneralDurationDescription ;
-        time:years "1"^^xsd:deciman ;
+        time:years "1"^^xsd:decimal ;
         ] ;
     dpv:hasTechnicalOrganisationalMeasures alpha:StandardTechnicalMeasures ;
     rdfs:comment "test comment for closing instance data" .
@@ -99,8 +99,8 @@
     dct:spatial [ a dct:Location ; dct:title "EU" ] ;
     dct:temporal [
         a dct:PeriodOfTime ;
-        dct:startDate "2003-01-01"^^xsd:date ;
-        dct:endDate "2003-12-13"^^xsd:date ;
+        dct:startDate "2020-01-01"^^xsd:date ;
+        dct:endDate "2021-12-13"^^xsd:date ;
         ] ;
     dct:publisher alpha:Alpha ;
     dct:creator alpha:Marketing ;
@@ -112,7 +112,7 @@
     dpv:hasPersonalDataCategory dpv:PhysicalAddress ;
     dpv:hasDuration [
         a dpv:StorageDuration, time:GeneralDurationDescription ;
-        time:years "1"^^xsd:deciman ;
+        time:years "1"^^xsd:decimal ;
         ] ;
     dpv:hasTechnicalOrganisationalMeasures alpha:StandardTechnicalMeasures ;
     rdfs:comment "test comment for closing instance data" .

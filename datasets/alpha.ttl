@@ -42,7 +42,10 @@
     org:subOrganizationOf :Alpha ;
     foaf:name "Customer Service Dept." .
 
-:Customers rdfs:subClassOf dpv:DataSubject .
+:Customers rdfs:subClassOf dpv:DataSubject ;
+    dct:title "Customers" .
+:Employees rdfs:subClassOf dpv:DataSubject ;
+    dct:title "Employees" .
 
 :StandardTechnicalMeasures a dpv:TechnicalOrganisationalMeasures .
 
