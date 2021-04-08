@@ -9,6 +9,7 @@ DATAFILES = (
     'datasets/marketing.ttl',
     'datasets/customer_service.ttl',
     'datasets/hr.ttl',
+    'datasets/beta.ttl',
     )
 
 for data in DATAFILES:

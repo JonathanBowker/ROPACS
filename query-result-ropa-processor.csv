@@ -1,0 +1,6 @@
+controller,representative,contact,processing,recipient,recipient_category,recipient_location,technical
+Alpha Inc.,Jane Doe,dpo@example.com,Obtain,,,,Standard
+Alpha Inc.,Jane Doe,dpo@example.com,Transform,,,,Standard
+Alpha Inc.,Jane Doe,dpo@example.com,Processing,,,,Standard
+Alpha Inc.,Jane Doe,dpo@example.com,Organise,,,,Standard
+Alpha Inc.,Jane Doe,dpo@example.com,Store,,,,Standard

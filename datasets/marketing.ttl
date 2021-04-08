@@ -28,7 +28,7 @@
     dct:publisher alpha:Alpha ;
     dct:creator alpha:Marketing ;
     dct:issued "2021-03-28"^^xsd:date ;
-    dcat:dataset :Record001, :Record002, :Record003 .
+    dcat:dataset :Record001, :Record002, :Record003a, :Record003b, :Record003c .
 
 :Record001 a dcat:Dataset ;
     dct:title "Record001" ;
@@ -41,8 +41,8 @@
     dct:spatial [ a dct:Location ; dct:title "EU" ] ;
     dct:temporal [
         a dct:PeriodOfTime ;
-        dct:startDate "2019-01-01"^^xsd:date ;
-        dct:endDate "2022-12-13"^^xsd:date ;
+        dct:startDate "2018-05-24"^^xsd:date ;
+        dct:endDate "2018-12-31"^^xsd:date ;
         ] ;
     dct:publisher alpha:Alpha ;
     dct:creator alpha:Marketing ;
@@ -71,7 +71,7 @@
     dct:temporal [
         a dct:PeriodOfTime ;
         dct:startDate "2019-01-01"^^xsd:date ;
-        dct:endDate "2019-12-13"^^xsd:date ;
+        dct:endDate "2019-12-31"^^xsd:date ;
         ] ;
     dct:publisher alpha:Alpha ;
     dct:creator alpha:Marketing ;
@@ -88,7 +88,7 @@
     dpv:hasTechnicalOrganisationalMeasures alpha:StandardTechnicalMeasures ;
     rdfs:comment "test comment for closing instance data" .
 
-:Record003 a dcat:Dataset ;
+:Record003a a dcat:Dataset ;
     dct:title "Record003" ;
     dct:description "Processing Activities Record003" ;
     dcat:contactPoint [
@@ -99,8 +99,8 @@
     dct:spatial [ a dct:Location ; dct:title "EU" ] ;
     dct:temporal [
         a dct:PeriodOfTime ;
-        dct:startDate "2020-01-01"^^xsd:date ;
-        dct:endDate "2021-12-13"^^xsd:date ;
+        dct:startDate "2019-01-01"^^xsd:date ;
+        dct:endDate "2019-12-31"^^xsd:date ;
         ] ;
     dct:publisher alpha:Alpha ;
     dct:creator alpha:Marketing ;
@@ -117,3 +117,60 @@
     dpv:hasTechnicalOrganisationalMeasures alpha:StandardTechnicalMeasures ;
     rdfs:comment "test comment for closing instance data" .
 
+:Record003b a dcat:Dataset ;
+    dct:title "Record003" ;
+    dct:description "Processing Activities Record003" ;
+    dcat:contactPoint [
+        a foaf:Agent, vcard:Kind ;
+        foaf:name "Emily" ;
+        dpv:hasContact "emily@example.com" ;
+        ] ;
+    dct:spatial [ a dct:Location ; dct:title "EU" ] ;
+    dct:temporal [
+        a dct:PeriodOfTime ;
+        dct:startDate "2020-01-01"^^xsd:date ;
+        dct:endDate "2020-12-31"^^xsd:date ;
+        ] ;
+    dct:publisher alpha:Alpha ;
+    dct:creator alpha:Marketing ;
+    dpv:hasPurpose [
+        a dpv:DirectMarketing ;
+        dct:title "Direct Marketing via Post" ;
+        ] ;
+    dpv:hasDataSubject alpha:Customers ;
+    dpv:hasPersonalDataCategory dpv:PhysicalAddress ;
+    dpv:hasDuration [
+        a dpv:StorageDuration, time:GeneralDurationDescription ;
+        time:years "1"^^xsd:decimal ;
+        ] ;
+    dpv:hasTechnicalOrganisationalMeasures alpha:StandardTechnicalMeasures ;
+    rdfs:comment "test comment for closing instance data" .
+
+:Record003c a dcat:Dataset ;
+    dct:title "Record003" ;
+    dct:description "Processing Activities Record003" ;
+    dcat:contactPoint [
+        a foaf:Agent, vcard:Kind ;
+        foaf:name "Emily" ;
+        dpv:hasContact "emily@example.com" ;
+        ] ;
+    dct:spatial [ a dct:Location ; dct:title "EU" ] ;
+    dct:temporal [
+        a dct:PeriodOfTime ;
+        dct:startDate "2021-01-01"^^xsd:date ;
+        dct:endDate "2021-12-31"^^xsd:date ;
+        ] ;
+    dct:publisher alpha:Alpha ;
+    dct:creator alpha:Marketing ;
+    dpv:hasPurpose [
+        a dpv:DirectMarketing ;
+        dct:title "Direct Marketing via Post" ;
+        ] ;
+    dpv:hasDataSubject alpha:Customers ;
+    dpv:hasPersonalDataCategory dpv:PhysicalAddress ;
+    dpv:hasDuration [
+        a dpv:StorageDuration, time:GeneralDurationDescription ;
+        time:years "1"^^xsd:decimal ;
+        ] ;
+    dpv:hasTechnicalOrganisationalMeasures alpha:StandardTechnicalMeasures ;
+    rdfs:comment "test comment for closing instance data" .

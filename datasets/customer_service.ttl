@@ -41,8 +41,8 @@
     dct:spatial [ a dct:Location ; dct:title "EU" ] ;
     dct:temporal [
         a dct:PeriodOfTime ;
-        dct:startDate "2019-01-01"^^xsd:date ;
-        dct:endDate "2022-12-13"^^xsd:date ;
+        dct:startDate "2018-01-01"^^xsd:date ;
+        dct:endDate "2018-12-31"^^xsd:date ;
         ] ;
     dct:publisher alpha:Alpha ;
     dct:creator alpha:CustomerService ;
@@ -71,7 +71,7 @@
     dct:temporal [
         a dct:PeriodOfTime ;
         dct:startDate "2019-01-01"^^xsd:date ;
-        dct:endDate "2022-12-13"^^xsd:date ;
+        dct:endDate "2021-12-31"^^xsd:date ;
         ] ;
     dct:publisher alpha:Alpha ;
     dct:creator alpha:CustomerService ;
@@ -99,8 +99,8 @@
     dct:spatial [ a dct:Location ; dct:title "EU" ] ;
     dct:temporal [
         a dct:PeriodOfTime ;
-        dct:startDate "2019-01-01"^^xsd:date ;
-        dct:endDate "2022-12-13"^^xsd:date ;
+        dct:startDate "2021-01-01"^^xsd:date ;
+        dct:endDate "2022-12-31"^^xsd:date ;
         ] ;
     dct:publisher alpha:Alpha ;
     dct:creator alpha:CustomerService ;

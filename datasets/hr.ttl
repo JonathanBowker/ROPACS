@@ -37,9 +37,6 @@
     dct:title "Pension Provider" .
 :IrishLife a :PensionProvider ;
     dct:title "Irish Life" .
-:Beta a dpv:DataProcessor ;
-    dct:title "Beta Ltd." ;
-    dpv:hasLocation "Canada" .
 
 :recordscatalog a dcat:Dataset, dcat:Catalog ;
     dct:title "Processing Records for Human Resources" ;
@@ -60,8 +57,8 @@
     dct:spatial [ a dct:Location ; dct:title "EU" ] ;
     dct:temporal [
         a dct:PeriodOfTime ;
-        dct:startDate "2019-01-01"^^xsd:date ;
-        dct:endDate "2022-12-13"^^xsd:date ;
+        dct:startDate "2017-04-01"^^xsd:date ;
+        dct:endDate "2021-31-31"^^xsd:date ;
         ] ;
     dct:publisher alpha:Alpha ;
     dct:creator alpha:HR ;
@@ -89,8 +86,8 @@
     dct:spatial [ a dct:Location ; dct:title "EU" ] ;
     dct:temporal [
         a dct:PeriodOfTime ;
-        dct:startDate "2019-01-01"^^xsd:date ;
-        dct:endDate "2022-12-13"^^xsd:date ;
+        dct:startDate "2018-04-01"^^xsd:date ;
+        dct:endDate "2021-03-31"^^xsd:date ;
         ] ;
     dct:publisher alpha:Alpha ;
     dct:creator alpha:HR ;
@@ -119,8 +116,8 @@
     dct:spatial [ a dct:Location ; dct:title "EU" ] ;
     dct:temporal [
         a dct:PeriodOfTime ;
-        dct:startDate "2019-01-01"^^xsd:date ;
-        dct:endDate "2022-12-13"^^xsd:date ;
+        dct:startDate "2016-04-01"^^xsd:date ;
+        dct:endDate "2023-03-31"^^xsd:date ;
         ] ;
     dct:publisher alpha:Alpha ;
     dct:creator alpha:HR ;
@@ -149,8 +146,8 @@
     dct:spatial [ a dct:Location ; dct:title "EU" ] ;
     dct:temporal [
         a dct:PeriodOfTime ;
-        dct:startDate "2019-01-01"^^xsd:date ;
-        dct:endDate "2022-12-13"^^xsd:date ;
+        dct:startDate "2016-01-01"^^xsd:date ;
+        dct:endDate "2023-03-31"^^xsd:date ;
         ] ;
     dct:publisher alpha:Alpha ;
     dct:creator alpha:HR ;
@@ -164,7 +161,12 @@
         a dpv:StorageDuration, time:GeneralDurationDescription ;
         time:years "7"^^xsd:decimal ;
         ] ;
-    dpv:hasRecipient :Beta ;
+    dpv:hasRecipient [
+        a dpv:DataProcessor ;
+        owl:sameAs <http://example.com/alpha/beta/Beta> ;
+        dct:title "Beta Ltd." ;
+        dpv:hasLocation "Canada" ;
+    ] ;
     dpv:hasSafeguard [
         a dpv:Safeguard ;
         rdfs:seeAlso <http://data.europa.eu/eli/dec/2002/2(1)/oj> ;

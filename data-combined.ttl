@@ -1,376 +1,510 @@
-@prefix ns1: <http://purl.org/dc/terms/> .
-@prefix ns2: <http://www.w3.org/ns/dpv#> .
-@prefix ns3: <http://www.w3.org/ns/dcat#> .
-@prefix ns4: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <http://xmlns.com/foaf/0.1/> .
+@prefix ns2: <http://www.w3.org/ns/dcat#> .
+@prefix ns3: <http://purl.org/dc/terms/> .
+@prefix ns4: <http://www.w3.org/ns/dpv#> .
 @prefix ns5: <http://www.w3.org/2006/time#> .
-@prefix ns6: <http://www.w3.org/ns/org#> .
-@prefix ns7: <http://www.w3.org/2002/07/owl#> .
+@prefix ns6: <http://www.w3.org/2002/07/owl#> .
+@prefix ns7: <http://www.w3.org/ns/org#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://example.com/alpha/ProcessingRecords> a ns3:Catalog,
-        ns3:Dataset ;
-    ns1:contactPoint [ a <http://www.w3.org/2006/vcard/ns#Kind>,
-                ns2:DataProtectionOfficer,
-                ns4:Agent ;
-            ns7:sameAs <http://example.com/alpha/DPO> ;
-            ns2:hasContact "dpo@example.com" ;
-            ns4:name "Jane Doe" ] ;
-    ns1:description "Organisation level catalog of processing records collated from all departments and contractors" ;
-    ns1:publisher [ a <http://www.w3.org/ns/adms#Company>,
-                ns2:Controller,
-                ns6:Organization,
-                ns4:Agent ;
-            ns7:sameAs <http://example.com/alpha/Alpha> ;
-            ns4:name "Alpha Inc." ] ;
-    ns1:title "Processing Records" ;
-    ns3:dataset <http://example.com/alpha/TestDataset> .
+<http://example.com/alpha/ProcessingRecords> a ns2:Catalog,
+        ns2:Dataset ;
+    ns3:contactPoint [ a <http://www.w3.org/2006/vcard/ns#Kind>,
+                ns4:DataProtectionOfficer,
+                ns1:Agent ;
+            ns6:sameAs <http://example.com/alpha/DPO> ;
+            ns4:hasContact "dpo@example.com" ;
+            ns1:name "Jane Doe" ] ;
+    ns3:description "Organisation level catalog of processing records collated from all departments and contractors" ;
+    ns3:publisher [ a <http://www.w3.org/ns/adms#Company>,
+                ns4:DataController,
+                ns7:Organization,
+                ns1:Agent ;
+            ns6:sameAs <http://example.com/alpha/Alpha> ;
+            ns1:name "Alpha Inc." ] ;
+    ns3:title "Processing Records" ;
+    ns2:dataset <http://example.com/aplha/HR/recordscatalog>,
+        <http://example.com/aplha/customerservice/recordscatalog>,
+        <http://example.com/aplha/marketing/recordscatalog> .
 
-<http://example.com/alpha/customer-service/recordscatalog> a ns3:Catalog,
-        ns3:Dataset ;
-    ns1:creator <http://example.com/alpha/CustomerService> ;
-    ns1:description "Collated records for Customer Services" ;
-    ns1:issued "2021-03-28"^^xsd:date ;
-    ns1:publisher <http://example.com/alpha/Alpha> ;
-    ns1:title "Processing Records for Customer Services" ;
-    ns3:dataset <http://example.com/alpha/customer-service/Record001>,
+<http://example.com/alpha/customer-service/recordscatalog> a ns2:Catalog,
+        ns2:Dataset ;
+    ns3:creator <http://example.com/alpha/CustomerService> ;
+    ns3:description "Collated records for Customer Services" ;
+    ns3:issued "2021-03-28"^^xsd:date ;
+    ns3:publisher <http://example.com/alpha/Alpha> ;
+    ns3:title "Processing Records for Customer Services" ;
+    ns2:dataset <http://example.com/alpha/customer-service/Record001>,
         <http://example.com/alpha/customer-service/Record002>,
         <http://example.com/alpha/customer-service/Record003> .
 
-<http://example.com/alpha/hr/Record004> a ns3:Dataset ;
-    ns1:creator <http://example.com/alpha/HR> ;
-    ns1:description "Processing Activities Record004" ;
-    ns1:publisher <http://example.com/alpha/Alpha> ;
-    ns1:spatial [ a ns1:Location ;
-            ns1:title "EU" ] ;
-    ns1:temporal [ a ns1:PeriodOfTime ;
-            ns1:endDate "2022-12-13"^^xsd:date ;
-            ns1:startDate "2019-01-01"^^xsd:date ] ;
-    ns1:title "Record004" ;
+<http://example.com/alpha/hr/Record004> a ns2:Dataset ;
+    ns3:creator <http://example.com/alpha/HR> ;
+    ns3:description "Processing Activities Record004" ;
+    ns3:publisher <http://example.com/alpha/Alpha> ;
+    ns3:spatial [ a ns3:Location ;
+            ns3:title "EU" ] ;
+    ns3:temporal [ a ns3:PeriodOfTime ;
+            ns3:endDate "2023-03-31"^^xsd:date ;
+            ns3:startDate "2016-01-01"^^xsd:date ] ;
+    ns3:title "Record004" ;
     rdfs:comment "test comment for closing instance data" ;
-    ns3:contactPoint [ a <http://www.w3.org/2006/vcard/ns#Kind>,
-                ns4:Agent ;
-            ns2:hasContact "bob@example.com" ;
-            ns4:name "Bob" ] ;
-    ns2:hasDataSubject <http://example.com/alpha/Employees> ;
-    ns2:hasDuration [ a ns5:GeneralDurationDescription,
-                ns2:StorageDuration ;
+    ns2:contactPoint [ a <http://www.w3.org/2006/vcard/ns#Kind>,
+                ns1:Agent ;
+            ns4:hasContact "bob@example.com" ;
+            ns1:name "Bob" ] ;
+    ns4:hasDataSubject <http://example.com/alpha/Employees> ;
+    ns4:hasDuration [ a ns5:GeneralDurationDescription,
+                ns4:StorageDuration ;
             ns5:years 7.0 ] ;
-    ns2:hasPersonalDataCategory ns2:Financial ;
-    ns2:hasPurpose [ a ns2:ServiceProvision ;
-            ns1:title "Expenses Payments" ] ;
-    ns2:hasRecipient <http://example.com/alpha/hr/Beta> ;
-    ns2:hasSafeguard [ a ns2:Safeguard ;
-            ns1:title "GDPR A.45 Adequacy for Canada" ;
+    ns4:hasPersonalDataCategory ns4:Financial ;
+    ns4:hasPurpose [ a ns4:ServiceProvision ;
+            ns3:title "Expenses Payments" ] ;
+    ns4:hasRecipient [ a ns4:DataProcessor ;
+            ns3:title "Beta Ltd." ;
+            ns6:sameAs <http://example.com/alpha/beta/Beta> ;
+            ns4:hasLocation "Canada" ] ;
+    ns4:hasSafeguard [ a ns4:Safeguard ;
+            ns3:title "GDPR A.45 Adequacy for Canada" ;
             rdfs:seeAlso <http://data.europa.eu/eli/dec/2002/2(1)/oj> ] ;
-    ns2:hasTechnicalOrganisationalMeasures <http://example.com/alpha/StandardTechnicalMeasures> .
+    ns4:hasTechnicalOrganisationalMeasures <http://example.com/alpha/StandardTechnicalMeasures> .
 
-<http://example.com/alpha/hr/recordscatalog> a ns3:Catalog,
-        ns3:Dataset ;
-    ns1:creator <http://example.com/alpha/HR> ;
-    ns1:description "Collated records for HR Department" ;
-    ns1:issued "2021-03-28"^^xsd:date ;
-    ns1:publisher <http://example.com/alpha/Alpha> ;
-    ns1:title "Processing Records for Human Resources" ;
-    ns3:dataset <http://example.com/alpha/hr/Record001>,
+<http://example.com/alpha/hr/recordscatalog> a ns2:Catalog,
+        ns2:Dataset ;
+    ns3:creator <http://example.com/alpha/HR> ;
+    ns3:description "Collated records for HR Department" ;
+    ns3:issued "2021-03-28"^^xsd:date ;
+    ns3:publisher <http://example.com/alpha/Alpha> ;
+    ns3:title "Processing Records for Human Resources" ;
+    ns2:dataset <http://example.com/alpha/hr/Record001>,
         <http://example.com/alpha/hr/Record002>,
         <http://example.com/alpha/hr/Record003> .
 
-<http://example.com/alpha/marketing/recordscatalog> a ns3:Catalog,
-        ns3:Dataset ;
-    ns1:creator <http://example.com/alpha/Marketing> ;
-    ns1:description "Collated records for Marketing Department" ;
-    ns1:issued "2021-03-28"^^xsd:date ;
-    ns1:publisher <http://example.com/alpha/Alpha> ;
-    ns1:title "Processing Records for Marketing" ;
-    ns3:dataset <http://example.com/alpha/marketing/Record001>,
+<http://example.com/alpha/marketing/recordscatalog> a ns2:Catalog,
+        ns2:Dataset ;
+    ns3:creator <http://example.com/alpha/Marketing> ;
+    ns3:description "Collated records for Marketing Department" ;
+    ns3:issued "2021-03-28"^^xsd:date ;
+    ns3:publisher <http://example.com/alpha/Alpha> ;
+    ns3:title "Processing Records for Marketing" ;
+    ns2:dataset <http://example.com/alpha/marketing/Record001>,
         <http://example.com/alpha/marketing/Record002>,
-        <http://example.com/alpha/marketing/Record003> .
+        <http://example.com/alpha/marketing/Record003a>,
+        <http://example.com/alpha/marketing/Record003b>,
+        <http://example.com/alpha/marketing/Record003c> .
 
-<http://example.com/alpha/TestDataset> a ns3:Dataset ;
-    ns1:description "dataset for testing file" ;
-    ns1:title "test dataset" .
-
-<http://example.com/alpha/customer-service/Record001> a ns3:Dataset ;
-    ns1:creator <http://example.com/alpha/CustomerService> ;
-    ns1:description "Processing Activities Record001" ;
-    ns1:publisher <http://example.com/alpha/Alpha> ;
-    ns1:spatial [ a ns1:Location ;
-            ns1:title "EU" ] ;
-    ns1:temporal [ a ns1:PeriodOfTime ;
-            ns1:endDate "2022-12-13"^^xsd:date ;
-            ns1:startDate "2019-01-01"^^xsd:date ] ;
-    ns1:title "Record001" ;
-    rdfs:comment "test comment for closing instance data" ;
+<http://example.com/beta/ProcessingRecords> a ns2:Catalog,
+        ns2:Dataset ;
     ns3:contactPoint [ a <http://www.w3.org/2006/vcard/ns#Kind>,
-                ns4:Agent ;
-            ns2:hasContact "alice@example.com" ;
-            ns4:name "Alice" ] ;
-    ns2:hasDataSubject <http://example.com/alpha/Customers> ;
-    ns2:hasDuration [ a ns5:GeneralDurationDescription,
-                ns2:StorageDuration ;
-            ns5:years 2.0 ] ;
-    ns2:hasPersonalDataCategory ns2:Contact,
-        ns2:VoiceCommunicationRecording ;
-    ns2:hasPurpose [ a ns2:CustomerCare ;
-            ns1:title "Recording of customer calls" ] ;
-    ns2:hasTechnicalOrganisationalMeasures <http://example.com/alpha/StandardTechnicalMeasures> .
+                ns4:DataProtectionOfficer,
+                ns1:Agent ;
+            ns6:sameAs <http://example.com/beta/DPO> ;
+            ns4:hasContact "betadpo@example.com" ;
+            ns1:name "Janine Doe" ] ;
+    ns3:description "Organisation level catalog of processing records for Beta" ;
+    ns3:publisher [ a <http://www.w3.org/ns/adms#Company>,
+                ns4:Processor,
+                ns7:Organization,
+                ns1:Agent ;
+            ns6:sameAs <http://example.com/beta/Beta> ;
+            ns1:name "Beta Ltd." ] ;
+    ns3:title "Processing Records" ;
+    ns2:dataset <http://example.com/beta/recordscatalog-alpha> .
 
-<http://example.com/alpha/customer-service/Record002> a ns3:Dataset ;
-    ns1:creator <http://example.com/alpha/CustomerService> ;
-    ns1:description "Processing Activities Record002" ;
-    ns1:publisher <http://example.com/alpha/Alpha> ;
-    ns1:spatial [ a ns1:Location ;
-            ns1:title "EU" ] ;
-    ns1:temporal [ a ns1:PeriodOfTime ;
-            ns1:endDate "2022-12-13"^^xsd:date ;
-            ns1:startDate "2019-01-01"^^xsd:date ] ;
-    ns1:title "Record002" ;
+<http://example.com/alpha/customer-service/Record001> a ns2:Dataset ;
+    ns3:creator <http://example.com/alpha/CustomerService> ;
+    ns3:description "Processing Activities Record001" ;
+    ns3:publisher <http://example.com/alpha/Alpha> ;
+    ns3:spatial [ a ns3:Location ;
+            ns3:title "EU" ] ;
+    ns3:temporal [ a ns3:PeriodOfTime ;
+            ns3:endDate "2018-12-31"^^xsd:date ;
+            ns3:startDate "2018-01-01"^^xsd:date ] ;
+    ns3:title "Record001" ;
     rdfs:comment "test comment for closing instance data" ;
-    ns3:contactPoint [ a <http://www.w3.org/2006/vcard/ns#Kind>,
-                ns4:Agent ;
-            ns2:hasContact "alice@example.com" ;
-            ns4:name "Alice" ] ;
-    ns2:hasDataSubject <http://example.com/alpha/Customers> ;
-    ns2:hasDuration [ a ns5:GeneralDurationDescription,
-                ns2:StorageDuration ;
+    ns2:contactPoint [ a <http://www.w3.org/2006/vcard/ns#Kind>,
+                ns1:Agent ;
+            ns4:hasContact "alice@example.com" ;
+            ns1:name "Alice" ] ;
+    ns4:hasDataSubject <http://example.com/alpha/Customers> ;
+    ns4:hasDuration [ a ns5:GeneralDurationDescription,
+                ns4:StorageDuration ;
             ns5:years 2.0 ] ;
-    ns2:hasPersonalDataCategory ns2:Contact,
-        ns2:VoiceCommunicationRecording ;
-    ns2:hasPurpose [ a ns2:CustomerCare ;
-            ns1:title "Storage of customer data on CRM system" ] ;
-    ns2:hasTechnicalOrganisationalMeasures <http://example.com/alpha/StandardTechnicalMeasures> .
+    ns4:hasPersonalDataCategory ns4:Contact,
+        ns4:VoiceCommunicationRecording ;
+    ns4:hasPurpose [ a ns4:CustomerCare ;
+            ns3:title "Recording of customer calls" ] ;
+    ns4:hasTechnicalOrganisationalMeasures <http://example.com/alpha/StandardTechnicalMeasures> .
 
-<http://example.com/alpha/customer-service/Record003> a ns3:Dataset ;
-    ns1:creator <http://example.com/alpha/CustomerService> ;
-    ns1:description "Processing Activities Record003" ;
-    ns1:publisher <http://example.com/alpha/Alpha> ;
-    ns1:spatial [ a ns1:Location ;
-            ns1:title "EU" ] ;
-    ns1:temporal [ a ns1:PeriodOfTime ;
-            ns1:endDate "2022-12-13"^^xsd:date ;
-            ns1:startDate "2019-01-01"^^xsd:date ] ;
-    ns1:title "Record003" ;
+<http://example.com/alpha/customer-service/Record002> a ns2:Dataset ;
+    ns3:creator <http://example.com/alpha/CustomerService> ;
+    ns3:description "Processing Activities Record002" ;
+    ns3:publisher <http://example.com/alpha/Alpha> ;
+    ns3:spatial [ a ns3:Location ;
+            ns3:title "EU" ] ;
+    ns3:temporal [ a ns3:PeriodOfTime ;
+            ns3:endDate "2021-12-31"^^xsd:date ;
+            ns3:startDate "2019-01-01"^^xsd:date ] ;
+    ns3:title "Record002" ;
     rdfs:comment "test comment for closing instance data" ;
-    ns3:contactPoint [ a <http://www.w3.org/2006/vcard/ns#Kind>,
-                ns4:Agent ;
-            ns2:hasContact "alice@example.com" ;
-            ns4:name "Alice" ] ;
-    ns2:hasDataSubject <http://example.com/alpha/Customers> ;
-    ns2:hasDuration [ a ns5:GeneralDurationDescription,
-                ns2:StorageDuration ;
+    ns2:contactPoint [ a <http://www.w3.org/2006/vcard/ns#Kind>,
+                ns1:Agent ;
+            ns4:hasContact "alice@example.com" ;
+            ns1:name "Alice" ] ;
+    ns4:hasDataSubject <http://example.com/alpha/Customers> ;
+    ns4:hasDuration [ a ns5:GeneralDurationDescription,
+                ns4:StorageDuration ;
             ns5:years 2.0 ] ;
-    ns2:hasPersonalDataCategory ns2:Contact ;
-    ns2:hasPurpose [ a ns2:CustomerCare ;
-            ns1:title "Outbound calls to customers" ] ;
-    ns2:hasTechnicalOrganisationalMeasures <http://example.com/alpha/StandardTechnicalMeasures> .
+    ns4:hasPersonalDataCategory ns4:Contact,
+        ns4:VoiceCommunicationRecording ;
+    ns4:hasPurpose [ a ns4:CustomerCare ;
+            ns3:title "Storage of customer data on CRM system" ] ;
+    ns4:hasTechnicalOrganisationalMeasures <http://example.com/alpha/StandardTechnicalMeasures> .
 
-<http://example.com/alpha/hr/Beta> a ns2:DataProcessor ;
-    ns1:title "Beta Ltd." ;
-    ns2:hasLocation "Canada" .
+<http://example.com/alpha/customer-service/Record003> a ns2:Dataset ;
+    ns3:creator <http://example.com/alpha/CustomerService> ;
+    ns3:description "Processing Activities Record003" ;
+    ns3:publisher <http://example.com/alpha/Alpha> ;
+    ns3:spatial [ a ns3:Location ;
+            ns3:title "EU" ] ;
+    ns3:temporal [ a ns3:PeriodOfTime ;
+            ns3:endDate "2022-12-31"^^xsd:date ;
+            ns3:startDate "2021-01-01"^^xsd:date ] ;
+    ns3:title "Record003" ;
+    rdfs:comment "test comment for closing instance data" ;
+    ns2:contactPoint [ a <http://www.w3.org/2006/vcard/ns#Kind>,
+                ns1:Agent ;
+            ns4:hasContact "alice@example.com" ;
+            ns1:name "Alice" ] ;
+    ns4:hasDataSubject <http://example.com/alpha/Customers> ;
+    ns4:hasDuration [ a ns5:GeneralDurationDescription,
+                ns4:StorageDuration ;
+            ns5:years 2.0 ] ;
+    ns4:hasPersonalDataCategory ns4:Contact ;
+    ns4:hasPurpose [ a ns4:CustomerCare ;
+            ns3:title "Outbound calls to customers" ] ;
+    ns4:hasTechnicalOrganisationalMeasures <http://example.com/alpha/StandardTechnicalMeasures> .
 
-<http://example.com/alpha/hr/CV> ns1:title "CV" ;
-    rdfs:subClassOf ns2:PersonalDataCategory .
+<http://example.com/alpha/hr/CV> ns3:title "CV" ;
+    rdfs:subClassOf ns4:PersonalDataCategory .
 
-<http://example.com/alpha/hr/Candidates> ns1:title "Candidates" ;
-    rdfs:subClassOf ns2:DataSubject .
+<http://example.com/alpha/hr/Candidates> ns3:title "Candidates" ;
+    rdfs:subClassOf ns4:DataSubject .
 
 <http://example.com/alpha/hr/IrishLife> a <http://example.com/alpha/hr/PensionProvider> ;
-    ns1:title "Irish Life" .
+    ns3:title "Irish Life" .
 
-<http://example.com/alpha/hr/PensionProvider> ns1:title "Pension Provider" ;
-    rdfs:subClassOf ns2:ThirdParty .
+<http://example.com/alpha/hr/PensionProvider> ns3:title "Pension Provider" ;
+    rdfs:subClassOf ns4:ThirdParty .
 
-<http://example.com/alpha/hr/Record001> a ns3:Dataset ;
-    ns1:creator <http://example.com/alpha/HR> ;
-    ns1:description "Processing Activities Record001" ;
-    ns1:publisher <http://example.com/alpha/Alpha> ;
-    ns1:spatial [ a ns1:Location ;
-            ns1:title "EU" ] ;
-    ns1:temporal [ a ns1:PeriodOfTime ;
-            ns1:endDate "2022-12-13"^^xsd:date ;
-            ns1:startDate "2019-01-01"^^xsd:date ] ;
-    ns1:title "Record001" ;
+<http://example.com/alpha/hr/Record001> a ns2:Dataset ;
+    ns3:creator <http://example.com/alpha/HR> ;
+    ns3:description "Processing Activities Record001" ;
+    ns3:publisher <http://example.com/alpha/Alpha> ;
+    ns3:spatial [ a ns3:Location ;
+            ns3:title "EU" ] ;
+    ns3:temporal [ a ns3:PeriodOfTime ;
+            ns3:endDate "2021-31-31"^^xsd:date ;
+            ns3:startDate "2017-04-01"^^xsd:date ] ;
+    ns3:title "Record001" ;
     rdfs:comment "test comment for closing instance data" ;
-    ns3:contactPoint [ a <http://www.w3.org/2006/vcard/ns#Kind>,
-                ns4:Agent ;
-            ns2:hasContact "bob@example.com" ;
-            ns4:name "Bob" ] ;
-    ns2:hasDataSubject <http://example.com/alpha/hr/Candidates> ;
-    ns2:hasDuration [ a ns5:GeneralDurationDescription,
-                ns2:StorageDuration ;
+    ns2:contactPoint [ a <http://www.w3.org/2006/vcard/ns#Kind>,
+                ns1:Agent ;
+            ns4:hasContact "bob@example.com" ;
+            ns1:name "Bob" ] ;
+    ns4:hasDataSubject <http://example.com/alpha/hr/Candidates> ;
+    ns4:hasDuration [ a ns5:GeneralDurationDescription,
+                ns4:StorageDuration ;
             ns5:years 1.0 ] ;
-    ns2:hasPersonalDataCategory <http://example.com/alpha/hr/CV>,
+    ns4:hasPersonalDataCategory <http://example.com/alpha/hr/CV>,
         <http://example.com/alpha/hr/References> ;
-    ns2:hasPurpose [ a ns2:ServiceProvision ;
-            ns1:title "Recruitment of staff" ] ;
-    ns2:hasTechnicalOrganisationalMeasures <http://example.com/alpha/StandardTechnicalMeasures> .
+    ns4:hasPurpose [ a ns4:ServiceProvision ;
+            ns3:title "Recruitment of staff" ] ;
+    ns4:hasTechnicalOrganisationalMeasures <http://example.com/alpha/StandardTechnicalMeasures> .
 
-<http://example.com/alpha/hr/Record002> a ns3:Dataset ;
-    ns1:creator <http://example.com/alpha/HR> ;
-    ns1:description "Processing Activities Record002" ;
-    ns1:publisher <http://example.com/alpha/Alpha> ;
-    ns1:spatial [ a ns1:Location ;
-            ns1:title "EU" ] ;
-    ns1:temporal [ a ns1:PeriodOfTime ;
-            ns1:endDate "2022-12-13"^^xsd:date ;
-            ns1:startDate "2019-01-01"^^xsd:date ] ;
-    ns1:title "Record002" ;
+<http://example.com/alpha/hr/Record002> a ns2:Dataset ;
+    ns3:creator <http://example.com/alpha/HR> ;
+    ns3:description "Processing Activities Record002" ;
+    ns3:publisher <http://example.com/alpha/Alpha> ;
+    ns3:spatial [ a ns3:Location ;
+            ns3:title "EU" ] ;
+    ns3:temporal [ a ns3:PeriodOfTime ;
+            ns3:endDate "2021-03-31"^^xsd:date ;
+            ns3:startDate "2018-04-01"^^xsd:date ] ;
+    ns3:title "Record002" ;
     rdfs:comment "test comment for closing instance data" ;
-    ns3:contactPoint [ a <http://www.w3.org/2006/vcard/ns#Kind>,
-                ns4:Agent ;
-            ns2:hasContact "bob@example.com" ;
-            ns4:name "Bob" ] ;
-    ns2:hasDataSubject <http://example.com/alpha/Employees> ;
-    ns2:hasDuration [ a ns2:StorageDuration ;
-            ns1:title "End of Contract" ] ;
-    ns2:hasPersonalDataCategory ns2:Financial ;
-    ns2:hasPurpose [ a ns2:ServiceProvision ;
-            ns1:title "Payroll activities" ] ;
-    ns2:hasRecipient <http://example.com/alpha/hr/RevenueCommissioners> ;
-    ns2:hasTechnicalOrganisationalMeasures <http://example.com/alpha/StandardTechnicalMeasures> .
+    ns2:contactPoint [ a <http://www.w3.org/2006/vcard/ns#Kind>,
+                ns1:Agent ;
+            ns4:hasContact "bob@example.com" ;
+            ns1:name "Bob" ] ;
+    ns4:hasDataSubject <http://example.com/alpha/Employees> ;
+    ns4:hasDuration [ a ns4:StorageDuration ;
+            ns3:title "End of Contract" ] ;
+    ns4:hasPersonalDataCategory ns4:Financial ;
+    ns4:hasPurpose [ a ns4:ServiceProvision ;
+            ns3:title "Payroll activities" ] ;
+    ns4:hasRecipient <http://example.com/alpha/hr/RevenueCommissioners> ;
+    ns4:hasTechnicalOrganisationalMeasures <http://example.com/alpha/StandardTechnicalMeasures> .
 
-<http://example.com/alpha/hr/Record003> a ns3:Dataset ;
-    ns1:creator <http://example.com/alpha/HR> ;
-    ns1:description "Processing Activities Record003" ;
-    ns1:publisher <http://example.com/alpha/Alpha> ;
-    ns1:spatial [ a ns1:Location ;
-            ns1:title "EU" ] ;
-    ns1:temporal [ a ns1:PeriodOfTime ;
-            ns1:endDate "2022-12-13"^^xsd:date ;
-            ns1:startDate "2019-01-01"^^xsd:date ] ;
-    ns1:title "Record003" ;
+<http://example.com/alpha/hr/Record003> a ns2:Dataset ;
+    ns3:creator <http://example.com/alpha/HR> ;
+    ns3:description "Processing Activities Record003" ;
+    ns3:publisher <http://example.com/alpha/Alpha> ;
+    ns3:spatial [ a ns3:Location ;
+            ns3:title "EU" ] ;
+    ns3:temporal [ a ns3:PeriodOfTime ;
+            ns3:endDate "2023-03-31"^^xsd:date ;
+            ns3:startDate "2016-04-01"^^xsd:date ] ;
+    ns3:title "Record003" ;
     rdfs:comment "test comment for closing instance data" ;
-    ns3:contactPoint [ a <http://www.w3.org/2006/vcard/ns#Kind>,
-                ns4:Agent ;
-            ns2:hasContact "bob@example.com" ;
-            ns4:name "Bob" ] ;
-    ns2:hasDataSubject <http://example.com/alpha/Employees> ;
-    ns2:hasDuration [ a ns2:StorageDuration ;
-            ns1:title "End of Contract" ] ;
-    ns2:hasPersonalDataCategory ns2:Financial ;
-    ns2:hasPurpose [ a ns2:Purpose ;
-            ns1:title "Pension activities" ] ;
-    ns2:hasRecipient <http://example.com/alpha/hr/IrishLife> ;
-    ns2:hasTechnicalOrganisationalMeasures <http://example.com/alpha/StandardTechnicalMeasures> .
+    ns2:contactPoint [ a <http://www.w3.org/2006/vcard/ns#Kind>,
+                ns1:Agent ;
+            ns4:hasContact "bob@example.com" ;
+            ns1:name "Bob" ] ;
+    ns4:hasDataSubject <http://example.com/alpha/Employees> ;
+    ns4:hasDuration [ a ns4:StorageDuration ;
+            ns3:title "End of Contract" ] ;
+    ns4:hasPersonalDataCategory ns4:Financial ;
+    ns4:hasPurpose [ a ns4:Purpose ;
+            ns3:title "Pension activities" ] ;
+    ns4:hasRecipient <http://example.com/alpha/hr/IrishLife> ;
+    ns4:hasTechnicalOrganisationalMeasures <http://example.com/alpha/StandardTechnicalMeasures> .
 
-<http://example.com/alpha/hr/References> ns1:title "References" ;
-    rdfs:subClassOf ns2:PersonalDataCategory .
+<http://example.com/alpha/hr/References> ns3:title "References" ;
+    rdfs:subClassOf ns4:PersonalDataCategory .
 
 <http://example.com/alpha/hr/RevenueCommissioners> a <http://example.com/alpha/hr/TaxAuthority> ;
-    ns1:title "Revenue Commissioners" .
+    ns3:title "Revenue Commissioners" .
 
-<http://example.com/alpha/hr/TaxAuthority> ns1:title "Tax Authority" ;
-    rdfs:subClassOf ns2:Authority,
-        ns2:ThirdParty .
+<http://example.com/alpha/hr/TaxAuthority> ns3:title "Tax Authority" ;
+    rdfs:subClassOf ns4:Authority,
+        ns4:ThirdParty .
 
-<http://example.com/alpha/marketing/Record001> a ns3:Dataset ;
-    ns1:creator <http://example.com/alpha/Marketing> ;
-    ns1:description "Processing Activities Record001" ;
-    ns1:publisher <http://example.com/alpha/Alpha> ;
-    ns1:spatial [ a ns1:Location ;
-            ns1:title "EU" ] ;
-    ns1:temporal [ a ns1:PeriodOfTime ;
-            ns1:endDate "2022-12-13"^^xsd:date ;
-            ns1:startDate "2019-01-01"^^xsd:date ] ;
-    ns1:title "Record001" ;
+<http://example.com/alpha/marketing/Record001> a ns2:Dataset ;
+    ns3:creator <http://example.com/alpha/Marketing> ;
+    ns3:description "Processing Activities Record001" ;
+    ns3:publisher <http://example.com/alpha/Alpha> ;
+    ns3:spatial [ a ns3:Location ;
+            ns3:title "EU" ] ;
+    ns3:temporal [ a ns3:PeriodOfTime ;
+            ns3:endDate "2018-12-31"^^xsd:date ;
+            ns3:startDate "2018-05-24"^^xsd:date ] ;
+    ns3:title "Record001" ;
     rdfs:comment "test comment for closing instance data" ;
-    ns3:contactPoint [ a <http://www.w3.org/2006/vcard/ns#Kind>,
-                ns4:Agent ;
-            ns2:hasContact "emily@example.com" ;
-            ns4:name "Emily" ] ;
-    ns2:hasDataSubject <http://example.com/alpha/Customers> ;
-    ns2:hasDuration [ a ns5:GeneralDurationDescription,
-                ns2:StorageDuration ;
+    ns2:contactPoint [ a <http://www.w3.org/2006/vcard/ns#Kind>,
+                ns1:Agent ;
+            ns4:hasContact "emily@example.com" ;
+            ns1:name "Emily" ] ;
+    ns4:hasDataSubject <http://example.com/alpha/Customers> ;
+    ns4:hasDuration [ a ns5:GeneralDurationDescription,
+                ns4:StorageDuration ;
             ns5:years 1.0 ] ;
-    ns2:hasPersonalDataCategory ns2:EmailAddress ;
-    ns2:hasPurpose [ a ns2:DirectMarketing ;
-            ns1:title "Direct Marketing via Email" ] ;
-    ns2:hasTechnicalOrganisationalMeasures <http://example.com/alpha/StandardTechnicalMeasures> .
+    ns4:hasPersonalDataCategory ns4:EmailAddress ;
+    ns4:hasPurpose [ a ns4:DirectMarketing ;
+            ns3:title "Direct Marketing via Email" ] ;
+    ns4:hasTechnicalOrganisationalMeasures <http://example.com/alpha/StandardTechnicalMeasures> .
 
-<http://example.com/alpha/marketing/Record002> a ns3:Dataset ;
-    ns1:creator <http://example.com/alpha/Marketing> ;
-    ns1:description "Processing Activities Record002" ;
-    ns1:publisher <http://example.com/alpha/Alpha> ;
-    ns1:spatial [ a ns1:Location ;
-            ns1:title "EU" ] ;
-    ns1:temporal [ a ns1:PeriodOfTime ;
-            ns1:endDate "2019-12-13"^^xsd:date ;
-            ns1:startDate "2019-01-01"^^xsd:date ] ;
-    ns1:title "Record002" ;
+<http://example.com/alpha/marketing/Record002> a ns2:Dataset ;
+    ns3:creator <http://example.com/alpha/Marketing> ;
+    ns3:description "Processing Activities Record002" ;
+    ns3:publisher <http://example.com/alpha/Alpha> ;
+    ns3:spatial [ a ns3:Location ;
+            ns3:title "EU" ] ;
+    ns3:temporal [ a ns3:PeriodOfTime ;
+            ns3:endDate "2019-12-31"^^xsd:date ;
+            ns3:startDate "2019-01-01"^^xsd:date ] ;
+    ns3:title "Record002" ;
     rdfs:comment "test comment for closing instance data" ;
-    ns3:contactPoint [ a <http://www.w3.org/2006/vcard/ns#Kind>,
-                ns4:Agent ;
-            ns2:hasContact "emily@example.com" ;
-            ns4:name "Emily" ] ;
-    ns2:hasDataSubject <http://example.com/alpha/Customers> ;
-    ns2:hasDuration [ a ns5:GeneralDurationDescription,
-                ns2:StorageDuration ;
+    ns2:contactPoint [ a <http://www.w3.org/2006/vcard/ns#Kind>,
+                ns1:Agent ;
+            ns4:hasContact "emily@example.com" ;
+            ns1:name "Emily" ] ;
+    ns4:hasDataSubject <http://example.com/alpha/Customers> ;
+    ns4:hasDuration [ a ns5:GeneralDurationDescription,
+                ns4:StorageDuration ;
             ns5:years 1.0 ] ;
-    ns2:hasPersonalDataCategory ns2:TelephoneNumber ;
-    ns2:hasPurpose [ a ns2:DirectMarketing ;
-            ns1:title "Direct Marketing via Telephone" ] ;
-    ns2:hasTechnicalOrganisationalMeasures <http://example.com/alpha/StandardTechnicalMeasures> .
+    ns4:hasPersonalDataCategory ns4:TelephoneNumber ;
+    ns4:hasPurpose [ a ns4:DirectMarketing ;
+            ns3:title "Direct Marketing via Telephone" ] ;
+    ns4:hasTechnicalOrganisationalMeasures <http://example.com/alpha/StandardTechnicalMeasures> .
 
-<http://example.com/alpha/marketing/Record003> a ns3:Dataset ;
-    ns1:creator <http://example.com/alpha/Marketing> ;
-    ns1:description "Processing Activities Record003" ;
-    ns1:publisher <http://example.com/alpha/Alpha> ;
-    ns1:spatial [ a ns1:Location ;
-            ns1:title "EU" ] ;
-    ns1:temporal [ a ns1:PeriodOfTime ;
-            ns1:endDate "2021-12-13"^^xsd:date ;
-            ns1:startDate "2020-01-01"^^xsd:date ] ;
-    ns1:title "Record003" ;
+<http://example.com/alpha/marketing/Record003a> a ns2:Dataset ;
+    ns3:creator <http://example.com/alpha/Marketing> ;
+    ns3:description "Processing Activities Record003" ;
+    ns3:publisher <http://example.com/alpha/Alpha> ;
+    ns3:spatial [ a ns3:Location ;
+            ns3:title "EU" ] ;
+    ns3:temporal [ a ns3:PeriodOfTime ;
+            ns3:endDate "2019-12-31"^^xsd:date ;
+            ns3:startDate "2019-01-01"^^xsd:date ] ;
+    ns3:title "Record003" ;
     rdfs:comment "test comment for closing instance data" ;
-    ns3:contactPoint [ a <http://www.w3.org/2006/vcard/ns#Kind>,
-                ns4:Agent ;
-            ns2:hasContact "emily@example.com" ;
-            ns4:name "Emily" ] ;
-    ns2:hasDataSubject <http://example.com/alpha/Customers> ;
-    ns2:hasDuration [ a ns5:GeneralDurationDescription,
-                ns2:StorageDuration ;
+    ns2:contactPoint [ a <http://www.w3.org/2006/vcard/ns#Kind>,
+                ns1:Agent ;
+            ns4:hasContact "emily@example.com" ;
+            ns1:name "Emily" ] ;
+    ns4:hasDataSubject <http://example.com/alpha/Customers> ;
+    ns4:hasDuration [ a ns5:GeneralDurationDescription,
+                ns4:StorageDuration ;
             ns5:years 1.0 ] ;
-    ns2:hasPersonalDataCategory ns2:PhysicalAddress ;
-    ns2:hasPurpose [ a ns2:DirectMarketing ;
-            ns1:title "Direct Marketing via Post" ] ;
-    ns2:hasTechnicalOrganisationalMeasures <http://example.com/alpha/StandardTechnicalMeasures> .
+    ns4:hasPersonalDataCategory ns4:PhysicalAddress ;
+    ns4:hasPurpose [ a ns4:DirectMarketing ;
+            ns3:title "Direct Marketing via Post" ] ;
+    ns4:hasTechnicalOrganisationalMeasures <http://example.com/alpha/StandardTechnicalMeasures> .
 
-<http://example.com/alpha/DPO> a ns2:DataProtectionOfficer,
-        ns4:Agent ;
-    ns2:hasContact "dpo@example.com" ;
-    ns4:name "Jane Doe" .
+<http://example.com/alpha/marketing/Record003b> a ns2:Dataset ;
+    ns3:creator <http://example.com/alpha/Marketing> ;
+    ns3:description "Processing Activities Record003" ;
+    ns3:publisher <http://example.com/alpha/Alpha> ;
+    ns3:spatial [ a ns3:Location ;
+            ns3:title "EU" ] ;
+    ns3:temporal [ a ns3:PeriodOfTime ;
+            ns3:endDate "2020-12-31"^^xsd:date ;
+            ns3:startDate "2020-01-01"^^xsd:date ] ;
+    ns3:title "Record003" ;
+    rdfs:comment "test comment for closing instance data" ;
+    ns2:contactPoint [ a <http://www.w3.org/2006/vcard/ns#Kind>,
+                ns1:Agent ;
+            ns4:hasContact "emily@example.com" ;
+            ns1:name "Emily" ] ;
+    ns4:hasDataSubject <http://example.com/alpha/Customers> ;
+    ns4:hasDuration [ a ns5:GeneralDurationDescription,
+                ns4:StorageDuration ;
+            ns5:years 1.0 ] ;
+    ns4:hasPersonalDataCategory ns4:PhysicalAddress ;
+    ns4:hasPurpose [ a ns4:DirectMarketing ;
+            ns3:title "Direct Marketing via Post" ] ;
+    ns4:hasTechnicalOrganisationalMeasures <http://example.com/alpha/StandardTechnicalMeasures> .
 
-<http://example.com/alpha/Employees> ns1:title "Employees" ;
-    rdfs:subClassOf ns2:DataSubject .
+<http://example.com/alpha/marketing/Record003c> a ns2:Dataset ;
+    ns3:creator <http://example.com/alpha/Marketing> ;
+    ns3:description "Processing Activities Record003" ;
+    ns3:publisher <http://example.com/alpha/Alpha> ;
+    ns3:spatial [ a ns3:Location ;
+            ns3:title "EU" ] ;
+    ns3:temporal [ a ns3:PeriodOfTime ;
+            ns3:endDate "2021-12-31"^^xsd:date ;
+            ns3:startDate "2021-01-01"^^xsd:date ] ;
+    ns3:title "Record003" ;
+    rdfs:comment "test comment for closing instance data" ;
+    ns2:contactPoint [ a <http://www.w3.org/2006/vcard/ns#Kind>,
+                ns1:Agent ;
+            ns4:hasContact "emily@example.com" ;
+            ns1:name "Emily" ] ;
+    ns4:hasDataSubject <http://example.com/alpha/Customers> ;
+    ns4:hasDuration [ a ns5:GeneralDurationDescription,
+                ns4:StorageDuration ;
+            ns5:years 1.0 ] ;
+    ns4:hasPersonalDataCategory ns4:PhysicalAddress ;
+    ns4:hasPurpose [ a ns4:DirectMarketing ;
+            ns3:title "Direct Marketing via Post" ] ;
+    ns4:hasTechnicalOrganisationalMeasures <http://example.com/alpha/StandardTechnicalMeasures> .
 
-<http://example.com/alpha/CustomerService> a ns6:OrganizationalUnit,
-        ns4:Agent ;
-    ns6:subOrganizationOf <http://example.com/alpha/Alpha> ;
-    ns4:name "Customer Service Dept." .
+<http://example.com/beta/Record001> a ns2:Dataset ;
+    ns3:description "Processing Activities Record004" ;
+    ns3:publisher [ a <http://www.w3.org/ns/adms#Company>,
+                ns4:Processor,
+                ns7:Organization,
+                ns1:Agent ;
+            ns6:sameAs <http://example.com/beta/Beta> ;
+            ns1:name "Beta Ltd." ] ;
+    ns3:spatial [ a ns3:Location ;
+            ns3:title "EU" ] ;
+    ns3:temporal [ a ns3:PeriodOfTime ;
+            ns3:endDate "2022-12-13"^^xsd:date ;
+            ns3:startDate "2019-01-01"^^xsd:date ] ;
+    ns3:title "Record001" ;
+    rdfs:comment "test comment for closing instance data" ;
+    ns2:contactPoint [ a <http://www.w3.org/2006/vcard/ns#Kind>,
+                ns1:Agent ;
+            ns4:hasContact "athena@example.com" ;
+            ns1:name "Athena" ] ;
+    ns4:hasController [ a <http://www.w3.org/ns/adms#Company>,
+                ns4:DataController,
+                ns7:Organization,
+                ns1:Agent ;
+            ns6:sameAs <http://example.com/alpha/Alpha> ;
+            ns4:hasRepresentative [ a ns4:DataProtectionOfficer,
+                        ns1:Agent ;
+                    ns6:sameAs <http://example.com/alpha/DPO> ;
+                    ns4:hasContact "dpo@example.com" ;
+                    ns1:name "Jane Doe" ] ;
+            ns1:name "Alpha Inc." ] ;
+    ns4:hasDuration [ a ns5:GeneralDurationDescription,
+                ns4:StorageDuration ;
+            ns5:years 7.0 ] ;
+    ns4:hasProcessing [ a ns4:Obtain,
+                ns4:Organise,
+                ns4:Store,
+                ns4:Transform ] ;
+    ns4:hasTechnicalOrganisationalMeasures <http://example.com/beta/StandardTechnicalMeasures> .
 
-<http://example.com/alpha/Marketing> a ns6:OrganizationalUnit,
-        ns4:Agent ;
-    ns6:subOrganizationOf <http://example.com/alpha/Alpha> ;
-    ns4:name "Marketing Dept." .
+<http://example.com/beta/StandardTechnicalMeasures> a ns4:TechnicalOrganisationalMeasures ;
+    ns3:title "Standard" .
 
-<http://example.com/alpha/HR> a ns6:OrganizationalUnit,
-        ns4:Agent ;
-    ns6:subOrganizationOf <http://example.com/alpha/Alpha> ;
-    ns4:name "HR Dept." .
+<http://example.com/beta/recordscatalog-alpha> a ns2:Catalog,
+        ns2:Dataset ;
+    ns3:description "Collated records for Alpha" ;
+    ns3:issued "2021-03-28"^^xsd:date ;
+    ns3:publisher [ a <http://www.w3.org/ns/adms#Company>,
+                ns4:Processor,
+                ns7:Organization,
+                ns1:Agent ;
+            ns6:sameAs <http://example.com/beta/Beta> ;
+            ns1:name "Beta Ltd." ] ;
+    ns3:title "Processing Records for Controller: Alpha" ;
+    ns2:dataset <http://example.com/beta/Record001> .
 
-<http://example.com/alpha/Customers> ns1:title "Customers" ;
-    rdfs:subClassOf ns2:DataSubject .
+<http://example.com/beta/DPO> a ns4:DataProtectionOfficer,
+        ns1:Agent ;
+    ns4:hasContact "betadpo@example.com" ;
+    ns1:name "Janine Doe" .
 
-<http://example.com/alpha/StandardTechnicalMeasures> a ns2:TechnicalOrganisationalMeasures ;
-    ns1:title "Standard" .
+<http://example.com/alpha/DPO> a ns4:DataProtectionOfficer,
+        ns1:Agent ;
+    ns4:hasContact "dpo@example.com" ;
+    ns1:name "Jane Doe" .
+
+<http://example.com/alpha/Employees> ns3:title "Employees" ;
+    rdfs:subClassOf ns4:DataSubject .
+
+<http://example.com/beta/Beta> a <http://www.w3.org/ns/adms#Company>,
+        ns4:DataProcessor,
+        ns7:Organization,
+        ns1:Agent,
+        ns1:Organization ;
+    ns4:hasContact "beta@example.com" ;
+    ns4:hasRepresentative <http://example.com/beta/DPO> ;
+    ns1:name "Beta Ltd." .
+
+<http://example.com/alpha/CustomerService> a ns7:OrganizationalUnit,
+        ns1:Agent ;
+    ns7:subOrganizationOf <http://example.com/alpha/Alpha> ;
+    ns1:name "Customer Service Dept." .
+
+<http://example.com/alpha/HR> a ns7:OrganizationalUnit,
+        ns1:Agent ;
+    ns7:subOrganizationOf <http://example.com/alpha/Alpha> ;
+    ns1:name "HR Dept." .
+
+<http://example.com/alpha/Marketing> a ns7:OrganizationalUnit,
+        ns1:Agent ;
+    ns7:subOrganizationOf <http://example.com/alpha/Alpha> ;
+    ns1:name "Marketing Dept." .
+
+<http://example.com/alpha/Customers> ns3:title "Customers" ;
+    rdfs:subClassOf ns4:DataSubject .
+
+<http://example.com/alpha/StandardTechnicalMeasures> a ns4:TechnicalOrganisationalMeasures ;
+    ns3:title "Standard" .
 
 <http://example.com/alpha/Alpha> a <http://www.w3.org/ns/adms#Company>,
-        ns2:Controller,
-        ns6:Organization,
-        ns4:Agent,
-        ns4:Organization ;
-    ns2:hasContact "alpha@example.com" ;
-    ns2:hasRepresentative <http://example.com/alpha/DPO> ;
-    ns4:name "Alpha Inc." .
+        ns4:DataController,
+        ns7:Organization,
+        ns1:Agent,
+        ns1:Organization ;
+    ns4:hasContact "alpha@example.com" ;
+    ns4:hasRepresentative <http://example.com/alpha/DPO> ;
+    ns1:name "Alpha Inc." .
 

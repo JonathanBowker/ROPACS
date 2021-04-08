@@ -21,7 +21,7 @@
 
 @prefix : <http://example.com/alpha/> .
 
-:Alpha a foaf:Agent, foaf:Organization, dpv:Controller, adms:Company, org:Organization ;
+:Alpha a foaf:Agent, foaf:Organization, dpv:DataController, adms:Company, org:Organization ;
     foaf:name "Alpha Inc." ;
     dpv:hasContact "alpha@example.com" ;
     dpv:hasRepresentative :DPO .
@@ -55,7 +55,7 @@
 :ProcessingRecords a dcat:Catalog, dcat:Dataset ;
     dct:title "Processing Records" ;
     dct:publisher [
-        a foaf:Agent, dpv:Controller, org:Organization, adms:Company ;
+        a foaf:Agent, dpv:DataController, org:Organization, adms:Company ;
         foaf:name "Alpha Inc." ;
         owl:sameAs :Alpha ;
         ] ;
@@ -66,12 +66,6 @@
         owl:sameAs :DPO ;
         ] ;
     dct:description "Organisation level catalog of processing records collated from all departments and contractors" ;
-    #dcat:dataset <http://example.com/aplha/marketing/recordscatalog> ;
-    #dcat:dataset <http://example.com/aplha/HR/recordscatalog> ;
-    #dcat:dataset <http://example.com/aplha/customerservice/recordscatalog> ;
-    #dcat:dataset <http://example.com/aplha/marketing/recordscatalog> .
-    dcat:dataset :TestDataset .
-
-:TestDataset a dcat:Dataset ;
-    dct:title "test dataset" ;
-    dct:description "dataset for testing file" .
+    dcat:dataset <http://example.com/aplha/marketing/recordscatalog> ;
+    dcat:dataset <http://example.com/aplha/HR/recordscatalog> ;
+    dcat:dataset <http://example.com/aplha/customerservice/recordscatalog> .
