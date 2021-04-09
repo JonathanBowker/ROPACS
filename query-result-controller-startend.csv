@@ -1,0 +1,10 @@
+publisher,creator,catalog,purpose,start,end
+Alpha Inc.,Customer Service Dept.,Processing Records for Customer Services,Recording of customer calls,2018-01-01,2018-12-31
+Alpha Inc.,Customer Service Dept.,Processing Records for Customer Services,Storage of customer data on CRM system,2019-01-01,2021-12-31
+Alpha Inc.,Customer Service Dept.,Processing Records for Customer Services,Outbound calls to customers,2021-01-01,2022-12-31
+Alpha Inc.,HR Dept.,Processing Records for Human Resources,Recruitment of staff,2017-04-01,2021-31-31
+Alpha Inc.,HR Dept.,Processing Records for Human Resources,Payroll activities,2018-04-01,2021-03-31
+Alpha Inc.,HR Dept.,Processing Records for Human Resources,Pension activities,2016-04-01,2023-03-31
+Alpha Inc.,Marketing Dept.,Processing Records for Marketing,Direct Marketing via Email,2018-05-24,2018-12-31
+Alpha Inc.,Marketing Dept.,Processing Records for Marketing,Direct Marketing via Telephone,2019-01-01,2019-12-31
+Alpha Inc.,Marketing Dept.,Processing Records for Marketing,Direct Marketing via Post,2019-01-01,2021-12-31
