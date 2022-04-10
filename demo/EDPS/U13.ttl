@@ -1,0 +1,162 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dpv: <https://w3id.org/dpv/dpv-skos#> .
+@prefix dpv-gdpr: <https://w3id.org/dpv/dpv-skos/dpv-gdpr#> .
+@prefix dpv-pd: <https://w3id.org/dpv/dpv-skos/dpv-pd#> .
+@prefix dpcat: <https://w3id.org/dpcat#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix time: <https://www.w3.org/TR/owl-time/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+
+@prefix edps: <https://w3id.org/dpcat/examples/EDPS/vocab#> .
+@prefix : <https://w3id.org/dpcat/examples/EDPS/13#> .
+
+: a dpcat:ROPA ;
+    dct:title "Financial Transactions"@en ;
+    dct:description "Financial Transactions"@en ;
+    dct:created "2021-09-02"^^xsd:date ;
+    dct:identifier "13"^^xsd:string ;
+    dct:publisher edps:HRBA ;
+    dcat:contactPoint edps:HRBA ;
+    dcat:dataset :13 .
+
+:13 a dpcat:ROPARecord ;
+    dct:title "Financial Transactions"@en ;
+    dct:description "Financial Transactions"@en ;
+    dct:created "2022-02-16"^^xsd:date ;
+    dct:publisher edps:HRBA ;
+    dcat:contactPoint edps:HRBA ;
+    dpv:hasDataController edps:EDPS ;
+    dpv:hasJointDataControllers edps:JointControllers-DG-BUDG ;
+    dpv:hasResponsibleEntity edps:HRBA ;
+
+    dpv:hasDataProcessor edps:DG-BUDG, edps:ERCEA ;
+    dpv:hasRecipient edps:FinancialTeam, edps:OIA, edps:UnitHeads, edps:LocalProfileManager, edps:ED-ABAC-operators, edps:ED-ABAC-auditors, edps:ERCEA-Speedwell-operators, edps:ERCEA-Speedwell-auditors, edps:CourtOfAuditors ;
+
+    dpv:hasPurpose edps:BudgetaryCommitments, edps:Payments, edps:RecoveryOrders, edps:ForecastRevenue ;
+   	dpv:hasDataSubject edps:StaffMembers, edps:ExternalSuppliers ;
+   	dpv:hasPersonalData dpv-pd:Name, dpv-pd:Gender, dpv-pd:Nationality, edps:FunctionOfStaff, dpv-pd:Contact, dpv-pd:BankAccount, edps:VendorVAT, dpv-pd:InsuranceNumber, dpv-pd:IDCard, dpv-pd:Passport, dpv-pd:BirthDate, dpv-pd:BirthPlace, edps:JobApplicantCV ;
+   	dpv:hasTechnicalOrganisationalMeasure edps:LockedPaperCabinet, edps:DataProtectionNoticeStaffSelection ;
+   	dpv:hasStorage [
+   		a dpv:StorageCondition ;
+   		dpv:hasDuration [
+   			a dpv:StorageDuration, time:Duration ;
+            dpv:isAfter "Files relating to financial transactions are to be retained in the archives for a period of 5 years following the discharge of the financial exercise. The discharge of the financial exercise generally takes place 2 years after the financial year (personal data is thus retained as a rule for a total of 7 years);"@en ;
+            time:numericDuration "5"^^xsd:decimal ;
+            time:unitType :unitYear ;
+            ] ;
+        dpv:hasDuration [
+   			a dpv:StorageDuration ;
+            dpv:isAfter "Until the end of a possible audit if it started before the end of the storage period."@en ;
+            ] ;
+   	] .
+
+
+# Agents
+edps:EDPS a foaf:Agent, dpv:LegalEntity ;
+    dpv:hasName "European Data Protection Supervisor (EDPS)"@en ;
+    dpv:hasContact "Postal address: Rue Wiertz 60, B-1047 Brussels" ;
+    dpv:hasContact "Office address: Rue Montoyer 30, B-1000 Brussels" ;
+    dpv:hasContact "Telephone: +32 2 283 19 00" ;
+    dpv:hasContact "Email: edps@edps.europa.eu" ;
+    dpv:hasContact "Website: https://edps.europa.eu" .
+
+edps:HRBA a foaf:Agent, dpv:OrganisationalUnit ;
+    dpv:hasName "Human Resources, Budget, Administration (HRBA) Unit"@en ;
+    dpv:hasContact "Email: edps-selections@edps.europa.eu" ;
+    dpv:hasContact "https://edps.europa.eu/form/edpsweb-contact-form_en" ;
+    skos:broaderTransitive edps:EDPS .
+
+edps:FinancialTeam a foaf:Agent, dpv:OrganisationalUnit ;
+    dpv:hasName "The EDPS Financial team"@en ;
+    skos:broaderTransitive edps:EDPS .
+
+edps:OIA a foaf:Agent, dpv:OrganisationalUnit ;
+    dpv:hasName "The Operational Initiating Agent (OIA)"@en ;
+    skos:broaderTransitive edps:EDPS .
+
+edps:UnitHeads a foaf:Agent, dpv:OrganisationalUnit ;
+    dpv:hasName "Heads of Units/Sectors"@en ;
+    skos:broaderTransitive edps:EDPS .
+
+edps:LocalProfileManager a foaf:Agent, dpv:OrganisationalUnit ;
+	dpv:hasName "Local Profile Manager"@en ;
+	skos:broaderTransitive edps:EDPS .
+
+edps:EC-ABAC-operators a foaf:Agent, dpv:OrganisationalUnit ;
+	dpv:hasName "EC’s ABAC system’s operators"@en ;
+	skos:broaderTransitive edps:DG-BUDG .
+edps:EC-ABAC-auditors a foaf:Agent, dpv:OrganisationalUnit ;
+	dpv:hasName "EC’s ABAC system’s auditors"@en ;
+	skos:broaderTransitive edps:DG-BUDG .
+edps:ERCEA-Speedwell-operators a foaf:Agent, dpv:OrganisationalUnit ;
+	dpv:hasName "ERCEA’s Speedwell system operators"@en ;
+	skos:broaderTransitive edps:ERCEA .
+edps:ERCEA-Speedwell-auditors a foaf:Agent, dpv:OrganisationalUnit ;
+	dpv:hasName "ERCEA’s Speedwell system operators"@en ;
+	skos:broaderTransitive edps:ERCEA .
+edps:CourtOfAuditors a foaf:Agent, dpv:LegalEntity ;
+	dpv:hasName "Other institutions delegates (Court of Auditors)"@en .
+
+edps:DG-BUDG a foaf:Agent, dpv:LegalEntity, dpv:DataController, dpv:DataProcessor ;
+	skos:editorialNote """EC-DG BUDG for ABAC: DG BUDGET manages ABAC, which is the financial and accounting application set up by the Commission, to monitor the execution of its budget and to prepare its accounts. DG BUDG is a processor for all data processing in ABAC, except for processing activities where joint controllership has been established"""@en ;
+	dct:title "European Commission (EC) - DG BUDG"@en ;
+    dpv:hasName "European Commission (EC) - DG BUDG"@en .
+edps:ERCEA a foaf:Agent, dpv:LegalEntity, dpv:DataProcessor ;
+	skos:editorialNote """ERCEA for SPEEDWELL: SPEEDWELL is a paperless workflow tool developed by the European Research Council Executive Agency (ERCEA). The application can been seen as an extension of ABAC, allowing the electronic circulation of invoices between all actors involved in a payment and commitment process."""@en ;
+	dct:title "European Commission (EC) - DG BUDG"@en ;
+    dpv:hasName "European Commission (EC) - DG BUDG"@en .
+edps:JointControllers-DG-BUDG a foaf:Agent, dpv:LegalEntity, dpv:JointDataControllers ;
+    dpv:hasName "Joint Controllership with DG-BUDG"@en ;
+	dct:description """DG BUDGET manages ABAC, the financial and accounting application set up by the Commission, to monitor the execution of its budget and to prepare its accounts. EDPS and DG BUDG are join controllers for the following processing activity: registration of Legal Entties and Bank Account Files of clients in ABAC."""@en ;
+	dpv:hasDataController edps:EDPS, edps:DG-BUDG .
+
+# Purposes
+edps:BudgetaryCommitments a dpv:Purpose ;
+	dct:title "Budgetary commitments"@en ;
+	dct:description """the transaction by which the EDPS earmarks funds to cover one or more future expense. It is recorded in the ABAC system (Financial transactions ICT environment of the EC)."""@en ;
+	skos:broaderTransitive dpv:PersonnelManagement .
+edps:Payments a dpv:Purpose ;
+	dct:title "Payments"@en ;
+	dct:description """the operation that releases the EDPS from an obligation to a creditor. A payment consists in transferring a financial amount to an external provider or a staff member’s bank account. As the EDPS does not have its own bank account, these payments are done through the European Commission treasury services."""@en ;
+	skos:broaderTransitive dpv:PersonnelManagement, dpv:VendorPayment .
+edps:RecoveryOrders a dpv:Purpose ;
+	dct:title "Recovery Orders"@en ;
+	dct:description """When the Institution has made a payment in excess, it must recover the amount due. This is done via a recovery order. The Authorising Officer must validate the existence of the debt before issuing the recovery order."""@en ;
+	skos:broaderTransitive dpv:PersonnelManagement .
+edps:ForecastRevenue a dpv:Purpose ;
+	dct:title "Forecast of Revenue"@en ;
+	dct:description """the forecast of revenue (FoR) is a possible preliminary step in the recovery process."""@en ;
+	skos:broaderTransitive dpv:PersonnelManagement .
+
+# Data Subjects
+edps:StaffMembers a dpv:DataSubject ;
+	skos:broaderTransitive dpv:DataSubject ;
+	dct:title "EDPS: the Supervisor and staff members"@en .
+edps:ExternalSuppliers a dpv:DataSubject ;
+	skos:broaderTransitive dpv:DataSubject ;
+	dct:title "External suppliers (contractors): individual having signed a contract/purchase order with the EDPS."@en .
+
+# Tech/Org Measures
+
+edps:LockedPaperCabinet a dpv:TechnicalMeasure, dpv:OrganisationalMeasure ;
+    skos:broaderTransitive dpv:AccessControlMethod, dpv:AuthorisationProcedure ;
+    skos:prefLabel "Locked Paper Cabinet with need-to-know access"@en ;
+    skos:editorialNote """Paper files: cupboards/offices protected by personal (only duly authorised personnel) and physical security;"""@en .
+
+edps:ElectronicFilesAccessControl a dpv:TechnicalMeasure, dpv:OrganisationalMeasure ;
+    skos:broaderTransitive dpv:AccessControlMethod, dpv:AuthorisationProcedure ;
+    skos:prefLabel "Electronic file access control"@en ;
+    skos:editorialNote """Electronic files stored in a specific folder on the file system and the EDPS Content Managemeent System only accessible to the HRBA Head of Unit and the finance team"""@en .
+
+edps:ABACLogin a dpv:TechnicalMeasure, dpv:OrganisationalMeasure ;
+    skos:broaderTransitive dpv:AccessControlMethod, dpv:AuthorisationProcedure ;
+    skos:prefLabel "ABAC secure Login"@en ;
+    skos:editorialNote """Supporting documents uploaded electronically to the relevant financial operation in ABAC (secured through EU LOGIN)."""@en .
+
+edps:SpeedwellLogin a dpv:TechnicalMeasure, dpv:OrganisationalMeasure ;
+    skos:broaderTransitive dpv:AccessControlMethod, dpv:AuthorisationProcedure ;
+    skos:prefLabel "Speedwell Secure Login"@en ;
+    skos:editorialNote """Supporting documents uploaded electronically to the relevant financial operation in Speedwell (secured through EU LOGIN)."""@en .

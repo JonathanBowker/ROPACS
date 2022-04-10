@@ -1,0 +1,71 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dpv: <https://w3id.org/dpv/dpv-skos#> .
+@prefix dpv-gdpr: <https://w3id.org/dpv/dpv-skos/dpv-gdpr#> .
+@prefix dpv-pd: <https://w3id.org/dpv/dpv-skos/dpv-pd#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix time: <https://www.w3.org/TR/owl-time/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+@prefix : <https://w3id.org/dpcat#> .
+
+: a owl:Ontology ;
+    dct:abstract "DPCat is a Specification for an interoperable and machine-readable data processing catalogue based on General Data Protection Regulation (GDPR) Requirements and EU DPA guidelines. It extends Data Catalog Vocabulary (DCAT) - Version 2 and DCAT Application profile for data portals in Europe (DCAT-AP) standards and reuses Data Privacy Vocabulary (DPV) Specification to enable data governance of ROPA and related information across a wide variety of use-cases."@en ;
+    dct:created "2022-04-02"^^xsd:date ;
+    dct:modified "2022-04-02"^^xsd:date ;
+    dct:creator "Paul Ryan", "Rob Brennan", "Harshvardhan J. Pandit" ;
+    dct:description "DPCat extends the DCAT Application profile for data portals in Europe< (DCAT-AP) with concepts identified in CSM-ROPA using DPV to enable representation of ROPA and associated information as ’catalogues’ and ’datasets’ respectively, that can be recorded and exchanged between stakeholders. DCAT-AP is a profile of the Data Catalog Vocabulary (DCAT v2) - a W3C standard for facilitating interoperability between data catalogues. DPCat maintains compatibility with DCAT-AP, and through it with DCAT, thereby enabling it to be used in all catalogue-based information management tools and data portals that support DCAT. In particular, the choice of DCAT-AP was made to present a mechanism for sharing ROPA related information using an EU-advocated standard and to promote the possibility of reusing existing data portal infrastructures for compliance-related purposes - such as requirements for ROPA between controllers, processors, and DPAs."@en ;
+    # dct:source <https://www.w3.org/community/dpvcg/> ;
+    dct:title "Data Processing Catalog (DPCat)"@en ;
+    vann:preferredNamespacePrefix "dpcat" ;
+    vann:preferredNamespaceUri "https://w3id.org/dpcat"^^xsd:string ;
+    dct:license <http://www.apache.org/licenses/LICENSE-2.0> ;
+    owl:versionInfo "0.2"^^xsd:string .
+
+:ROPA a rdfs:Class, skos:Concept ;
+	skos:prefLabel "ROPA"@en ;
+	rdfs:subClassOf dcat:Catalog ;
+	skos:definition "Represents a ROPA document or artefact, as a 'catalog of ROPARecord' instances"@en ;
+	vann:usageNote "A ROPA is typically a document that contains several entries. In DPCat, this is represented by subclassing dcat:Catalog as dpcat:ROPA which can be associated with one or more dpcat:ROPARecord instances."@en .
+
+:ROPACatalog a rdfs:Class, skos:Concept ;
+	skos:prefLabel "ROPA"@en ;
+	rdfs:subClassOf dcat:Catalog ;
+	skos:definition "Represents a ROPA document or artefact, as a 'catalog of ROPARecord' instances"@en ;
+	vann:usageNote "A ROPA is typically a document that contains several entries. In DPCat, this is represented by subclassing dcat:Catalog as dpcat:ROPA which can be associated with one or more dpcat:ROPARecord instances."@en .
+
+:ROPARecord a rdfs:Class, skos:Concept ;
+	skos:prefLabel "ROPA"@en ;
+	rdfs:subClassOf dcat:Catalog ;
+	skos:definition "Represents a ROPA document or artefact, as a 'catalog of ROPARecord' instances"@en ;
+	vann:usageNote "A ROPA is typically a document that contains several entries. In DPCat, this is represented by subclassing dcat:Catalog as dpcat:ROPA which can be associated with one or more dpcat:ROPARecord instances."@en .
+
+
+# Proposed concepts to DPV
+:associatedWithDataBreach a rdfs:Property, skos:Concept ;
+	skos:prefLabel "associated with data breach"@en ;
+	rdfs:domain :ROPARecord ;
+	rdfs:range :DataBreachRecord ;
+	skos:definition "Indicates an associated Data Breach for processing activities in ROPARecord"@en ;
+	vann:usageNote "Recommended: A ROPARecord SHOULD indicate associated Data Breaches, where relevant, for processing activities using dpv:associatedWithDataBreach."@en .
+
+:DataBreachRecord a rdfs:Class, skos:Concept ;
+	skos:prefLabel "Data Breach Record"@en ;
+	skos:definition "A Record of a Data Breach"@en .
+
+:hasStatus a rdfs:Property, skos:Concept ;
+	skos:prefLabel "has status"@en ;
+	skos:definition "Indicates status of data processing activities in ROPARecord"@en ;
+	rdfs:domain :ROPARecord ;
+	rdfs:range :Status ;
+	vann:usageNote "Recommended: A ROPARecord SHOULD indicate status of processing activities using dpcat:hasStatus." .
+
+:Status a rdfs:Class, skos:Concept ;
+	skos:prefLabel "Status"@en ;
+	skos:definition "Status of activity or entity or artefact"@en .
+

@@ -1,0 +1,213 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dpv: <https://w3id.org/dpv/dpv-skos#> .
+@prefix dpv-gdpr: <https://w3id.org/dpv/dpv-skos/dpv-gdpr#> .
+@prefix dpv-pd: <https://w3id.org/dpv/dpv-skos/dpv-pd#> .
+@prefix dpcat: <https://w3id.org/dpcat#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix time: <https://www.w3.org/TR/owl-time/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+
+@prefix edps: <https://w3id.org/dpcat/examples/EDPS/vocab#> .
+@prefix : <https://w3id.org/dpcat/examples/EDPS/05#> .
+
+: a dpcat:ROPA ;
+    dct:title "Selection of staff"@en ;
+    dct:description "The purpose of the processing of personal data in this context is is to meet the needs of selection of staff based on interim contracts at the EDPS. The data is sent to the EDPS in the context of the offer of possible CVs by interim agencies matching job profiles sought by the EDPS. This enables the EDPS to select suitable interim candidates and communicate the decision to the interim agency in charge of the recruitment, which will establish a contract with the sucessful candidate."@en ;
+    dct:created "2021-11-03"^^xsd:date ;
+    dct:identifier "05"^^xsd:string ;
+    dct:publisher edps:HRBA ;
+    dcat:contactPoint edps:HRBA ;
+    dcat:dataset :05-1, :05-2, :05-3, :05-4 .
+
+:05-1 a dpcat:ROPARecord ;
+    dct:title "Selection and management of interim staff"@en ;
+    dct:description "Selection and management of interim staff"@en ;
+    dct:created "2022-02-16"^^xsd:date ;
+    dct:publisher edps:HRBA ;
+    dcat:contactPoint edps:HRBA ;
+    dpv:hasDataController edps:EDPS ;
+    dpv:hasResponsibleEntity edps:HRBA ;
+
+    dpv:hasPersonalData edps:InterimAgentLastName, edps:InterimAgentFirstName, edps:InterimAgentCV ;
+    dpv:hasPurpose edps:MonitoringOf7YearRule, edps:PreparationOfEmploymentContracts, edps:ExecutionOfContract ;
+    dpv:isImplementedUsingTechnology edps:SYSPER ;
+    dpv:hasRecipient edps:Managers, edps:HRBA ;
+    dpv:hasLegalBasis dpv:StaffContract ;
+    dpv:hasTechnicalOrganisationalMeasure edps:AuthorisedPersonnelNeedToKnowBasis ;
+
+    dpv:hasDataSource edps:RandstadBelgium, edps:Daoust ;
+
+    dpv:hasStorage [
+        a dpv:StorageCondition ;
+        skos:editorialNote """The data necessary for the execution of a contract/service to which you are party will be encoded in the SYSPER database and will be accessible to the managers of the EDPS or to the HRBA unit who needs this data to process your file at any time before or during the execution of your services. The data relating to the service are kept for a maximum of five (5) years in order to ensure that any person can reconstruct the history of his/her career for all types of contracts managed by Sysper"""@en ;
+        dpv:hasDuration [
+            a dpv:StorageDuration, time:Duration ;
+            dpv:hasPurpose edps:EnsureReconstructionOfHistoryBySYSPER ;
+            dpv:hasPersonalData edps:DataRelatingToSYSPERService ;
+            time:numericDuration "5"^^xsd:decimal ;
+            time:unitType :unitYear ;
+            ] ] ;
+    dpv:hasStorage [
+        a dpv:StorageCondition ;
+        skos:editorialNote """The CVs of unsuccessful candidates, if ever made available to the EDPS by the interim agency, are kept for two (2) years in the archives of DG HR for the purposes of good management"""@en ;
+        dpv:hasDuration [
+            a dpv:StorageDuration, time:Duration ;
+            dpv:hasPersonalData edps:UnsuccessfulApplicantCV ;
+            dpv:isAfter [
+                a dpv:DataSource ;
+                dpv:hasContext dpv:Optional ;
+                dpv:hasResponsibleEntity edps:InterimAgency ;
+                ] ;
+            time:numericDuration "2"^^xsd:decimal ;
+            time:unitType :unitYear ;
+            ] ] .
+
+:05-2 a dpcat:ROPARecord ;
+    dct:title "Communicate staff selection"@en ;
+    dct:description "Communicate staff selection"@en ;
+    skos:editorialNote """The agency will receive from the EDPS the information on whether a candidate is recruited or not"""@en ;
+    dct:created "2022-02-16"^^xsd:date ;
+    dct:publisher edps:HRBA ;
+    dcat:contactPoint edps:HRBA ;
+    dpv:hasDataController edps:EDPS ;
+    dpv:hasResponsibleEntity edps:HRBA ;
+
+    dpv:hasPersonalData edps:StaffSelectionOutcome ;
+    dpv:hasPurpose edps:StaffSelection ;
+    dpv:hasDataProcessor edps:RandstadBelgium, edps:Daoust ;
+    dpv:hasLegalBasis dpv:StaffContract .
+
+:05-3 a dpcat:ROPARecord ;
+    dct:title "Payment of Invoices for services"@en ;
+    dct:description "Payment of Invoices for services"@en ;
+    dct:created "2022-02-16"^^xsd:date ;
+    dct:publisher edps:HRBA ;
+    dcat:contactPoint edps:HRBA ;
+    dpv:hasDataController edps:EDPS ;
+    dpv:hasResponsibleEntity edps:HRBA ;
+
+    dpv:hasPersonalData edps:InterimAgentLastName, edps:InterimAgentFirstName, edps:InterimAgentCV ;
+    dpv:hasPurpose edps:PaymentOfInvoicesForServices, edps:BudgetaryFollowup ;
+    dpv:hasRecipient edps:FinancialTeam ;
+    dpv:hasLegalBasis dpv:StaffContract .
+
+:05-4 a dpcat:ROPARecord ;
+    dct:title "Administration of Access Requests"@en ;
+    dct:description "Administration of Access Requests"@en ;
+    dct:created "2022-02-16"^^xsd:date ;
+    dct:publisher edps:HRBA ;
+    dcat:contactPoint edps:HRBA ;
+    dpv:hasDataController edps:EDPS ;
+    dpv:hasResponsibleEntity edps:HRBA ;
+
+    dpv:hasPersonalData edps:InterimAgentLastName, edps:InterimAgentFirstName, edps:InterimAgentCV ;
+    dpv:hasPurpose edps:InformationKeepingForResponseToQueries ;
+    dpv:hasRecipient edps:AdminOfAccessRequests ;
+    dpv:hasLegalBasis dpv:StaffContract .
+
+edps:EDPS a foaf:Agent, dpv:LegalEntity ;
+    dpv:hasName "European Data Protection Supervisor (EDPS)"@en ;
+    dpv:hasContact "Postal address: Rue Wiertz 60, B-1047 Brussels" ;
+    dpv:hasContact "Office address: Rue Montoyer 30, B-1000 Brussels" ;
+    dpv:hasContact "Telephone: +32 2 283 19 00" ;
+    dpv:hasContact "Email: edps@edps.europa.eu" ;
+    dpv:hasContact "Website: https://edps.europa.eu" .
+
+edps:HRBA a foaf:Agent, dpv:OrganisationalUnit ;
+    dpv:hasName "Human Resources, Budget, Administration (HRBA) Unit"@en ;
+    dpv:hasContact "Email: edps-selections@edps.europa.eu" ;
+    dpv:hasContact "https://edps.europa.eu/form/edpsweb-contact-form_en" ;
+    skos:broaderTransitive edps:EDPS .
+edps:Managers a foaf:Agent, dpv:OrganisationalUnit ;
+    dpv:hasName "Managers"@en ;
+    skos:broaderTransitive edps:EDPS .
+edps:HeadsOfDepartmentsRequestingInterimStaff a foaf:Agent, dpv:OrganisationalUnit ;
+    dpv:hasName "Heads of Departments requesting Interim Staff"@en ;
+    skos:broaderTransitive edps:EDPS .
+edps:AdminOfAccessRequests a foaf:Agent, dpv:OrganisationalUnit ;
+    dpv:hasName "The person in charge of administration at the EDPS for access requests"@en ;
+    skos:broaderTransitive edps:EDPS .
+edps:FinancialTeam a foaf:Agent, dpv:OrganisationalUnit ;
+    dpv:hasName "The EDPS Financial team"@en ;
+    skos:broaderTransitive edps:EDPS .
+
+edps:DPO a foaf:Agent, dpv:DataProtectionOfficer ;
+    dpv:hasName "Data Protection Officer (DPO)"@en ;
+    dpv:hasContact "dpo@edps.europa.eu" ;
+    dct:isPartOf edps:EDPS .
+
+edps:InterimAgency a skos:Concept, dpv:LegalEntity ;
+    skos:prefLabel "Interim Agency"@en ;
+    skos:broaderTransitive dpv:DataProcessor .
+edps:RandstadBelgium a foaf:Agent, dpv:LegalEntity, dpv:DataProcessor, edps:InterimAgency ;
+    dpv:hasName "Randstad Belgium SA/NV"@en ;
+    dpv:hasContact "Postal address: Avenue Charles Quint 586 bte 8, 1082 Bruxelles" .
+
+edps:Daoust a foaf:Agent, dpv:LegalEntity, dpv:DataProcessor, edps:InterimAgency ;
+    dpv:hasName "Daoust SA/NV"@en ;
+    dpv:hasContact "Postal address: Galerie de la Porte Louise 215 Louizapoortgalerij - 1050 Bruxelles/Brussel" .
+
+# Purposes
+edps:StaffSelection a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Select staff for the EDPS Secretariat and the EDPB Secretariat"@en ;
+    skos:editorialNote """The purpose of the processing of personal data in this context is is to meet the needs of selection of staff based on interim contracts at the EDPS. The data is sent to the EDPS in the context of the offer of possible CVs by interim agencies matching job profiles sought by the EDPS. This enables the EDPS to select suitable interim candidates and communicate the decision to the interim agency in charge of the recruitment, which will establish a contract with the sucessful candidate."""@en .
+edps:MonitoringOf7YearRule a dpv:Purpose ;
+    skos:broaderTransitive dpv:StaffSelection ;
+    skos:prefLabel "Monitoring of the 7-year rule (EDPS Decision 13.12.2018)"@en .
+edps:PreparationOfEmploymentContracts a dpv:Purpose ;
+    skos:broaderTransitive dpv:StaffSelection ;
+    skos:prefLabel "Preparation of employment contracts"@en .
+edps:PaymentOfInvoicesForServices a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Payment of invoices for services"@en .
+edps:BudgetaryFollowup a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Budgetary follow-up"@en .
+edps:InformationKeepingForResponseToQueries a dpv:Purpose ;
+    skos:broaderTransitive dpv:StaffSelection ;
+    skos:prefLabel "Keeping of information needed to respond to : (a) to authorized persons who request information on their services; (b) to candidates regarding their data processed during the selection process. For general info on selection and recruitment at the EDPS: https://edps.europa.eu/careers_en"@en .
+edps:EnsureReconstructionOfHistoryBySYSPER a dpv:Purpose ;
+    skos:prefLabel "Ensure that any person can reconstruct the history of his/her career for all types of contracts managed by Sysper"@en ;
+    skos:broaderTransitive dpv:PersonnelManagement .
+
+# Legal Basis
+edps:InterimContract a dpv:LegalBasis ;
+    skos:broaderTransitive dpv:EnterIntoContract, dpv:ContractPerformance ;
+    skos:prefLabel "Interim Contracts at EDPS"@en .
+
+# Data Subjects
+edps:InterimAgents a skos:DataSubject ;
+    skos:prefLabel "Interim agents - external individuals who are contracted by the interim agency"@en ;
+    skos:broaderTransitive dpv:DataSubject .
+
+# Personal Data
+edps:InterimAgentLastName a dpv:PersonalData ;
+    skos:prefLabel "Interim Agent Last Name"@en ;
+    skos:broaderTransitive dpv-pd:Name .
+edps:InterimAgentFirstName a dpv:PersonalData ;
+    skos:prefLabel "Interim Agent First Name"@en ;
+    skos:broaderTransitive dpv-pd:Name .
+edps:InterimAgentCV a dpv:PersonalData ;
+    skos:prefLabel "Interim Agent CV"@en ;
+    skos:broaderTransitive dpv-pd:Job .
+edps:UnsuccessfulApplicantCV a dpv:PersonalData ;
+    skos:prefLabel "Unsuccessful Applicant CV"@en ;
+    skos:broaderTransitive edps:InterimAgentCV .
+edps:DataRelatingToSYSPERService a dpv:PersonalData ;
+    skos:prefLabel "Data relating to SYSPER Service"@en .
+
+# Tech/Org Measures
+
+edps:AuthorisedPersonnelNeedToKnowBasis a dpv:TechnicalMeasure ;
+    skos:broaderTransitive dpv:AccessControlMethod, dpv:NDA ;
+    skos:prefLabel """Access to data is granted on a "need-to-know" basis to authorized personnel, who comply with their statutory obligations and, where necessary, additional confidentiality agreements."""@en ;
+    skos:editorialNote """The data necessary for the execution of a contract/service to which you are party will be encoded in the SYSPER database and will be accessible to the managers of the EDPS or to the HRBA unit who needs this data to process your file at any time before or during the execution of your services. Access to your data is granted on a "need-to-know" basis to authorized personnel, who comply with their statutory obligations and, where necessary, additional confidentiality agreements. The entity processing your data is your line manager, the HRBA person in charge of the file,  the unit in charge of recruitment."""@en .
+
+# Technology
+
+edps:SYSPER a dpv:Technology ;
+    skos:prefLabel "SYSPER"@en .

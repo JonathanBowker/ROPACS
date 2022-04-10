@@ -1,0 +1,140 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dpv: <https://w3id.org/dpv/dpv-skos#> .
+@prefix dpv-gdpr: <https://w3id.org/dpv/dpv-skos/dpv-gdpr#> .
+@prefix dpv-pd: <https://w3id.org/dpv/dpv-skos/dpv-pd#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix time: <https://www.w3.org/TR/owl-time/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dpcat: <https://w3id.org/dpcat#> .
+
+# dpcat:ROPA
+dct:title rdfs:domain dpcat:ROPA ;
+	vann:usageNote "Indicates the title of ROPA"@en .
+dct:description rdfs:domain dpcat:ROPA ;
+	vann:usageNote "Provides a description of ROPA"@en .
+dct:description rdfs:domain dpcat:ROPA ;
+	vann:usageNote "A Unique Identifier for this ROPA"@en .
+dct:publisher rdfs:domain dpcat:ROPA ;
+	vann:usageNote "Indicates the entity that publishes the ROPA"@en .
+dcat:contactPoint rdfs:domain dpcat:ROPA ;
+	vann:usageNote "Indicates a point of contact for this ROPA"@en .
+dct:issued rdfs:domain dpcat:ROPA ;
+	vann:usageNote "Indicates date/time the ROPA was 'issued' or 'published'"@en .
+dct:temporal rdfs:domain dpcat:ROPA ;
+	vann:usageNote "Indicates the temporal period represented within the ROPA i.e. the time period covering listed processing activities"@en .
+dcat:dataset rdfs:domain dpcat:ROPA ;
+	vann:usageNote "Indicates the datasets i.e. ROPARecord instances that are associated with this ROPA"@en .
+dpv:hasDataController rdfs:domain dpcat:ROPA ;
+	vann:usageNote "Indicates the Data Controller whose processing activities are represented in this ROPA"@en .
+dpv:hasDataProtectionOfficer rdfs:domain dpcat:ROPA ;
+	vann:usageNote "Indicates the Data Protection Officer (DPO) overseeing this ROPA"@en .
+dpv:hasRepresentative rdfs:domain dpcat:ROPA ;
+	vann:usageNote "Indicates the Representative associated with this ROPA"@en .
+dpv:hasResponsibleEntity rdfs:domain dpcat:ROPA ;
+	vann:usageNote "Indicates the Entity responsible for processing activities listed in the ROPA"@en .
+
+# dpcat:ROPACatalog
+dct:title rdfs:domain dpcat:ROPACatalog ;
+	vann:usageNote "Indicates the title of ROPACatalog"@en .
+dct:description rdfs:domain dpcat:ROPACatalog ;
+	vann:usageNote "Provides a description of ROPACatalog"@en .
+dct:description rdfs:domain dpcat:ROPACatalog ;
+	vann:usageNote "A Unique Identifier for this ROPACatalog"@en .
+dct:publisher rdfs:domain dpcat:ROPACatalog ;
+	vann:usageNote "Indicates the entity that publishes the ROPACatalog"@en .
+dcat:contactPoint rdfs:domain dpcat:ROPACatalog ;
+	vann:usageNote "Indicates a point of contact for this ROPACatalog"@en .
+dct:issued rdfs:domain dpcat:ROPACatalog ;
+	vann:usageNote "Indicates date/time the ROPACatalog was 'issued' or 'published'"@en .
+dct:temporal rdfs:domain dpcat:ROPACatalog ;
+	vann:usageNote "Indicates the temporal period represented within the ROPACatalog i.e. the time period covering listed processing activities"@en .
+dcat:dataset rdfs:domain dpcat:ROPACatalog ;
+	vann:usageNote "Indicates the datasets i.e. ROPACatalogRecord instances that are associated with this ROPACatalog"@en .
+dpv:hasDataController rdfs:domain dpcat:ROPACatalog ;
+	vann:usageNote "Indicates the Data Controller whose processing activities are represented in this ROPACatalog"@en .
+dpv:hasDataProtectionOfficer rdfs:domain dpcat:ROPACatalog ;
+	vann:usageNote "Indicates the Data Protection Officer (DPO) overseeing this ROPACatalog"@en .
+dpv:hasRepresentative rdfs:domain dpcat:ROPACatalog ;
+	vann:usageNote "Indicates the Representative associated with this ROPACatalog"@en .
+dpv:hasResponsibleEntity rdfs:domain dpcat:ROPACatalog ;
+	vann:usageNote "Indicates the Entity responsible for processing activities listed in the ROPACatalog"@en .
+dcat:catalog rdfs:domain dpcat:ROPACatalog ;
+	vann:usageNote "Indicates ROPA (catalogs) included or of relevance to this ROPACatalog"@en .
+
+# dpcat:ROPARecord
+dct:title rdfs:domain dpcat:ROPARecord ;
+	vann:usageNote "Indicates the title of ROPARecord"@en .
+dct:description rdfs:domain dpcat:ROPARecord ;
+	vann:usageNote "Provides a description of ROPARecord"@en .
+dct:description rdfs:domain dpcat:ROPARecord ;
+	vann:usageNote "A Unique Identifier for this ROPARecord"@en .
+dct:publisher rdfs:domain dpcat:ROPARecord ;
+	vann:usageNote "Indicates the entity that publishes the ROPARecord"@en .
+dcat:contactPoint rdfs:domain dpcat:ROPARecord ;
+	vann:usageNote "Indicates a point of contact for this ROPARecord"@en .
+dct:issued rdfs:domain dpcat:ROPARecord ;
+	vann:usageNote "Indicates date/time the ROPARecord was 'issued' or 'published'"@en .
+dct:temporal rdfs:domain dpcat:ROPARecord ;
+	vann:usageNote "Indicates the temporal period represented within the ROPARecord i.e. the time period covering listed processing activities"@en .
+dcat:dataset rdfs:domain dpcat:ROPARecord ;
+	vann:usageNote "Indicates the datasets i.e. ROPARecordRecord instances that are associated with this ROPARecord"@en .
+dpv:hasDataController rdfs:domain dpcat:ROPARecord ;
+	vann:usageNote "Indicates the Data Controller whose processing activities are represented in this ROPARecord"@en .
+dpv:hasDataProtectionOfficer rdfs:domain dpcat:ROPARecord ;
+	vann:usageNote "Indicates the Data Protection Officer (DPO) overseeing this ROPARecord"@en .
+dpv:hasRepresentative rdfs:domain dpcat:ROPARecord ;
+	vann:usageNote "Indicates the Representative associated with this ROPARecord"@en .
+dpv:hasResponsibleEntity rdfs:domain dpcat:ROPARecord ;
+	vann:usageNote "Indicates the Entity responsible for processing activities listed in the ROPARecord"@en .
+dpv:hasPurpose rdfs:domain dpcat:ROPARecord ;
+	vann:usageNote "Indicates the Purpose(s) for processing activities in ROPARecord"@en .
+dpv:hasProcessing rdfs:domain dpcat:ROPARecord ;
+	vann:usageNote "Indicates the processing operations in ROPARecord"@en .
+dpv:hasLegalBasis rdfs:domain dpcat:ROPARecord ;
+	vann:usageNote "Indicates the legal basis or justification for processing activities in ROPARecord"@en .
+dpv:hasRecipient rdfs:domain dpcat:ROPARecord ;
+	vann:usageNote "Indicates the recipients of personal data for processing operations in ROPARecord"@en .
+dpv:hasPersonalData rdfs:domain dpcat:ROPARecord ;
+	vann:usageNote "Indicates the personal data specified in ROPARecord"@en .
+dpv:hasDataSubject rdfs:domain dpcat:ROPARecord ;
+	vann:usageNote "Indicates the data subjects whose personal data is being processed in ROPARecord"@en .
+dpv:hasStorage rdfs:domain dpcat:ROPARecord ;
+	vann:usageNote "Indicates storage conditions for processing operations in ROPARecord"@en .
+dpv:hasDataSource rdfs:domain dpcat:ROPARecord ;
+	vann:usageNote "Indicates the source of personal data for processing operations in ROPARecord"@en .
+dpv:hasJointControllers rdfs:domain dpcat:ROPARecord ;
+	vann:usageNote "Indicates Joint Controllers for processing operations in ROPARecord"@en .
+dpv:hasDataProcessor rdfs:domain dpcat:ROPARecord ;
+	vann:usageNote "Indicates the processing is carried out by a Data Processor in ROPARecord"@en .
+dpv:hasRisk rdfs:domain dpcat:ROPARecord ;
+	vann:usageNote "Indicates associated risks in ROPARecord"@en .
+dpv:hasTechnicalOrganisationalMeasure rdfs:domain dpcat:ROPARecord ;
+	vann:usageNote "Indicates the Technical and Organisational Measures used for securing personal data and its processing as specified in ROPARecord"@en .
+dpv:hasRight rdfs:domain dpcat:ROPARecord ;
+	vann:usageNote "Indicates a consultation regarding processing activities in ROPARecord"@en .
+dpv:isImplementedUsingTechnology rdfs:domain dpcat:ROPARecord ;
+	vann:usageNote "Indicates technology used for implementation of processing activities in ROPARecord"@en .
+dpv:hasPersonalDataHandling rdfs:domain dpcat:ROPARecord ;
+	vann:usageNote "Indicates the business process associated with processing activities in ROPARecord"@en .
+dpv:Importance vann:usageNote "Indicates importance of processing activities in ROPARecord. Recommended: A ROPARecord SHOULD indicate the Importance for processing activities using dpv:hasOrganisationalMeasure. DPV provides the following categories of importance: dpv:PrimaryImportance to indicate processing is the primary or main activity, and dpv:SecondaryImportance to indicat processing secondary or auxiliary i.e. it is not the main activity."@en .
+dpv:LegitimateInterest vann:usageNote "Indicates Legitimate Interests as the legal basis or justification for processing activities in ROPARecord"@en .
+dpv:LegitimateInterestAssessment vann:usageNote "Indicates assessment of Legitimate Interests as the legal basis for processing activities in ROPARecord"@en .
+dpv:Consent vann:usageNote "Indicates the consent or consent record used as legal basis or justification for processing activities in ROPARecord"@en .
+dpv:ThirdCountry vann:usageNote "Indicates a country is considered 'Third Country' i.e. outside of applicable jurisdictions"@en .
+dpv:DataTransferLegalBasis vann:usageNote "Indicates the legal basis for data transfers in ROPARecord"@en .
+dpv:Safeguard vann:usageNote "Indicates the safeguards specified in ROPARecord"@en .
+dpv:ImpactAssessment vann:usageNote "Indicates Impact Assessment for processing activities in ROPARecord"@en .
+dpv:DPIA vann:usageNote "Indicates a Data Processing Impact Assessment for processing activities in ROPARecord"@en .
+dpv:Consultation vann:usageNote "Indicates a consultation regarding processing activities in ROPARecord"@en .
+dpv:DataProcessingAgreement vann:usageNote "Indicates the Data Processing Contract or Agreement with another entity in ROPARecord"@en .
+dpv:VulnerableDataSubject vann:usageNote "Indicates Data Subjects belong to a Vulnerable Category"@en .
+dpv:SpecialCategoryPersonalData vann:usageNote "Indicates Personal Data are a Special Category"@en .
+dpv:Combine vann:usageNote "Indicates the Data Combination as a processing activity in ROPARecord"@en .
+dpv:Profiling vann:usageNote "Indicates Profiling as a processing activity in ROPARecord"@en .
+dpv:AutomatedDecisionMaking vann:usageNote "Indicates Automated Decision Making within processing activity in ROPARecord"@en .

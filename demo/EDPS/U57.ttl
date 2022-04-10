@@ -1,0 +1,198 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dpv: <https://w3id.org/dpv/dpv-skos#> .
+@prefix dpv-gdpr: <https://w3id.org/dpv/dpv-skos/dpv-gdpr#> .
+@prefix dpv-pd: <https://w3id.org/dpv/dpv-skos/dpv-pd#> .
+@prefix dpcat: <https://w3id.org/dpcat#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix time: <https://www.w3.org/TR/owl-time/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+
+@prefix edps: <https://w3id.org/dpcat/examples/EDPS/vocab#> .
+@prefix : <https://w3id.org/dpcat/examples/EDPS/57#> .
+
+: a dpcat:ROPA ;
+    dct:title "Use of Corporate Credit Card by Staff"@en ;
+    dct:description "Use of Corporate Credit Card by Staff"@en ;
+    skos:editorialNote """The European Data Protection Supervisor (EDPS) is the controller with regards to the internal procedure related to the request of the card and the control on the compliance with the related procedure. Lufthansa AirPlus Servicekarten GmbH (‘AirPlus’) is a separate controller for the procedure concerning the financial transactions and the relationship with the different service providers involved. The processing operations directly managed by AIRPLUS concern the check on anti- money laundering and terror prevention, the credit worthiness check, credit limit and other specific procedures."""@en ;
+    dct:created "2022-01-20"^^xsd:date ;
+    dct:identifier "57"^^xsd:string ;
+    dct:publisher edps:HRBA ;
+    dcat:contactPoint edps:HRBA ;
+    dcat:dataset :57-1, :57-2 .
+
+:57-1 a dpcat:ROPARecord ;
+    dct:title "Use Corporate Credit Card"@en ;
+    dct:description "Your personal data are processed in order to enable the EDPS staff to obtain and use a corporate credit card for costs payments related to missions undertaken by staff on behalf of the EDPS and for reimbursement (e.g. for medical expenses.)"@en ;
+    skos:editorialNote """In the framework of Mission management, the EDPS staff can request corporate credit cards, which will be provided by a financial organisation, namely, Lufthansa AirPlus Servicekarten GmbH (‘AirPlus’). 
+
+    Credit cards are intended to be used mainly for business-related payments and more specifically to pay costs related to missions undertaken by staff on behalf of the EDPS. It would also allow for payment of personal expenses such as for instance medical expenses while waiting reimbursement. The product allows the EDPS to expedite and facilitate travel expense management to employees. 
+
+    Each EDPS staff member, having a contract of at least one year can apply for a credit card by contacting the HRBA Unit, which has the sole authority to make requests for a card on behalf of staff. Applications can be sent by email to EDPS-MIPS."""@en ;
+    dct:created "2022-02-16"^^xsd:date ;
+    dct:publisher edps:HRBA ;
+    dcat:contactPoint edps:HRBA ;
+    dpv:hasDataController edps:EDPS ;
+    dpv:hasResponsibleEntity edps:HRBA ;
+
+    dpv:hasPurpose edps:BusinessPaymentsUsingCreditCards ;
+    dpv:hasDataSubject edps:StatutoryStaffMembers, edps:SecondedNationalExperts ;
+    dpv:hasDataSource dpv:DataSubject ;
+    dpv:hasLegalBasis dpv:Contract ;
+
+    dpv:hasPersonalData dpv-pd:Name, dpv-pd:PhysicalAddress, dpv-pd:EmailAddressWork, edps:ExpenseData ;
+    dpv:hasStorage [
+        a dpv:StorageCondition ;
+        dpv:hasDuration [
+            a dpv:StorageDuration, time:Duration ;
+            dct:description "The data collected for mission management are kept as a rule for a maximum of seven (7)  years. Once the legal deadline has expired, the file is deleted."@en ;
+            time:numericDuration "7"^^xsd:decimal ;
+            time:unitType :unitYear ;
+            ] ] ;
+
+    dpv:hasRecipient edps:HRBAMissionsUnit ;
+    dpv:hasTechnicalOrganisationalMeasure edps:StaffDealingWithMissionsNeedToKnowBasis ;
+    dpv:hasRight edps:IntranetDPN .
+
+:57-2 a dpcat:ROPARecord ;
+    dct:title "Procedure concerning the financial transactions"@en ;
+    dct:description "Lufthansa AirPlus Servicekarten GmbH (‘AirPlus’) is a separate controller for the procedure concerning the financial transactions and the relationship with the different service providers involved. The processing operations directly managed by AIRPLUS concern the check on anti- money laundering and terror prevention, the credit worthiness check, credit limit and other specific procedures."@en ;
+    dct:created "2022-02-16"^^xsd:date ;
+    dct:publisher edps:HRBA ;
+    dcat:contactPoint edps:HRBA ;
+    dpv:hasDataController edps:AirPlus ;
+    dpv:hasResponsibleEntity edps:HRBA ;
+
+    dpv:hasDataSubject edps:StatutoryStaffMembers, edps:SecondedNationalExperts ;
+    dpv:hasDataSource dpv:DataSubject ;
+    dpv:hasPurpose dpv:CounterMoneyLaundering, dpv:AntiTerrorismOperations, dpv:CreditChecking, dpv:Payment ;
+    dpv:hasLegalBasis dpv:LegitimateInterest ;
+    dpv:hasPersonalData dpv-pd:Name, dpv-pd:CurrentEmployer, dpv-pd:PhysicalAddress, dpv-pd:OfficialID, dpv-pd:Salary, dpv-pd:Gender, dpv-pd:BirthDate, dpv-pd:Nationality, dpv-pd:TelephoneNumber, dpv-pd:PaymentCard, dpv-pd:PurchaseHistory, dpv-pd:Transaction, dpv-pd:CreditWorthiness ;
+    dpv:hasDataSource [
+        a dpv:DataSource ;
+        dct:title "Application Form for AirPlus"@en ;
+        ] ;
+    dpv:hasStorage [
+        a dpv:StorageCondition ;
+        dpv:hasDuration [
+            a dpv:StorageDuration, time:Duration ;
+            dct:description "As provided in AirPlus’ privacy statement, ‘personal data will be saved to the extent to which and for those periods of time for which AirPlus is legally required to do so. [...] According to these laws, retention periods can be up to ten years.’"@en ;
+            time:numericDuration "10"^^xsd:decimal ;
+            time:unitType :unitYear ;
+            ] ] ;
+
+    dpv:hasRecipient edps:AirPlusITProviders, edps:AirPlusTransactionProvider, edps:AirPlusCRMProviders .
+
+:57-3 a dpcat:ROPARecord ;
+    dct:title "Procedure concerning the financial transactions"@en ;
+    dct:description "Lufthansa AirPlus Servicekarten GmbH (‘AirPlus’) is a separate controller for the procedure concerning the financial transactions and the relationship with the different service providers involved. The processing operations directly managed by AIRPLUS concern the check on anti- money laundering and terror prevention, the credit worthiness check, credit limit and other specific procedures."@en ;
+    skos:editorialNote """As provided in AirPlus’ privacy statement, ‘Corporate Card Data will be transferred to countries outside the European Union or the European Economic Area (“third countries”) only to the extent required for the respective purpose (e.g., enabling transactions or reports to Subscribers) or mandated by law (e.g., reporting duties stipulated by tax laws). Prior to any transfer of personal data to processors or third parties in third countries, AirPlus ensures that a transfer mechanism pursuant to GDPR is in place (e.g. the Model Clauses for the transfer of personal data to third countries provided by the European Commission).’ For more information, please refer to the Lufthansa AirPlus’ privacy statement. Transfers of the travel agency within its ‘corporate familiy’ are based on Art. 48(2)(d) of the Regulation (EU) 2018/1725 - Binding Corporate Rules (BCRs). Transfers are also based on Article 50(1)(b) of the Regulation (EU) 2018/1725, since ‘the transfer is necessary for the performance of a contract between the data subject and the controller [...]’."""@en ;
+    dct:created "2022-02-16"^^xsd:date ;
+    dct:publisher edps:HRBA ;
+    dcat:contactPoint edps:HRBA ;
+    dpv:hasDataController edps:AirPlus ;
+    dpv:hasResponsibleEntity edps:HRBA ;
+    dct:temporal [ a time:ProperInterval, dct:PeriodOfTime ;
+        time:hasBeginning [ time:inXSDDate "2020-01-01"^^xsd:date ] ;
+        ] ;
+    dpv:hasDataSubject edps:StatutoryStaffMembers, edps:SecondedNationalExperts ;
+    dpv:hasDataSource dpv:DataSubject ;
+    dpv:hasLegalBasis dpv:LegitimateInterest ;
+    dpv:hasPurpose dpv:CounterMoneyLaundering, dpv:AntiTerrorismOperations, dpv:CreditChecking, dpv:Payment ;
+    dpv:hasPersonalData dpv-pd:Name, dpv-pd:CurrentEmployer, dpv-pd:PhysicalAddress, dpv-pd:OfficialID, dpv-pd:Salary, dpv-pd:Gender, dpv-pd:BirthDate, dpv-pd:Nationality, dpv-pd:TelephoneNumber, dpv-pd:PaymentCard, dpv-pd:PurchaseHistory, dpv-pd:Transaction, dpv-pd:CreditWorthiness ;
+    dpv:hasDataSource [
+        a dpv:DataSource ;
+        dct:title "Application Form for AirPlus"@en ;
+        ] ;
+    dpv:hasProcessing [
+        a dpv:Transfer ;
+        dpv:hasDataImporter edps:AirPlus ;
+        dpv:hasLocation dpv:ThirdCountry ;
+        dpv:hasLegalBasis edps:Regulation-2018-1725-A48-2-d, edps:Regulation-2018-1725-A50-1-b ;
+    ] ;
+
+    dpv:hasStorage [
+        a dpv:StorageCondition ;
+        dpv:hasDuration [
+            a dpv:StorageDuration, time:Duration ;
+            dct:description "As provided in AirPlus’ privacy statement, ‘personal data will be saved to the extent to which and for those periods of time for which AirPlus is legally required to do so. [...] According to these laws, retention periods can be up to ten years.’"@en ;
+            time:numericDuration "10"^^xsd:decimal ;
+            time:unitType :unitYear ;
+            ] ] ;
+
+    dpv:hasRecipient edps:AirPlusITProviders, edps:AirPlusTransactionProvider, edps:AirPlusCRMProviders .
+
+edps:StatutoryStaffMembers a dpv:DataSubject ;
+    skos:broaderTransitive dpv:DataSubject ;
+    dct:title "Staff members with at least one year contract"@en .
+edps:SecondedNationalExperts a dpv:DataSubject ;
+    skos:broaderTransitive dpv:DataSubject ;
+    dct:title "Seconded National Experts"@en .
+
+edps:ExpenseData a dpv:PersonalData ;
+    dct:title "Expense data: amount of expenses, supporting documents (including: invoices, confirmation of reservation of plane ticket or privately hired car, train tickets, transfer tickets to and from airport, etc.), email exchanges with the agreed Travel Agency)."@en ;
+    skos:broaderTransitive dpv-pd:Communication, dpv-pd:FinancialAmount, dpv-pd:TravelHistory .
+
+edps:Payments a dpv:Purpose ;
+    dct:title "Payments"@en ;
+    skos:broaderTransitive dpv:Payment .
+dpv:CounterMoneyLaundering a dpv:Purpose ;
+    dct:title "Counter Money Laundering"@en ;
+    skos:broaderTransitive dpv:FraudPreventionAndDetection .
+dpv:AntiTerrorismOperations a dpv:Purpose ;
+    dct:title "Anti-Terrorism Operations"@en ;
+    skos:broaderTransitive dpv:EnforceSecurity .
+dpv:CreditChecking a dpv:Purpose ;
+    dct:title "Credit Checking"@en ;
+    skos:broaderTransitive dpv:FraudPreventionAndDetection .
+edps:BusinessPaymentsUsingCreditCards a dpv:Purpose ;
+    dct:title "Business payments using Credit Cards"@en ;
+    skos:broaderTransitive dpv:Payment .
+
+# Agents
+edps:EDPS a foaf:Agent, dpv:LegalEntity ;
+    dpv:hasName "European Data Protection Supervisor (EDPS)"@en ;
+    dpv:hasContact "Postal address: Rue Wiertz 60, B-1047 Brussels" ;
+    dpv:hasContact "Office address: Rue Montoyer 30, B-1000 Brussels" ;
+    dpv:hasContact "Telephone: +32 2 283 19 00" ;
+    dpv:hasContact "Email: edps@edps.europa.eu" ;
+    dpv:hasContact "Website: https://edps.europa.eu" .
+
+edps:HRBA a foaf:Agent, dpv:OrganisationalUnit ;
+    dpv:hasName "Human Resources, Budget, Administration (HRBA) Unit"@en ;
+    dpv:hasContact "Email: edps-selections@edps.europa.eu" ;
+    dpv:hasContact "https://edps.europa.eu/form/edpsweb-contact-form_en" ;
+    skos:broaderTransitive edps:EDPS .
+
+edps:HRBAMissionsUnit a dpv:OrganisationalUnit ;
+    skos:broaderTransitive edps:HRBA ;
+    skos:editorialNote """The only persons that can access the data on behalf of the EDPS are the members of staff of the HRBA unit dealing with missions, only for the part of the procedure that is managed by EDPS staff, i.e. enrolment and control of compliance with the procedure."""@en ;
+    dct:title "members of staff of the HRBA unit dealing with missions"@en .
+
+edps:AirPlus a foaf:Agent, dpv:LegalEntity, dpv:DataController ;
+    dct:title "Lufthansa AirPlus Servicekarten GmbH"@en ;
+    dpv:hasContact "Postal Address: Dornhofstraße 10 63263 Neu-Isenburg, Deutschland/Germany" ;
+    dpv:hasContact "Website: www.airplus.com" ;
+    dpv:hasContact "Email: dataprotection@airplus.com" .
+
+edps:StaffDealingWithMissionsNeedToKnowBasis a dpv:TechnicalOrganisationalMeasure ;
+    skos:broaderTransitive dpv:AccessControlMethod ;
+    skos:prefLabel """To avoid circulation of the information, the possibility to have access to these data is restricted to EDPS staff dealing with missions on the basis of a strict need to know principle."""@en .
+
+edps:IntranetDPN a dpv:DataSubjectRight, dpv:PrivacyNotice ;
+    dct:title "The DPN of EDPS’ Missions Management is available internally"@en ;
+    dpv:hasLocation <EDPS-Intranet> .
+
+edps:AirPlus a foaf:Agent, dpv:LegalEntity ;
+    dpv:hasName "IT service provides (hosting and infrastructural services)"@en .
+edps:AirPlus a foaf:Agent, dpv:LegalEntity ;
+    dpv:hasName "transaction-related service providers (receipt processing services)"@en .
+edps:AirPlus a foaf:Agent, dpv:LegalEntity ;
+    dpv:hasName "Customer relationship service providers (call center services)"@en .
+
+edps:Regulation-2018-1725-A48-2-d a dpv:LegalBasis, dpv-gdpr:BindingCorporateRules ;
+    dct:title "Art. 48(2)(d) of the Regulation (EU) 2018/1725 - Binding Corporate Rules (BCRs)."@en .
+edps:Regulation-2018-1725-A50-1-b a dpv:LegalBasis, dpv-gdpr:BindingCorporateRules ;
+    dct:title "Article 50(1)(b) of the Regulation (EU) 2018/1725 - transfer is necessary for the performance of a contract between the data subject and the controller"@en .

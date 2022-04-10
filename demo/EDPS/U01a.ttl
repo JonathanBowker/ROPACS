@@ -1,0 +1,316 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dpv: <https://w3id.org/dpv/dpv-skos#> .
+@prefix dpv-gdpr: <https://w3id.org/dpv/dpv-skos/dpv-gdpr#> .
+@prefix dpv-pd: <https://w3id.org/dpv/dpv-skos/dpv-pd#> .
+@prefix dpcat: <https://w3id.org/dpcat#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix time: <https://www.w3.org/TR/owl-time/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+
+@prefix edps: <https://w3id.org/dpcat/examples/EDPS/vocab#> .
+@prefix : <https://w3id.org/dpcat/examples/EDPS/01a#> .
+
+: a dpcat:ROPA ;
+    dct:title "Selection of staff for the EDPS Secretariat and the EDPB Secretariat"@en ;
+    dct:description "Selection of staff for the EDPS Secretariat and the EDPB Secretariat"@en ;
+    dct:created "2021-11-03"^^xsd:date ;
+    dct:identifier "01a"^^xsd:string ;
+    dct:publisher edps:HRBA ;
+    dcat:contactPoint edps:HRBA ;
+    dcat:dataset :01a-1, :01a-2, :01a-3 .
+
+:01a-1 a dpcat:ROPARecord ;
+    dct:title "Selection of staff up to Head of Unit"@en ;
+    dct:description "Selection of staff up to Head of Unit"@en ;
+    dct:created "2021-11-03"^^xsd:date ;
+    dct:publisher edps:HRBA ;
+    dcat:contactPoint edps:HRBA ;
+
+    dpv:hasDataController edps:EDPS ;
+    dpv:hasResponsibleEntity edps:HRBA ;
+
+    dpv:hasPurpose edps:StaffSelection ;
+    dpv:hasLegalBasis edps:StaffRegulation ;
+    dpv:hasDataSubject edps:JobApplicants ;
+    dpv:hasRight edps:DataSubjectRights ;
+
+    dpv:hasRecipient edps:SelectionCommittee1 ;
+
+    dpv:hasTechnicalOrganisationalMeasure edps:RestrictedMailboxForSelectionCommittee, edps:LockedPaperCabinet, edps:DataProtectionNoticeStaffSelection ;
+
+    dpv:hasPersonalData edps:DataOfStaffCandidates ;
+    dpv:hasStorage [
+        a dpv:StorageCondition ;
+        skos:editorialNote """The time-limits for storing the data of staff candidates are as follows: - 2 years after the closure of the selection process for applicants not recruited, or, in case of appeals or judicial proceedings, 5 years after the final administrative or judicial decision was rendered, - 10 years from the end of the period worked by a recruited applicant. - 6 months after submission for spontaneous applications health data, if communicated by the candidate (as mentioned above) are stored until the end of the selection process, then they are deleted."""@en ;
+        dpv:hasDuration [
+            a dpv:StorageDuration, time:Duration ;
+            dpv:hasPersonalData edps:DataOfStaffCandidates ;
+            dpv:isAfter "Closure of selection process for applicants not recruited"@en ;
+            time:numericDuration "2"^^xsd:decimal ;
+            time:unitType :unitYear ;
+            ] ;
+        dpv:hasDuration [
+            a dpv:StorageDuration, time:Duration ;
+            dpv:hasPersonalData edps:DataOfStaffCandidates ;
+            dpv:isAfter "In case of appeals or judicial proceedings, after the final administrative or judicial decision was rendered"@en ;
+            time:numericDuration "5"^^xsd:decimal ;
+            time:unitType :unitYear ;
+            ] ;
+        dpv:hasDuration [
+            a dpv:StorageDuration, time:Duration ;
+            dpv:hasPersonalData edps:DataOfStaffCandidates ;
+            dpv:isAfter "Submission for spontaneous applications health data"@en ;
+            time:numericDuration "6"^^xsd:decimal ;
+            time:unitType :unitMonth ;
+            ] ;
+        dpv:hasDuration [
+            a dpv:StorageDuration, time:Duration ;
+            dpv:hasPersonalData edps:JobApplicantSpecialHealthNeeds, edps:JobApplicantDisability ;
+            dpv:isAfter "Closure of selection process for applicants not recruited"@en ;
+            time:numericDuration "2"^^xsd:decimal ;
+            time:unitType :unitYear ;
+            ] ;
+        ] .
+
+:01a-2 a dpcat:ROPARecord ;
+    dct:title "Selection of Head of Unit or Head of Sector"@en ;
+    dct:description "Selection of Head of Unit or Head of Sector"@en ;
+    dct:created "2021-11-03"^^xsd:date ;
+    dct:publisher edps:HRBA ;
+    dcat:contactPoint edps:HRBA ;
+
+    dpv:hasDataController edps:EDPS ;
+    dpv:hasResponsibleEntity edps:HRBA ;
+
+    dpv:hasPurpose edps:StaffSelection ;
+    dpv:hasLegalBasis edps:StaffRegulation ;
+    dpv:hasDataSubject edps:JobApplicants ;
+    dpv:hasRight edps:DataSubjectRights ;
+
+    dpv:hasRecipient edps:SelectionCommittee2 ;
+
+    dpv:hasTechnicalOrganisationalMeasure edps:RestrictedMailboxForSelectionCommittee, edps:LockedPaperCabinet, edps:DataProtectionNoticeStaffSelection ;
+
+    dpv:hasPersonalData edps:DataOfStaffCandidates ;
+    dpv:hasStorage [
+        a dpv:StorageCondition ;
+        skos:editorialNote """The time-limits for storing the data of staff candidates are as follows: - 2 years after the closure of the selection process for applicants not recruited, or, in case of appeals or judicial proceedings, 5 years after the final administrative or judicial decision was rendered, - 10 years from the end of the period worked by a recruited applicant. - 6 months after submission for spontaneous applications health data, if communicated by the candidate (as mentioned above) are stored until the end of the selection process, then they are deleted."""@en ;
+        dpv:hasDuration [
+            a dpv:StorageDuration, time:Duration ;
+            dpv:hasPersonalData edps:DataOfStaffCandidates ;
+            dpv:isAfter "Closure of selection process for applicants not recruited"@en ;
+            time:numericDuration "2"^^xsd:decimal ;
+            time:unitType :unitYear ;
+            ] ;
+        dpv:hasDuration [
+            a dpv:StorageDuration, time:Duration ;
+            dpv:hasPersonalData edps:DataOfStaffCandidates ;
+            dpv:isAfter "In case of appeals or judicial proceedings, after the final administrative or judicial decision was rendered"@en ;
+            time:numericDuration "5"^^xsd:decimal ;
+            time:unitType :unitYear ;
+            ] ;
+        dpv:hasDuration [
+            a dpv:StorageDuration, time:Duration ;
+            dpv:hasPersonalData edps:DataOfStaffCandidates ;
+            dpv:isAfter "Submission for spontaneous applications health data"@en ;
+            time:numericDuration "6"^^xsd:decimal ;
+            time:unitType :unitMonth ;
+            ] ;
+        dpv:hasDuration [
+            a dpv:StorageDuration, time:Duration ;
+            dpv:hasPersonalData edps:JobApplicantSpecialHealthNeeds, edps:JobApplicantDisability ;
+            dpv:isAfter "Closure of selection process for applicants not recruited"@en ;
+            time:numericDuration "2"^^xsd:decimal ;
+            time:unitType :unitYear ;
+            ] ;
+        ] .
+
+:01a-3 a dpcat:ROPARecord ;
+    dct:title "Selection of Director"@en ;
+    dct:description "Selection of Director"@en ;
+    dct:created "2021-11-03"^^xsd:date ;
+    dct:publisher edps:HRBA ;
+    dcat:contactPoint edps:HRBA ;
+
+    dpv:hasDataController edps:EDPS ;
+    dpv:hasResponsibleEntity edps:HRBA ;
+
+    dpv:hasPurpose edps:StaffSelection ;
+    dpv:hasLegalBasis edps:StaffRegulation ;
+    dpv:hasDataSubject edps:JobApplicants ;
+    dpv:hasRight edps:DataSubjectRights ;
+
+    dpv:hasRecipient edps:SelectionCommittee3 ;
+
+    dpv:hasTechnicalOrganisationalMeasure edps:RestrictedMailboxForSelectionCommittee, edps:LockedPaperCabinet, edps:DataProtectionNoticeStaffSelection ;
+
+    dpv:hasPersonalData edps:DataOfStaffCandidates ;
+    dpv:hasStorage [
+        a dpv:StorageCondition ;
+        skos:editorialNote """The time-limits for storing the data of staff candidates are as follows: - 2 years after the closure of the selection process for applicants not recruited, or, in case of appeals or judicial proceedings, 5 years after the final administrative or judicial decision was rendered, - 10 years from the end of the period worked by a recruited applicant. - 6 months after submission for spontaneous applications health data, if communicated by the candidate (as mentioned above) are stored until the end of the selection process, then they are deleted."""@en ;
+        dpv:hasDuration [
+            a dpv:StorageDuration, time:Duration ;
+            dpv:hasPersonalData edps:DataOfStaffCandidates ;
+            dpv:isAfter "Closure of selection process for applicants not recruited"@en ;
+            time:numericDuration "2"^^xsd:decimal ;
+            time:unitType :unitYear ;
+            ] ;
+        dpv:hasDuration [
+            a dpv:StorageDuration, time:Duration ;
+            dpv:hasPersonalData edps:DataOfStaffCandidates ;
+            dpv:isAfter "In case of appeals or judicial proceedings, after the final administrative or judicial decision was rendered"@en ;
+            time:numericDuration "5"^^xsd:decimal ;
+            time:unitType :unitYear ;
+            ] ;
+        dpv:hasDuration [
+            a dpv:StorageDuration, time:Duration ;
+            dpv:hasPersonalData edps:DataOfStaffCandidates ;
+            dpv:isAfter "Submission for spontaneous applications health data"@en ;
+            time:numericDuration "6"^^xsd:decimal ;
+            time:unitType :unitMonth ;
+            ] ;
+        dpv:hasDuration [
+            a dpv:StorageDuration, time:Duration ;
+            dpv:hasPersonalData edps:JobApplicantSpecialHealthNeeds, edps:JobApplicantDisability ;
+            dpv:isAfter "Closure of selection process for applicants not recruited"@en ;
+            time:numericDuration "2"^^xsd:decimal ;
+            time:unitType :unitYear ;
+            ] ;
+        ] .
+
+### EDPS vocab ###
+
+edps:EDPS a foaf:Agent, dpv:LegalEntity ;
+    dpv:hasName "European Data Protection Supervisor (EDPS)"@en ;
+    dpv:hasContact "Postal address: Rue Wiertz 60, B-1047 Brussels" ;
+    dpv:hasContact "Office address: Rue Montoyer 30, B-1000 Brussels" ;
+    dpv:hasContact "Telephone: +32 2 283 19 00" ;
+    dpv:hasContact "Email: edps@edps.europa.eu" ;
+    dpv:hasContact "Website: https://edps.europa.eu" .
+
+edps:HRBA a foaf:Agent, dpv:OrganisationalUnit ;
+    dpv:hasName "Human Resources, Budget, Administration (HRBA) Unit"@en ;
+    dpv:hasContact "Email: edps-selections@edps.europa.eu" ;
+    dpv:hasContact "https://edps.europa.eu/form/edpsweb-contact-form_en" ;
+    skos:broaderTransitive edps:EDPS .
+edps:SelectionCommittee1 a foaf:Agent, dpv:OrganisationalUnit ;
+    dpv:hasName "The members of the selection panel for selection of staff up to Head of Unit are: the relevant Head of Unit or Head of Sector, the EDPS’ staff members appointed as members of the panel or appointed as an observer."@en ;
+    skos:broaderTransitive edps:HRBA .
+edps:SelectionCommittee2 a foaf:Agent, dpv:OrganisationalUnit ;
+    dpv:hasName "For the selection of a Head of Unit and a Head of Sector, the Director is a member of the panel"@en ;
+    skos:broaderTransitive edps:HRBA .
+edps:SelectionCommittee3 a foaf:Agent, dpv:OrganisationalUnit ;
+    dpv:hasName "For the selection of a Director, the Supervisor can be consulted"@en ;
+    skos:broaderTransitive edps:HRBA .
+
+edps:DPO a foaf:Agent, dpv:DataProtectionOfficer ;
+    dpv:hasName "Data Protection Officer (DPO)"@en ;
+    dpv:hasContact "dpo@edps.europa.eu" ;
+    dct:isPartOf edps:EDPS .
+
+
+# Purposes
+edps:StaffSelection a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Select staff for the EDPS Secretariat and the EDPB Secretariat"@en ;
+    skos:editorialNote "For general info on selection and recruitment at the EDPS: https://edps.europa.eu/careers_en"@en .
+
+
+# Legal Basis
+edps:StaffRegulation a dpv:LegalBasis ;
+    skos:broaderTransitive dpv:LegalObligation ;
+    skos:prefLabel "The Staff Regulations (and particularly Art. 27-34) and the Conditions of Employment of Other Servants of the EU -the Decision of the EDPS of 4 November 2020 adopting general implementing provisions relating to the engagement and the use of contract staff."@en .
+
+
+# Data Subjects
+edps:JobApplicants a skos:DataSubject ;
+    skos:prefLabel "Job Applicants at EDPS"@en ;
+    skos:broaderTransitive dpv:DataSubject .
+
+
+# Personal Data
+edps:DataOfStaffCandidates a dpv:PersonalData ;
+    skos:prefLabel "Data of Staff Candidates"@en ;
+    skos:editorialNote """(staff selection): - Data identifying the applicant and contact details (name, first name, gender, nationality, date and place of birth, postal and e-mail address, telephone number, mobile telephone number, fax number). - Data derived from the candidate’s application and CV, his/her motivation letter and other supporting documents submitted, namely current entity of assignment or current employer EUI in case of inter-institutional and for external applicants: institution/company and department, country of residence, as well as function group, grade, step, seniority in the current job, type of post of the person, type of post of the current job, in case of AST officials applying for AD vacancies: information related to certification procedure - Documents requested in the vacancy notice to verify whether the application is admissible or not: a curriculum vitae, a covering letter or motivation letters and other supporting documents submitted by the applicants including information on education, competencies and language skills, diplomas and certificates, professional experience (including names of previous and current employers, duration of employment, level of responsibility), the last two staff evaluation reports and a certificate proving the applicant’s status and grade in case of interinstitutional transfers On their own initiative, applicants may send documents such as letters of recommendation, certificates showing language competences, etc. - Information related to potential conflict of interest is also processed (the Conflict of Interests Form)."""@en ;
+    skos:narrowerTransitive edps:JobApplicantCV .
+edps:JobApplicantCV a dpv:PersonalData ;
+    skos:narrowerTransitive edps:JobApplicantName,
+                            edps:JobApplicantGender,
+                            edps:JobApplicantBirthDate,
+                            edps:JobApplicantBirthPlace,
+                            edps:JobApplicantContact,
+                            edps:JobApplicantProfessionalExperience,
+                            edps:JobApplicantProfessionalExperience,
+                            edps:JobApplicantEducationalQualifications ;
+    dpv:hasDataSource edps:JobApplicants ;
+    skos:prefLabel "Job Applicant CV"@en .
+edps:JobApplicantName a dpv:PersonalData, dpv:DerivedPersonalData ;
+    skos:broaderTransitive dpv-pd:Name ;
+    dpv:hasDataSource edps:JobApplicantCV ;
+    skos:prefLabel "Name"@en .
+edps:JobApplicantGender a dpv:PersonalData, dpv:DerivedPersonalData ;
+    skos:broaderTransitive dpv-pd:Gender ;
+    dpv:hasDataSource edps:JobApplicantCV ;
+    skos:prefLabel "Gender"@en .
+edps:JobApplicantBirthDate a dpv:PersonalData, dpv:DerivedPersonalData ;
+    skos:broaderTransitive dpv-pd:BirthDate ;
+    dpv:hasDataSource edps:JobApplicantCV ;
+    skos:prefLabel "BirthDate"@en .
+edps:JobApplicantBirthPlace a dpv:PersonalData, dpv:DerivedPersonalData ;
+    skos:broaderTransitive dpv-pd:BirthPlace ;
+    dpv:hasDataSource edps:JobApplicantCV ;
+    skos:prefLabel "BirthPlace"@en .
+edps:JobApplicantContact a dpv:PersonalData, dpv:DerivedPersonalData ;
+    skos:broaderTransitive dpv-pd:Contact ;
+    dpv:hasDataSource edps:JobApplicantCV ;
+    skos:prefLabel "Contact"@en .
+edps:JobApplicantProfessionalExperience a dpv:PersonalData, dpv:DerivedPersonalData ;
+    skos:broaderTransitive dpv-pd:Job ;
+    dpv:hasDataSource edps:JobApplicantCV ;
+    skos:prefLabel "Professional Experience"@en .
+edps:JobApplicantProfessionalExperience a dpv:PersonalData, dpv:DerivedPersonalData ;
+    skos:broaderTransitive dpv-pd:Job ;
+    dpv:hasDataSource edps:JobApplicantCV ;
+    skos:prefLabel "Professional Experience"@en .
+edps:JobApplicantEducationalQualifications a dpv:PersonalData, dpv:DerivedPersonalData ;
+    skos:broaderTransitive dpv-pd:EducationalQualification ;
+    dpv:hasDataSource edps:JobApplicantCV ;
+    skos:prefLabel "Educational Qualifications"@en .
+edps:JobApplicantDisability a dpv:PersonalData ;
+    skos:broaderTransitive dpv-pd:HealthData ;
+    dpv:hasDataSource edps:JobApplicants ;
+    dpv:hasContext dpv:Optional ;
+    skos:prefLabel "Disability"@en .
+edps:JobApplicantSpecialHealthNeeds a dpv:PersonalData ;
+    skos:broaderTransitive dpv-pd:HealthData ;
+    dpv:hasDataSource edps:JobApplicants ;
+    dpv:hasContext dpv:Optional ;
+    skos:prefLabel "Special Health Needs"@en .
+
+# Tech/Org Measures
+
+edps:RestrictedMailboxForSelectionCommittee a dpv:TechnicalMeasure ;
+    skos:broaderTransitive dpv:AccessControlMethod ;
+    skos:prefLabel "Restricted Mailbox for Selection Committee"@en ;
+    skos:editorialNote """Electronic file: applications from candidate are kept in the functional mailbox, which has restricted access to the HR colleagues in charge of selection and the Head of the HRBA unit."""@en .
+
+edps:LockedPaperCabinet a dpv:TechnicalMeasure, dpv:OrganisationalMeasure ;
+    skos:broaderTransitive dpv:AccessControlMethod, dpv:AuthorisationProcedure ;
+    skos:prefLabel "Locked Paper Cabinet with need-to-know access"@en ;
+    skos:editorialNote """Paper file : are stored in a cupboard in a locked office to which only a restricted of HR colleagues have access on a need-to-know basis."""@en .
+
+edps:DataProtectionNoticeStaffSelection a dpv:OrganisationalMeasure ;
+    skos:broaderTransitive dpv:PrivacyNotice ;
+    dpv:hasLocation <https://edps.europa.eu/data-protection/our-work/publications/data-protection-notices/01-edps-data-protection-notice-staff_en> ;
+    skos:prefLabel "Data Protection Notice for Staff Selection"@en .
+
+# Rights
+edps:DataSubjectRights a dpv:DataSubjectRight ;
+    skos:broaderTransitive dpv-gdpr:A15, dpv-gdpr:A16, dpv-gdpr:A20, dpv-gdpr:A21 ;
+    skos:prefLabel "Information on exercising rights"@en ;
+    skos:editorialNote """For more information, including how to exercise your rights to access, rectification, object and data portability (where applicable), see the data protection notice: https://edps.europa.eu/data-protection/our-work/publications/data-protection-notices/01-edps-data-protection-notice-staff_en"""@en ;
+    dpv:hasLocation <https://edps.europa.eu/data-protection/our-work/publications/data-protection-notices/01-edps-data-protection-notice-staff_en> .

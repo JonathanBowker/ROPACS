@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="utf-8">
+ <title>CSM-ROPA: DPA Template Analysis</title>
+ <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer></script>
+ <script class="remove">
+        // All config options at https://respec.org/docs/ 
+        var respecConfig = {
+         shortName: "CSM-ROPA",
+         title: "Common Semantic Model for ROPA",
+         subtitle: "version 0.2",
+         specStatus: "unofficial",
+         publishDate: "2022-04-02",
+         group: "dpvcg",
+         latestVersion: "https://w3id.org/dpcat/csm-ropa/analysis",
+         github: {
+          repoURL: "https://github.com/coolharsh55/DPCat",
+      },
+      subjectPrefix: "[dpcat]",
+      doJsonLd: true,
+      lint: { "no-unused-dfns": false },
+      canonicalUri: "https://w3id.org/dpcat",
+      editors: [
+      {
+          name: "Paul Ryan",
+          company: "Uniphar PLC; and Dublin City University",
+      },
+      {
+          name: "Rob Brennan",
+          company: "Dublin City University",
+          companyURL: "https://tcd.ie/"
+      },
+      {
+          name: "Harshvardhan J. Pandit",
+          url: "https://harshp.com",
+          company: "Trinity College Dublin",
+          companyURL: "https://tcd.ie/"
+      }
+      ],
+      localBiblio: {
+          "DPV": {
+            "href": "https://www.w3id.org/dpv",
+            "title": "Data Privacy Vocabulary (DPV) Specification"
+          },
+          "DPV-GDPR": {
+            "href": "https://www.w3id.org/dpv/dpv-gdpr",
+            "title": "GDPR Extension for Data Privacy Vocabulary (DPV-GDPR)"
+          },
+          "DPV-NACE": {
+            "href": "https://www.w3id.org/dpv/dpv-nace",
+            "title": "NACE Taxonomy serialised in RDFS"
+          },
+          "DPV-PD": {
+            "href": "https://www.w3id.org/dpv/dpv-pd",
+            "title": "Personal Data Categories Extension for Data Privacy Vocabulary (DPV-PD)"
+          },
+          "DPV-LEGAL": {
+            "href": "https://www.w3id.org/dpv/dpv-legal",
+            "title": "Legal Extension providing Jurisdictions, Laws, and Authorities for Data Privacy Vocabulary (DPV-LEGAL)"
+          },
+          "DPV-SKOS": {
+            "href": "https://www.w3id.org/dpv/dpv-skos",
+            "title": "Data Privacy Vocabulary serialised using SKOS+RDFS (DPV-SKOS)"
+          },
+          "DPV-OWL": {
+            "href": "https://www.w3id.org/dpv/dpv-owl",
+            "title": "Data Privacy Vocabulary serialised using OWL2 (DPV-OWL)"
+          },
+          "DPV-Primer": {
+            "href": "https://www.w3id.org/dpv/primer",
+            "title": "Primer for Data Privacy Vocabulary"
+          },
+          "DPVCG": {
+            "href": "https://www.w3.org/community/dpvcg/",
+            "title": "W3C Data Privacy Vocabularies and Controls Community Group (DPVCG)"
+          },
+          "GDPR": {
+            "href": "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+            "title": "General Data Protection Regulation (GDPR)"
+          },
+          "SPECIAL": {
+            "href": "https://www.specialprivacy.eu/",
+            "title": "SPECIAL H2020 Project"
+          },
+          "RDF": {
+            "href": "https://www.w3.org/TR/rdf11-concepts/",
+            "title": "RDF 1.1 Concepts and Abstract Syntax"
+          },
+          "RDFS": {
+            "href": "https://www.w3.org/TR/rdf-schema/",
+            "title": "RDF Schema 1.1"
+          },
+          "OWL" :{
+            "href": "https://www.w3.org/TR/owl2-overview/",
+            "title": "OWL 2 Web Ontology Language Document Overview (Second Edition)"
+          },
+          "SKOS": {
+            "href": "https://www.w3.org/TR/skos-reference/",
+            "title": "SKOS Simple Knowledge Organization System"
+          },
+          "DPV-ADOPTION": {
+            "href": "https://www.w3.org/community/dpvcg/wiki/Adoption_of_DPVCG",
+            "title": "Listing of DPV adoption and applications"
+          },
+          "DPV-GUIDES": {
+            "href": "https://w3id.org/dpv/guides",
+            "title": "Guidelines for Adoption and Use of DPV"
+          },
+          "DPV-GUIDE-OWL2": {
+            "href": "https://w3id.org/dpv/guides/dpv-owl",
+            "title": "Using DPV in OWL2"
+          },
+          "NACE": {
+            "href": "https://ec.europa.eu/eurostat/ramon/nomenclatures/index.cfm?TargetUrl=LST_NOM_DTL&StrNom=NACE_REV2",
+            "title": "Statistical Classification of Economic Activities in the European Community (NACE)"
+          },
+          "NAICS": {
+            "href": "https://www.census.gov/eos/www/naics/",
+            "title": "North American Industry Classification System (NAICS)"
+          },
+          "ISIC": {
+            "href": "https://unstats.un.org/unsd/classifications",
+            "title": "International Standard Industrial Classification of All Economic Activities (ISIC)"
+          },
+          "GICS": {
+            "href": "https://www.msci.com/gics",
+            "title": "Global Industry Classification Standard (GICS)"
+          },
+          "NACE-NAICS": {
+            "href": "https://ec.europa.eu/eurostat/ramon/nomenclatures/index.cfm?TargetUrl=LST_NOM_DTL&StrNom=NACE_REV2",
+            "title": "NACE to NAICS mapping"
+          },
+          "EnterPrivacy": {
+            "href": "https://enterprivacy.com/wp-content/uploads/2018/09/Categories-of-Personal-Information.pdf",
+            "title": "Taxonomy of Personal Data Categories"
+          },
+          "TIME": {
+            "href": "https://www.w3.org/TR/owl-time/",
+            "title": "Time Ontology in OWL"
+          },
+          "ISO-27017": {
+            "href": "https://www.iso.org/standard/43757.html",
+            "title": "ISO/IEC 27017:2015 Information technology — Security techniques — Code of practice for information security controls based on ISO/IEC 27002 for cloud services"
+          },
+          "DCAT": {
+            "href": "https://www.w3.org/TR/vocab-dcat-2/",
+            "title": "Data Catalog Vocabulary (DCAT) - Version 2"
+          },
+          "DCAT-AP": {
+            "href": "https://op.europa.eu/en/web/eu-vocabularies/dcat-ap",
+            "title": "DCAT Application profile for data portals in Europe (DCAT-AP)"
+          },
+          "EDPS-ROPA": {
+            "href": "https://edps.europa.eu/about/data-protection-within-edps/records-register_en",
+            "title": "Records Register - European Data Protection Supervisor"
+          }
+        }
+  };
+ </script>
+ <style type="text/css">
+    table {
+       text-align: justify;
+       border-collapse: collapse;
+       border: 1px solid black;
+       margin: auto;
+       display: block;
+       /*overflow: auto;*/
+       table-layout: auto;
+       margin-top: 2px;
+       margin-bottom: 2px;
+       width: 100%;
+    }
+    th {
+       font-weight: bold;
+    }
+    td,th {
+       border: 1px solid black;
+    }
+    .set-x {
+        color: red;
+        background-color: rgba(255, 0, 0, 0.1);
+    }
+    .set-y {
+        color: green;
+        background-color: rgba(0, 255, 0, 0.2);
+    }
+    table.definition {
+        border: none;
+    }
+    .definition td,th {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+ </style>
+</head>
+<body>
+     <section id="abstract">
+          <p>Despite a ROPA being based only on requirements established by [[GDPR]] Art. 30, our prior work found variance amongst ROPAs templates provided by 6 DPAs in terms of what information needed to be documented. The additional fields were related to what the DPAs considered best practices to assist organisations in collecting and representing information from their various business processes. We harmonised the requirements from different templates to construct a ’common semantic model’ for ROPA (CSM-ROPA) to enable the representation of all DPA-specified ROPA information. We then represented these information requirements through concepts from the [[[DPV]]] to provide an interoperable machine-readable vocabulary that can act as a mediation mechanism between stakeholders and tools operating on ROPA and associated compliance processes. In this section, we present results from our extended work where we analysed and incorporated ROPA templates from all EU DPAs to create a single (and truly) ‘common semantic model‘ for ROPA and represented it using DPV to provide a consistent and interoperable specification for representing ROPA and its relevant information.</p>
+     </section>
+     <section id="csm">
+   <h2>DPA ROPA Template Analysis</h2>
+   <p>The [[GDPR]] has 31 DPAs based on EDPB membership (31 DPAs from 27 EU Member States, the EDPS, and 3 additional members comprising the EFTA EEA states, considering the German regional DPAs as part of the central DPA) representing nations and member states from the EU and the EFTA EEA. Each DPA provides guidance regarding ROPA based on its basis in GDPR Art.30, and some DPAs also provide templates to assist organisations with maintaining their ROPA documents. The DPA ROPA templates go beyond the GDPR Art.30 requirements, are not consistent (with other DPA templates), and represent a challenge in producing a collective understanding of what information is required for maintaining a ROPA.</p>
+   <p>In this work, we analysed these 31 DPAs, and found 17 DPAs provided ROPA templates varying in language and content. Of 17 DPA templates, 5 used English, and for the rest we used Google Translate to convert the rest to English and manually ensured consistency in translation between templates regarding terms used. On these, we then performed term extraction, semantic analysis, term frequency enumeration, de-duplication, and antonym/homonym identification. We found templates with minimal information restricted their contents for conforming with GDPR Art.30. Some templates, such as those provided by Belgian and Greek DPAs, were extensive in fields beyond what the GDPR or other DPAs suggested. The exercise, carried out over 2020-2022, yielded 47 unique concepts representing information to be recorded in a ROPA. Of these, 18 concepts were related to the requirements defined in GDPR Art.30, and the rest (29 concepts) were either supplementary to these or added by DPAs\footnote{We could not discern source or basis in law (EU or   national) for concepts added by DPAs}. An overview of the exercise is presented in the table below, which shows the identified concepts and their relevance to each DPA template analysed.</p>
+
+   <div>
+       <table>
+        <thead>
+            <th>GDPR</th>
+            <th>Field</th>
+            <th>A.30</th>
+            <th>BE</th>
+            <th>GR</th>
+            <th>GB</th>
+            <th>PL</th>
+            <th>CY</th>
+            <th>FR</th>
+            <th>PT</th>
+            <th>DE</th>
+            <th>DK</th>
+            <th>LU</th>
+            <th>FI</th>
+            <th>CZ</th>
+            <th>HR</th>
+            <th>IT</th>
+            <th>LT</th>
+            <th>SI</th>
+            <th>SK</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>5</td>
+                <td>Personal Data Location</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+            </tr>
+            <tr>
+                <td>5.1</td>
+                <td>Data Sources</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+            </tr>
+            <tr>
+                <td>6.1</td>
+                <td>Legal basis</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+            </tr>
+            <tr>
+                <td>6.1</td>
+                <td>Record of consent</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+            </tr>
+            <tr>
+                <td>9.1</td>
+                <td>Special Personal Data Category</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+            </tr>
+            <tr>
+                <td>9.1</td>
+                <td>Vulnerable Data Subject Category</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+            </tr>
+            <tr>
+                <td>22.1</td>
+                <td>Automated decision making, profiling</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+            </tr>
+            <tr>
+                <td>26.1</td>
+                <td>Joint Controller agreement</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+            </tr>
+            <tr>
+                <td>28</td>
+                <td>Data Processors</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+            </tr>
+            <tr>
+                <td>28.3</td>
+                <td>Data Processing Contract</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+            </tr>
+            <tr>
+                <td>30.1</td>
+                <td>Processing Status</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+            </tr>
+            <tr>
+                <td>32</td>
+                <td>Tech/Org measures implementation</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+            </tr>
+            <tr>
+                <td>32</td>
+                <td>Security measures</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+            </tr>
+            <tr>
+                <td>32</td>
+                <td>Technologies used</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+            </tr>
+            <tr>
+                <td>33.5</td>
+                <td>Data Breach</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+            </tr>
+            <tr>
+                <td>35</td>
+                <td>Risk assessment and mitigation</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+            </tr>
+            <tr>
+                <td>35</td>
+                <td>DPIA Results</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+            </tr>
+            <tr>
+                <td>35</td>
+                <td>Relevant DPIA</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+            </tr>
+            <tr>
+                <td>36.1</td>
+                <td>Impact Assessment, Prior Consultation</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+            </tr>
+            <tr>
+                <td>37.6</td>
+                <td>External DPO organisation</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+            </tr>
+            <tr>
+                <td class="set-x">&#10799;</td>
+                <td>Business Process</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+            </tr>
+            <tr>
+                <td class="set-x">&#10799;</td>
+                <td>Owner of Process</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+            </tr>
+            <tr>
+                <td class="set-x">&#10799;</td>
+                <td>Type of Processing</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+            </tr>
+            <tr>
+                <td>13, 14, 15</td>
+                <td>Data Subject Rights</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+            </tr>
+            <tr>
+                <td>28, 30.1(c)</td>
+                <td>Third Party Data Transfer</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+            </tr>
+            <tr>
+                <td>30.1(a)</td>
+                <td>Data Protection Officer Contact</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+            </tr>
+            <tr>
+                <td>30.1(a)</td>
+                <td>Representative</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+            </tr>
+            <tr>
+                <td>30.1(a)</td>
+                <td>Representative Contact</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+            </tr>
+            <tr>
+                <td>30.1(a)</td>
+                <td>Joint Controller Name</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+            </tr>
+            <tr>
+                <td>30.1(a)</td>
+                <td>Joint Controller contact</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+            </tr>
+            <tr>
+                <td>30.1(b)</td>
+                <td>Purposes of processing</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+            </tr>
+            <tr>
+                <td>30.1(b)</td>
+                <td>Main/Auxiliary Processing</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+            </tr>
+            <tr>
+                <td>30.1(c)</td>
+                <td>Personal Data Categories</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+            </tr>
+            <tr>
+                <td>30.1(c)</td>
+                <td>Data Subject Categories</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+            </tr>
+            <tr>
+                <td>30.1(d)</td>
+                <td>Recipient Categories</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+            </tr>
+            <tr>
+                <td>30.1(e)</td>
+                <td>Third Countries in Data Transfer</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+            </tr>
+            <tr>
+                <td>30.1(e)</td>
+                <td>Appropriate Safeguards</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+            </tr>
+            <tr>
+                <td>30.1(f)</td>
+                <td>Retention/Deletion Periods</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-x">&#10799;</td>
+            </tr>
+            <tr>
+                <td>30.1(g)</td>
+                <td>Tech/Org measures</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+            </tr>
+            <tr>
+                <td>30(1)(a)</td>
+                <td>Data Controller Contact</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+            </tr>
+            <tr>
+                <td>30(1)(a)</td>
+                <td>Data Protection Officer</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+            </tr>
+            <tr>
+                <td>30(1)(a)</td>
+                <td>Data Protection Officer Contact</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+            </tr>
+            <tr>
+                <td>44-47</td>
+                <td>Nature of Transfer</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+            </tr>
+            <tr>
+                <td>6.1(f)</td>
+                <td>Legitimate interests</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+            </tr>
+            <tr>
+                <td>6.1(f)</td>
+                <td>Legitimate interests assessment</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+            </tr>
+            <tr>
+                <td>6, 14, 30.1(b)</td>
+                <td>Data Combination</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-y">&#x2713;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+                <td class="set-x">&#10799;</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Nos. Fields</td>
+                <td>16</td>
+                <td>32</td>
+                <td>31</td>
+                <td>29</td>
+                <td>25</td>
+                <td>23</td>
+                <td>23</td>
+                <td>23</td>
+                <td>22</td>
+                <td>21</td>
+                <td>21</td>
+                <td>19</td>
+                <td>18</td>
+                <td>18</td>
+                <td>18</td>
+                <td>18</td>
+                <td>18</td>
+                <td>17</td>
+            </tr>
+        </tbody></table>
+    </div>
+</section>
+</body>
+</html>

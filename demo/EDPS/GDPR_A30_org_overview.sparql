@@ -1,0 +1,21 @@
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX dpv: <https://w3id.org/dpv/dpv-skos#>
+PREFIX dpv-gdpr: <https://w3id.org/dpv/dpv-skos/dpv-gdpr#>
+PREFIX dpv-pd: <https://w3id.org/dpv/dpv-skos/dpv-pd#>
+PREFIX dpcat: <https://w3id.org/dpcat#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX time: <https://www.w3.org/TR/owl-time/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX edps: <https://w3id.org/dpcat/examples/EDPS/vocab#>
+
+SELECT DISTINCT ?org ?title ?purpose ?processor ?jointcontroller
+WHERE {
+	?record a dpcat:ROPARecord ; dct:title ?title .
+    ?record dct:publisher/dpv:hasName ?org .
+    ?record dpv:hasPurpose/skos:prefLabel ?purpose .
+    OPTIONAL { ?record dpv:hasDataProcessor/dpv:hasName ?processor }
+    OPTIONAL { 
+        ?record dpv:hasJointDataControllers/dpv:hasName ?jointcontroller } } 

@@ -1,0 +1,111 @@
+@prefix dash: <http://datashapes.org/dash#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dpv: <https://w3id.org/dpv/dpv-skos#> .
+@prefix dpcat: <https://w3id.org/dpcat#> .
+
+dpcat:Prefixes 
+ sh:declare [ sh:prefix "dpv"; sh:namespace "https://w3id.org/dpv/dpv-skos#"^^xsd:anyURI ; ] ;
+ rdfs:label "Shape declarations" .
+
+dpcat:Shape_EnsurePurpose
+    a sh:NodeShape ;
+    sh:name "Ensure every processing has a denoted Purpose "@en ;
+    sh:description "Ensure the dpv:hasPurpose property is defined and has a value that is an instance of dpv:Purpose"@en ;
+    sh:targetClass dpcat:ROPARecord ;
+    sh:property [
+        sh:path dpv:hasPurpose ;
+        sh:class dpv:Purpose ;
+        sh:minCount 1 ;
+    ] .
+
+dpcat:Shape_EnsureLegalBasis
+    a sh:NodeShape ;
+    sh:name "Ensure every processing has a legal basis"@en ;
+    sh:description "Ensure the dpv:hasLegalBasis property is defined and has a value that is an instance of dpv:LegalBasis"@en ;
+    sh:targetClass dpcat:ROPARecord ;
+    sh:property [
+        sh:path dpv:hasLegalBasis ;
+        sh:class dpv:LegalBasis ;
+        sh:minCount 1 ;
+    ] .
+
+dpcat:Shape_EnsureProcessingProcessing    a sh:NodeShape ;
+    sh:name "Ensure every processing has a denoted Processing "@en ;
+    sh:description "Ensure the dpv:hasProcessing property is defined and has a value that is an instance of dpv:Processing"@en ;
+    sh:targetClass dpcat:ROPARecord ;
+    sh:property [
+        sh:path dpv:hasProcessing ;
+        sh:class dpv:Processing ;
+        sh:minCount 1 ;
+    ] .
+
+dpcat:Shape_EnsurePersonalData
+    a sh:NodeShape ;
+    sh:name "Ensure every processing has a denoted PersonalData "@en ;
+    sh:description "Ensure the dpv:hasPersonalData property is defined and has a value that is an instance of dpv:PersonalData"@en ;
+    sh:targetClass dpcat:ROPARecord ;
+    sh:property [
+        sh:path dpv:hasPersonalData ;
+        sh:class dpv:PersonalData ;
+        sh:minCount 1 ;
+    ] .
+
+dpcat:Shape_EnsureDataSubject
+    a sh:NodeShape ;
+    sh:name "Ensure every processing has a denoted DataSubject "@en ;
+    sh:description "Ensure the dpv:hasDataSubject property is defined and has a value that is an instance of dpv:DataSubject"@en ;
+    sh:targetClass dpcat:ROPARecord ;
+    sh:property [
+        sh:path dpv:hasDataSubject ;
+        sh:class dpv:DataSubject ;
+        sh:minCount 1 ;
+    ] .
+
+dpcat:Shape_EnsureDataSource
+    a sh:NodeShape ;
+    sh:name "Ensure every processing has a denoted DataSource "@en ;
+    sh:description "Ensure the dpv:hasDataSource property is defined and has a value that is an instance of dpv:DataSource"@en ;
+    sh:targetClass dpcat:ROPARecord ;
+    sh:property [
+        sh:path dpv:hasDataSource ;
+        sh:class dpv:DataSource ;
+        sh:minCount 1 ;
+    ] .
+    
+dpcat:Shape_EnsureDataTransferLegalBasis
+    a sh:NodeShape ;
+    sh:name "Ensure every data transfer to a third country has a Data Transfer Legal Basis "@en ;
+    sh:description "Ensure the dpv:hasProcessing property with range dpv:Transfer has an associated dpv:hasLegalBasis of type dpv:DataTransferLegalBasis"@en ;
+    sh:targetClass dpv:Transfer ;
+    sh:sparql [
+     a sh:SPARQLConstraint ;
+     sh:message "Ensuring Data Transfers to Third Countries have their own legal basis"@en ;
+     sh:prefixes dpcat:Prefixes ;
+     sh:select """
+        SELECT $this WHERE {
+            $this a dpv:Transfer .
+            {$this dpv:hasLocation dpv:ThirdCountry} UNION {$this dpv:hasLocation/a dpv:ThirdCountry} .
+            FILTER NOT EXISTS { $this dpv:hasLegalBasis ?legalbasis } .
+        }
+     """ ;
+    ] ;
+    sh:property [
+        sh:path dpv:hasLocation ;
+        sh:class dpv:Location ;
+        sh:minCount 1 ;
+    ] .
+
+dpcat:Shape_JointControllers
+    a sh:NodeShape ;
+    sh:name "Ensure Joint Controllers relationships specifies the Controllers involved"@en ;
+    sh:description "Every Joint Controllers instance must specify at least one (other) Data Controller involved using dpv:hasDataController"@en ;
+    sh:targetClass dpv:JointDataControllers ;
+    sh:property [
+        sh:path dpv:hasDataController ;
+        sh:class dpv:DataController ;
+        sh:minCount 1 ;
+    ] .

@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="utf-8">
+ <title>Data Processing Catalog (DPCat) - Demo</title>
+ <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer></script>
+ <script class="remove">
+        // All config options at https://respec.org/docs/ 
+        var respecConfig = {
+         shortName: "dpcat",
+         title: "Data Processing Catalog (DPCat) - Demo",
+         subtitle: "version 0.2",
+         specStatus: "unofficial",
+         publishDate: "2022-04-02",
+         group: "dpvcg",
+         latestVersion: "https://w3id.org/dpcat/demo/edps-ropa",
+         github: {
+          repoURL: "https://github.com/coolharsh55/DPCat",
+      },
+      subjectPrefix: "[dpcat]",
+      doJsonLd: true,
+      lint: { "no-unused-dfns": false },
+      canonicalUri: "https://w3id.org/dpcat",
+      editors: [
+      {
+          name: "Paul Ryan",
+          company: "Uniphar PLC; and Dublin City University",
+      },
+      {
+          name: "Rob Brennan",
+          company: "Dublin City University",
+          companyURL: "https://tcd.ie/"
+      },
+      {
+          name: "Harshvardhan J. Pandit",
+          url: "https://harshp.com",
+          company: "Trinity College Dublin",
+          companyURL: "https://tcd.ie/"
+      }
+      ],
+      localBiblio: {
+          "DPV": {
+            "href": "https://www.w3id.org/dpv",
+            "title": "Data Privacy Vocabulary (DPV) Specification"
+          },
+          "DPV-GDPR": {
+            "href": "https://www.w3id.org/dpv/dpv-gdpr",
+            "title": "GDPR Extension for Data Privacy Vocabulary (DPV-GDPR)"
+          },
+          "DPV-NACE": {
+            "href": "https://www.w3id.org/dpv/dpv-nace",
+            "title": "NACE Taxonomy serialised in RDFS"
+          },
+          "DPV-PD": {
+            "href": "https://www.w3id.org/dpv/dpv-pd",
+            "title": "Personal Data Categories Extension for Data Privacy Vocabulary (DPV-PD)"
+          },
+          "DPV-LEGAL": {
+            "href": "https://www.w3id.org/dpv/dpv-legal",
+            "title": "Legal Extension providing Jurisdictions, Laws, and Authorities for Data Privacy Vocabulary (DPV-LEGAL)"
+          },
+          "DPV-SKOS": {
+            "href": "https://www.w3id.org/dpv/dpv-skos",
+            "title": "Data Privacy Vocabulary serialised using SKOS+RDFS (DPV-SKOS)"
+          },
+          "DPV-OWL": {
+            "href": "https://www.w3id.org/dpv/dpv-owl",
+            "title": "Data Privacy Vocabulary serialised using OWL2 (DPV-OWL)"
+          },
+          "DPV-Primer": {
+            "href": "https://www.w3id.org/dpv/primer",
+            "title": "Primer for Data Privacy Vocabulary"
+          },
+          "DPVCG": {
+            "href": "https://www.w3.org/community/dpvcg/",
+            "title": "W3C Data Privacy Vocabularies and Controls Community Group (DPVCG)"
+          },
+          "GDPR": {
+            "href": "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+            "title": "General Data Protection Regulation (GDPR)"
+          },
+          "SPECIAL": {
+            "href": "https://www.specialprivacy.eu/",
+            "title": "SPECIAL H2020 Project"
+          },
+          "RDF": {
+            "href": "https://www.w3.org/TR/rdf11-concepts/",
+            "title": "RDF 1.1 Concepts and Abstract Syntax"
+          },
+          "RDFS": {
+            "href": "https://www.w3.org/TR/rdf-schema/",
+            "title": "RDF Schema 1.1"
+          },
+          "OWL" :{
+            "href": "https://www.w3.org/TR/owl2-overview/",
+            "title": "OWL 2 Web Ontology Language Document Overview (Second Edition)"
+          },
+          "SKOS": {
+            "href": "https://www.w3.org/TR/skos-reference/",
+            "title": "SKOS Simple Knowledge Organization System"
+          },
+          "DPV-ADOPTION": {
+            "href": "https://www.w3.org/community/dpvcg/wiki/Adoption_of_DPVCG",
+            "title": "Listing of DPV adoption and applications"
+          },
+          "DPV-GUIDES": {
+            "href": "https://w3id.org/dpv/guides",
+            "title": "Guidelines for Adoption and Use of DPV"
+          },
+          "DPV-GUIDE-OWL2": {
+            "href": "https://w3id.org/dpv/guides/dpv-owl",
+            "title": "Using DPV in OWL2"
+          },
+          "NACE": {
+            "href": "https://ec.europa.eu/eurostat/ramon/nomenclatures/index.cfm?TargetUrl=LST_NOM_DTL&StrNom=NACE_REV2",
+            "title": "Statistical Classification of Economic Activities in the European Community (NACE)"
+          },
+          "NAICS": {
+            "href": "https://www.census.gov/eos/www/naics/",
+            "title": "North American Industry Classification System (NAICS)"
+          },
+          "ISIC": {
+            "href": "https://unstats.un.org/unsd/classifications",
+            "title": "International Standard Industrial Classification of All Economic Activities (ISIC)"
+          },
+          "GICS": {
+            "href": "https://www.msci.com/gics",
+            "title": "Global Industry Classification Standard (GICS)"
+          },
+          "NACE-NAICS": {
+            "href": "https://ec.europa.eu/eurostat/ramon/nomenclatures/index.cfm?TargetUrl=LST_NOM_DTL&StrNom=NACE_REV2",
+            "title": "NACE to NAICS mapping"
+          },
+          "EnterPrivacy": {
+            "href": "https://enterprivacy.com/wp-content/uploads/2018/09/Categories-of-Personal-Information.pdf",
+            "title": "Taxonomy of Personal Data Categories"
+          },
+          "TIME": {
+            "href": "https://www.w3.org/TR/owl-time/",
+            "title": "Time Ontology in OWL"
+          },
+          "ISO-27017": {
+            "href": "https://www.iso.org/standard/43757.html",
+            "title": "ISO/IEC 27017:2015 Information technology — Security techniques — Code of practice for information security controls based on ISO/IEC 27002 for cloud services"
+          },
+          "DCAT": {
+            "href": "https://www.w3.org/TR/vocab-dcat-2/",
+            "title": "Data Catalog Vocabulary (DCAT) - Version 2"
+          },
+          "DCAT-AP": {
+            "href": "https://op.europa.eu/en/web/eu-vocabularies/dcat-ap",
+            "title": "DCAT Application profile for data portals in Europe (DCAT-AP)"
+          },
+          "EDPS-ROPA": {
+            "href": "https://edps.europa.eu/about/data-protection-within-edps/records-register_en",
+            "title": "Records Register - European Data Protection Supervisor"
+          }
+        }
+  };
+ </script>
+ <style type="text/css">
+    table {
+       text-align: justify;
+       border-collapse: collapse;
+       border: 1px solid black;
+       margin: auto;
+       display: block;
+       /*overflow: auto;*/
+       table-layout: auto;
+       margin-top: 2px;
+       margin-bottom: 2px;
+       width: 100%;
+    }
+    th {
+       font-weight: bold;
+    }
+    td,th {
+       border: 1px solid black;
+    }
+    .set-x {
+        color: red;
+        background-color: rgba(255, 0, 0, 0.1);
+    }
+    .set-y {
+        color: green;
+        background-color: rgba(0, 255, 0, 0.2);
+    }
+    table.definition {
+        border: none;
+    }
+    .definition td,th {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+ </style>
+</head>
+<body>
+   <section id="abstract">
+     <p>DPCat is a Specification for an interoperable and machine-readable data processing catalogue based on [[[GDPR]]] Requirements and EU DPA guidelines. It extends [[[DCAT]]] and [[[DCAT-AP]]] standards and reuses [[[DPV]]] to enable data governance of ROPA and related information across a wide variety of use-cases.</p>
+     <p>To demonstrate how DPCat can be useful when applied, we utilised the [[[EDPS-ROPA]]] by analysing its contents and representing them in RDF using DPCat. We then performed information validation, querying, and exporting over it. This page summarises the approach and the results. The code and resources are available at <a href="https://github.com/coolharsh55/DPCat">https://github.com/coolharsh55/DPCat</a>.</p>
+     <p><b>Links:</b></p>
+     <ul>
+        <li><a href="https://w3id.org/dpcat">DPCat Specification</a> - the formal specification of DPCat concepts and requirements on their use</li>
+        <li><a href="https://w3id.org/dpcat/csm-ropa">A Common Semantic Model for ROPA (CSM-ROPA)</a> - the semantic model of ROPA related information generated from an analysis and consolidation of GDPR requirements and 31 EU DPA guidelines and templates</li>
+        <li><a href="https://w3id.org/dpcat/demo">DPCat demo application and data</a> - an application demonstrating usefulness of DPCat over ROPA documents published by the EDPS</li>
+        <li><a href="https://doi.org/10.5281/zenodo.6448787">Draft article reporting this work</a></li>
+        <li><a href="https://harshp.com/research/publications/047-data-processing-activities-catalog">Earlier DPCat research published at SEMANTiCS 2021</a></li>
+        <li><a href="https://w3id.org/dpcat/SEMANTiCS2021-DPCatalogue">DPCat demo presented at SEMANTiCS 2021</a></li>
+    </ul>
+</section>
+
+<section id="example">
+  <h3>Application to EDPS ROPA</h3>
+  <p>An example of how DPCat could be used is presented by applying it to [[[EDPS-ROPA]]]. See more at <a href="https://w3id.org/dpcat/demo/edps-ropa">https://w3id.org/dpcat/demo/edps-ropa</a>. The below description summarises the process, and provides a snippet of how DPCat ROPA records and catalogs are represented.</p>
+  <p>EDPS is the DPA responsible for overseeing compliance by EU institutions, which consists of many employees across the various EU bodies and their associated personal data processing activities. The EDPS has published detailed ROPA documents based on GDPR Art.30 requirements that provide transparency and accountability. As of March 2022, the EDPS has made available 58 ROPA document collections - with each consisting of one more PDF (format) document providing information in English regarding the processing operations. Collections are structured based on ’topics’ - which can be a department (e.g. Administrative and Human Resources, or IT), processes (e.g. Communication, or Public Events), or specific measures (e.g. Access to documents, or Physical Security).</p>
+  <p>We analysed EDPS ROPA documents and selected four (ids: <em>01, 05, 13</em>, <em>55</em>) that covered the U1-U4 use-cases for departments, processors, joint controllers, and data transfers. We did not include the other documents despite their relevance due to the large labour and analysis efforts required, and because the selected documents sufficed in demonstrating DPCat’s application. The documents were PDFs, intended for human comprehension, and lacked consistent semantics - e.g. <em>purpose</em> field also contained <em>legal basis</em>.</p>
+  <p>We interpreted these documents and their structure as follows: each document (i.e. PDF) represented a single <em>ROPA</em> instance, and the information contained within them structured using <em>ROPARecord</em> instances. We utilised the criteria that each <em>ROPARecord</em> would adhere to a single ’contextual entry’ based on qualitative criteria regarding the complexity of information and separation of concerns. For example, document X specified two processors, which we interpreted as separate <em>ROPARecord</em> instances for each processor to indicate the separation of concern in the controller’s communication and data governance. The entire collection of documents and RDF graphs were then expressed as part of a single <em>ROPACatalog</em> instance reflecting the published set of records on EDPS’ website.</p>
+  <p>The manually created RDF graphs were enhanced using the <a href="https://jena.apache.orgl">Apache Jena</a> RDFS reasoner to create a ‘complete graph’ for simplifying querying and validation. The limited RDFS reasoning was sufficient here to obtain the expansion of subclasses and subproperties within the graph rather than generating inferences using an OWL reasoner. For storing the information and offering a querying interface, we utilised <a href="https://www.ontotext.com/products/graphdb/">GraphDB</a> Free Edition triple store, as it is a freely available triple-store compliant with relevant standards (e.g. SPARQL) and has several features for convenience, e.g. friendly interface, integrated reasoners, SHACL validation.</p>
+  <aside class="example">
+    <p>The following snippet is a DPCat representation of EDPS ROPA document with identifier 01a.</p>
+    <pre><code>@prefix edps: &lt;https://w3id.org/dpcat/examples/EDPS/vocab#&gt; .
+@prefix : &lt;https://w3id.org/dpcat/examples/EDPS/01a#&gt; .
+
+: a dpcat:ROPA ;
+    dct:title &quot;Selection of staff for the EDPS Secretariat and the EDPB Secretariat&quot;@en ;
+    dct:description &quot;Selection of staff for the EDPS Secretariat and the EDPB Secretariat&quot;@en ;
+    dct:created &quot;2021-11-03&quot;^^xsd:date ;
+    dct:identifier &quot;01a&quot;^^xsd:string ;
+    dct:publisher edps:HRBA ;
+    dcat:contactPoint edps:HRBA ;
+    dcat:dataset :01a-1, :01a-2, :01a-3 .
+
+:01a-1 a dpcat:ROPARecord ;
+    dct:title &quot;Selection of staff up to Head of Unit&quot;@en ;
+    dct:description &quot;Selection of staff up to Head of Unit&quot;@en ;
+    dct:created &quot;2021-11-03&quot;^^xsd:date ;
+    dct:publisher edps:HRBA ;
+    dcat:contactPoint edps:HRBA ;
+
+    dpv:hasDataController edps:EDPS ;
+    dpv:hasResponsibleEntity edps:HRBA ;
+
+    dpv:hasPurpose edps:StaffSelection ;
+    dpv:hasLegalBasis edps:StaffRegulation ;
+    dpv:hasDataSubject edps:JobApplicants ;
+    dpv:hasRight edps:DataSubjectRights ;
+
+    dpv:hasRecipient edps:SelectionCommittee1 ;
+
+    dpv:hasTechnicalOrganisationalMeasure edps:RestrictedMailboxForSelectionCommittee, edps:LockedPaperCabinet, edps:DataProtectionNoticeStaffSelection ;
+
+    dpv:hasPersonalData edps:DataOfStaffCandidates ;
+    dpv:hasStorage [
+        a dpv:StorageCondition ;
+        skos:editorialNote &quot;&quot;&quot;The time-limits for storing the data of staff candidates are as follows: - 2 years after the closure of the selection process for applicants not recruited, or, in case of appeals or judicial proceedings, 5 years after the final administrative or judicial decision was rendered, - 10 years from the end of the period worked by a recruited applicant. - 6 months after submission for spontaneous applications health data, if communicated by the candidate (as mentioned above) are stored until the end of the selection process, then they are deleted.&quot;&quot;&quot;@en ;
+        dpv:hasDuration [
+            a dpv:StorageDuration, time:Duration ;
+            dpv:hasPersonalData edps:DataOfStaffCandidates ;
+            dpv:isAfter &quot;Closure of selection process for applicants not recruited&quot;@en ;
+            time:numericDuration &quot;2&quot;^^xsd:decimal ;
+            time:unitType :unitYear ;
+            ] ;
+        dpv:hasDuration [
+            a dpv:StorageDuration, time:Duration ;
+            dpv:hasPersonalData edps:DataOfStaffCandidates ;
+            dpv:isAfter &quot;In case of appeals or judicial proceedings, after the final administrative or judicial decision was rendered&quot;@en ;
+            time:numericDuration &quot;5&quot;^^xsd:decimal ;
+            time:unitType :unitYear ;
+            ] ;
+        dpv:hasDuration [
+            a dpv:StorageDuration, time:Duration ;
+            dpv:hasPersonalData edps:DataOfStaffCandidates ;
+            dpv:isAfter &quot;Submission for spontaneous applications health data&quot;@en ;
+            time:numericDuration &quot;6&quot;^^xsd:decimal ;
+            time:unitType :unitMonth ;
+            ] ;
+        dpv:hasDuration [
+            a dpv:StorageDuration, time:Duration ;
+            dpv:hasPersonalData edps:JobApplicantSpecialHealthNeeds, edps:JobApplicantDisability ;
+            dpv:isAfter &quot;Closure of selection process for applicants not recruited&quot;@en ;
+            time:numericDuration &quot;2&quot;^^xsd:decimal ;
+            time:unitType :unitYear ;
+            ] ;
+        ] .</code></pre></aside>
+  <p>To simulate typical tasks performed by a DPO or a DPA, we utilised SPARQL queries for two use-cases: (i) retrieval of information required by GDPR Art. 30; and (ii) overview of practices within an organisation in terms of various organisational units, purposes, legal bases, recipients, data transfers, etc. Here, query (i) relates to common compliance documentation procedures, and query (ii) shows the potential for DPCat to help create internal reports or dashboards based on ROPA information, e.g. for a DPO.</p>
+  <aside class="example">
+    <p>The first query, shown below with output snippet, retrieves ROPA information as per GDPR’s Art. 30.</p>
+    <pre id="lst:demo-sparql-art30" data-caption="Obtaining a GDPR Art.30 based overview using SPARQL" label="lst:demo-sparql-art30"><code>SELECT DISTINCT ?Entry ?title ?purpose ?datasubject ?personaldata 
+        ?recipient ?legalbasis ?transfer_location
+    WHERE {
+        ?Entry a dpcat:ROPARecord .
+        ?Entry dct:title ?title .
+        ?Entry dpv:hasPurpose/skos:prefLabel ?purpose .
+        ?Entry dpv:hasDataSubject/skos:prefLabel ?datasubject .
+        ?Entry dpv:hasPersonalData/skos:prefLabel ?personaldata .
+        OPTIONAL { ?Entry dpv:hasRecipient/dpv:hasName ?recipient } .
+        OPTIONAL { ?Entry dpv:hasLegalBasis/skos:prefLabel ?legalbasis . }
+        OPTIONAL { ?Entry dpv:hasProcessing ?processing . 
+            ?processing a dpv:Transfer . 
+            ?processing dpv:hasLocation/skos:prefLabel ?transfer_location } } </code></pre>
+    <div id="table:query-dpcat-art30">
+    <table>
+    <caption>Query results (summarised) for GDPR Art.30 information using DPCat</caption>
+    <thead>
+    <tr class="header">
+    <th><strong>Title</strong></th>
+    <th><strong>Purpose</strong></th>
+    <th><strong>Data Subject</strong></th>
+    <th><strong>Personal Data</strong></th>
+    <th><strong>Recipient</strong></th>
+    <th><strong>Legal Basis</strong></th>
+    <th><strong>Transfers</strong></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="odd">
+    <td>Selection of staff</td>
+    <td>Staff Selection</td>
+    <td>Job Applicants</td>
+    <td>Applicant CV</td>
+    <td>Selection Panel</td>
+    <td>Staff Reg. 2020</td>
+    <td> </td>
+    </tr>
+    <tr class="even">
+    <td>Financial Transactions</td>
+    <td>Payment</td>
+    <td>Staff members</td>
+    <td>Physical Address</td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    </tr>
+    <tr class="odd">
+    <td>Financial Transactions</td>
+    <td>Payment</td>
+    <td>Staff members</td>
+    <td>Credit Worthiness</td>
+    <td>AirPlus</td>
+    <td> </td>
+    <td>Third Country</td>
+    </tr>
+    <tr class="even">
+    <td>Financial Transactions</td>
+    <td>Budgetary commitments</td>
+    <td>Staff members</td>
+    <td>Job Applicant CV</td>
+    <td>ERCEA’s Speedwell operators</td>
+    <td> </td>
+    <td> </td>
+    </tr>
+    <tr class="odd">
+    <td>Financial Transactions</td>
+    <td>Budgetary commitments</td>
+    <td>Staff members</td>
+    <td>Bank Account</td>
+    <td>Local Profile Manager</td>
+    <td> </td>
+    <td> </td>
+    </tr>
+    <tr class="even">
+    <td>Financial Transactions</td>
+    <td>Payments</td>
+    <td>Staff members</td>
+    <td>Bank Account</td>
+    <td>The EDPS Financial team</td>
+    <td> </td>
+    <td> </td>
+    </tr>
+    </tbody>
+    </table>
+    </div></aside>
+  <aside class="example">
+    <p>The second query, shown below with an output snippet, provides an overview of the organisation’s processing activities and relationships with external entities by retrieving relevant information from <em>ROPARecord</em> instances.</p>
+    <pre id="lst:demo-sparql-units" data-caption="SPARQL Query for overview based on GDPR Art.30 using DPCat" label="lst:demo-sparql-units"><code>SELECT DISTINCT ?org ?title ?purpose ?processor ?jointcontroller
+    WHERE {
+        ?record a dpcat:ROPARecord ; dct:title ?title .
+        ?record dct:publisher/dpv:hasName ?org .
+        ?record dpv:hasPurpose/skos:prefLabel ?purpose .
+        OPTIONAL { ?record dpv:hasDataProcessor/dpv:hasName ?processor }
+        OPTIONAL { 
+            ?record dpv:hasJointDataControllers/dpv:hasName ?jointcontroller } } </code></pre>
+    <div id="table:query-dpcat-units">
+    <table>
+    <caption>Query results (summarised) for GDPR Art.30 information using DPCat</caption>
+    <thead>
+    <tr class="header">
+    <th><strong>Department</strong></th>
+    <th><strong>Process</strong></th>
+    <th><strong>Purpose</strong></th>
+    <th><strong>Data Processor</strong></th>
+    <th><strong>Joint Controller</strong></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="odd">
+    <td>Human Resources, Budget, Administration (HRBA) Unit</td>
+    <td>Staff Selection</td>
+    <td>Select staff for the EDPS and EDPB Secretariat</td>
+    <td> </td>
+    <td> </td>
+    </tr>
+    <tr class="even">
+    <td>Human Resources, Budget, Administration (HRBA) Unit</td>
+    <td>Selection and management of interim staff</td>
+    <td>Monitoring of 7-year rule (EDPS Decision 13.12.2018)</td>
+    <td> </td>
+    <td> </td>
+    </tr>
+    <tr class="odd">
+    <td>Human Resources, Budget, Administration (HRBA) Unit</td>
+    <td>Communicate staff selection</td>
+    <td>Select staff for the EDPS and EDPB Secretariat</td>
+    <td>Randstad Belgium SA/NV</td>
+    <td> </td>
+    </tr>
+    <tr class="even">
+    <td>Human Resources, Budget, Administration (HRBA) Unit</td>
+    <td>Communicate staff selection</td>
+    <td>Select staff for the EDPS and EDPB Secretariat</td>
+    <td>Daoust SA/NV</td>
+    <td> </td>
+    </tr>
+    <tr class="odd">
+    <td>Human Resources, Budget, Administration (HRBA) Unit</td>
+    <td>Payment of Invoices for services</td>
+    <td>Payment of invoices for services</td>
+    <td> </td>
+    <td> </td>
+    </tr>
+    <tr class="even">
+    <td>Human Resources, Budget, Administration (HRBA) Unit</td>
+    <td>Communicate staff selection</td>
+    <td>Communicate staff selection</td>
+    <td>Randstad Belgium SA/NV</td>
+    <td> </td>
+    </tr>
+    <tr class="odd">
+    <td>Human Resources, Budget, Administration (HRBA) Unit</td>
+    <td>Communicate staff selection</td>
+    <td>Communicate staff selection</td>
+    <td>Daoust SA/NV</td>
+    <td> </td>
+    </tr>
+    <tr class="even">
+    <td>Human Resources, Budget, Administration (HRBA) Unit</td>
+    <td>Administration of Access Requests</td>
+    <td>Administration of Access Requests</td>
+    <td> </td>
+    <td> </td>
+    </tr>
+    <tr class="odd">
+    <td>Human Resources, Budget, Administration (HRBA) Unit</td>
+    <td>Financial Transactions</td>
+    <td>Financial Transactions</td>
+    <td>EC - DG-BUDG</td>
+    <td>EC - DG-BUDG</td>
+    </tr>
+    </tbody>
+    </table>
+    </div>
+  </aside>
+
+</section>
+
+<section id="code">
+     <h2>Code Walkthrough</h2>
+     <p>This section provides instructions for the execution and inspection of the demo code in the <a href="https://github.com/coolharsh55/DPCat/tree/master/demo">GitHub repo</a>.</p>
+     <ol>
+          <li>EDPS folder contains the ROPA PDFs manually downloaded from [[[EDPS-ROPA]]].</li>
+          <li>EDPS folder also contains the RDF serilisations using DPCat of these, denoted using the same identifiers as the ROPA documents, e.g. `U05.ttl`.</li>
+          <li>EDPS folder contains `vocab.ttl` representing the EDPS' internal RDF vocabulary that it uses in the ROPA serialisations.</li>
+     </ol>
+     <p>The demo, represented by the `run.sh` script, works as follows:</p>
+     <ol>
+          <li>First, all the vocabularies utilised are loaded. This includes [[DCAT]], [[DCAT-AP]], [[DPV]], and DPCat.
+<pre><code>echo "collect all vocab files into a single file"
+riot ../dpcat.ttl vocab/* > vocab.ttl</code></pre></li>
+          <li>Then, RDFS inferencing is performed by utilising a reasoner that applies the collected vocabularies over a data graph.
+<pre><code>echo "run RDFS inference over data using vocab"
+riot --rdfs vocab.ttl EDPS/*.ttl > data.ttl</code></pre></li>
+          <li>Next, the combined data graph, consisting of all the vocabularies as background knowledge, and the data graph, is constructed to simulate a unified knowledge graph for querying and validation.
+<pre><code>riot vocab.ttl data.ttl > data_combined.ttl</code></pre></li>
+          <li>Next, validations are performed in the order of vocabulary inheritence, i.e. as: DCAT, then DCAT-AP, then DPV, then DPCat ...
+<pre><code>echo "validate data file using DCAT-AP shacl shapes"
+shaclvalidate.sh 
+     -shapesfile ../shapes/dcat-ap_2.0.1_shacl_shapes.ttl 
+     -datafile data_combined.ttl
+echo "validate data file using DPCat shacl shapes"
+shaclvalidate.sh 
+     -shapesfile ../shapes/dpcat_shapes_mandatory.ttl 
+     -datafile data_combined.ttl</code></pre></li>
+          <li>Finally, data is exported by using SPARQL queries to generate CSV.
+<pre><code>arq --data=./data_combined.ttl 
+     --query=./EDPS/GDPR_A30.sparql 
+     --results=CSV > EDPS/GDPR_A30.csv
+arq --data=./data_combined.ttl 
+     --query=./EDPS/GDPR_A30_org_overview.sparql 
+     --results=CSV > EDPS/GDPR_A30_org_overview.csv</code></pre></li>
+     </ol>
+     <p>Note, in the above, we utilised the <a href="https://jena.apache.org/">Apache Jena</a> tools, which includes the `riot` reasoner for combining RDF graphs and RDFS inferencing, and `arq` query engine for executing SPARQL queries and storing output as CSV. We utilised the <a href="https://github.com/TopQuadrant/shacl">TopQuadrant SHACL</a> tool for performing SHACL validations. These tools and utilities can be substituted with any others provided they are functionally equivalent and standards-conformant.</p>
+     <p>For a more convenient tool, it is possible to create a python script that uses <a href="https://rdflib.readthedocs.io/">RDFLib</a> to interact with RDF graphs and perform SPARQL query executions, <a href="https://github.com/RDFLib/pySHACL">pySHACL</a> for validation using SHACL constraints, and exports required data using <a href="https://openpyxl.readthedocs.io/en/stable/">OpenPyXL</a> to create MS-Excel spreadsheets intended for human-comprehension.</p>
+     <div class="note">
+          <p>The SHACL validations will produce errors - this is intentional, and left unresolved to demonstrate the challenges of converting an unstructured human-intended text from the EDPS ROPA to a formally structured representation as expected by DPCat.</p>
+     </div>
+</section>
+
+<!-- ------------------------------------------------------- -->
+<section class="appendix">
+ <h2>Acknowledgements</h2>
+ <p>Funding: This research has received funding from Uniphar PLC, and the ADAPT Centre for Digital Content Technology which is funded under the SFI Research Centres Programme (Grant 13/RC/2106_P2) and co-funded by the European Regional Development Fund. Harshvardhan J. Pandit has received funding under the Irish Research Council’s Government of Ireland Postdoctoral Fellowship Grant#GOIPD/2020/790.</p>
+</section>
+</body>
+</html>

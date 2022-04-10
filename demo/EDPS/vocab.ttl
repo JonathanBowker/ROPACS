@@ -1,0 +1,136 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dpv: <https://w3id.org/dpv/dpv-skos#> .
+@prefix dpv-pd: <https://w3id.org/dpv/dpv-pd#> .
+@prefix dpv-gdpr: <https://w3id.org/dpv/dpv-skos/dpv-gdpr#> .
+@prefix dpcat: <https://w3id.org/dpcat#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix time: <https://www.w3.org/TR/owl-time/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix foaf: <http://xmlns.com/foaf/spec/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+
+@prefix edps: <https://w3id.org/dpcat/examples/EDPS/vocab#> .
+
+edps:EDPS a foaf:Agent, dpv:LegalEntity ;
+    dpv:hasName "European Data Protection Supervisor (EDPS)"@en ;
+    dpv:hasContact "Postal address: Rue Wiertz 60, B-1047 Brussels" ;
+    dpv:hasContact "Office address: Rue Montoyer 30, B-1000 Brussels" ;
+    dpv:hasContact "Telephone: +32 2 283 19 00" ;
+    dpv:hasContact "Email: edps@edps.europa.eu" ;
+    dpv:hasContact "Website: https://edps.europa.eu" .
+
+edps:HRBA a foaf:Agent, dpv:OrganisationalUnit ;
+    dpv:hasName "Human Resources, Budget, Administration (HRBA) Unit"@en ;
+    dpv:hasContact "Email: edps-selections@edps.europa.eu" ;
+    dpv:hasContact "https://edps.europa.eu/form/edpsweb-contact-form_en" ;
+    skos:broaderTransitive edps:EDPS .
+edps:SelectionCommittee a foaf:Agent, dpv:OrganisationalUnit ;
+    dpv:hasName "Selection Committee"@en ;
+    skos:broaderTransitive edps:HRBA .
+
+edps:DPO a foaf:Agent, dpv:DataProtectionOfficer ;
+    dpv:hasName "Data Protection Officer (DPO)"@en ;
+    dpv:hasContact "dpo@edps.europa.eu" ;
+    dct:isPartOf edps:EDPS .
+
+
+# Purposes
+edps:StaffSelection a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Select staff for the EDPS Secretariat and the EDPB Secretariat"@en ;
+    skos:editorialNote "For general info on selection and recruitment at the EDPS: https://edps.europa.eu/careers_en"@en .
+
+
+# Legal Basis
+edps:StaffRegulation a dpv:LegalBasis ;
+    skos:broaderTransitive dpv:LegalObligation ;
+    skos:prefLabel "The Staff Regulations (and particularly Art. 27-34) and the Conditions of Employment of Other Servants of the EU -the Decision of the EDPS of 4 November 2020 adopting general implementing provisions relating to the engagement and the use of contract staff."@en .
+
+
+# Data Subjects
+edps:JobApplicants a skos:DataSubject ;
+    skos:broaderTransitive dpv:DataSubject .
+
+
+# Personal Data
+edps:DataOfStaffCandidates a dpv:PersonalData ;
+    skos:prefLabel "Data of Staff Candidates"@en ;
+    skos:narrowerTransitive edps:JobApplicantCV .
+edps:JobApplicantCV a dpv:PersonalData ;
+    skos:narrowerTransitive edps:JobApplicantName,
+                            edps:JobApplicantGender,
+                            edps:JobApplicantBirthDate,
+                            edps:JobApplicantBirthPlace,
+                            edps:JobApplicantContact,
+                            edps:JobApplicantProfessionalExperience,
+                            edps:JobApplicantProfessionalExperience,
+                            edps:JobApplicantEducationalQualifications ;
+    dpv:hasDataSource edps:JobApplicants ;
+    skos:prefLabel "Job Applicant CV"@en .
+edps:JobApplicantName a dpv:PersonalData ;
+    skos:broaderTransitive dpv-pd:Name ;
+    dpv:hasDataSource edps:JobApplicantCV ;
+    skos:prefLabel "Name"@en .
+edps:JobApplicantGender a dpv:PersonalData ;
+    skos:broaderTransitive dpv-pd:Gender ;
+    dpv:hasDataSource edps:JobApplicantCV ;
+    skos:prefLabel "Gender"@en .
+edps:JobApplicantBirthDate a dpv:PersonalData ;
+    skos:broaderTransitive dpv-pd:BirthDate ;
+    dpv:hasDataSource edps:JobApplicantCV ;
+    skos:prefLabel "BirthDate"@en .
+edps:JobApplicantBirthPlace a dpv:PersonalData ;
+    skos:broaderTransitive dpv-pd:BirthPlace ;
+    dpv:hasDataSource edps:JobApplicantCV ;
+    skos:prefLabel "BirthPlace"@en .
+edps:JobApplicantContact a dpv:PersonalData ;
+    skos:broaderTransitive dpv-pd:Contact ;
+    dpv:hasDataSource edps:JobApplicantCV ;
+    skos:prefLabel "Contact"@en .
+edps:JobApplicantProfessionalExperience a dpv:PersonalData ;
+    skos:broaderTransitive dpv-pd:Job ;
+    dpv:hasDataSource edps:JobApplicantCV ;
+    skos:prefLabel "Professional Experience"@en .
+edps:JobApplicantProfessionalExperience a dpv:PersonalData ;
+    skos:broaderTransitive dpv-pd:Job ;
+    dpv:hasDataSource edps:JobApplicantCV ;
+    skos:prefLabel "Professional Experience"@en .
+edps:JobApplicantEducationalQualifications a dpv:PersonalData ;
+    skos:broaderTransitive dpv-pd:EducationalQualification ;
+    dpv:hasDataSource edps:JobApplicantCV ;
+    skos:prefLabel "Educational Qualifications"@en .
+edps:JobApplicantDisability a dpv:PersonalData ;
+    skos:broaderTransitive dpv-pd:HealthData ;
+    dpv:hasDataSource edps:JobApplicants ;
+    dpv:hasContext dpv:Optional ;
+    skos:prefLabel "Disability"@en .
+edps:JobApplicantSpecialHealthNeeds a dpv:PersonalData ;
+    skos:broaderTransitive dpv-pd:HealthData ;
+    dpv:hasDataSource edps:JobApplicants ;
+    dpv:hasContext dpv:Optional ;
+    skos:prefLabel "Special Health Needs"@en .
+
+# Tech/Org Measures
+
+edps:RestrictedMailboxForSelectionCommittee a dpv:TechnicalMeasure ;
+    skos:broaderTransitive dpv:AccessControlMethod ;
+    skos:prefLabel "Restricted Mailbox for Selection Committee"@en ;
+    skos:editorialNote """Electronic file: applications from candidate are kept in the functional mailbox, which has restricted access to the HR colleagues in charge of selection and the Head of the HRBA unit."""@en .
+
+edps:LockedPaperCabinet a dpv:TechnicalMeasure, dpv:OrganisationalMeasure ;
+    skos:broaderTransitive dpv:AccessControlMethod, dpv:AuthorisationProcedure ;
+    skos:prefLabel "Locked Paper Cabinet with need-to-know access"@en ;
+    skos:editorialNote """Paper file : are stored in a cupboard in a locked office to which only a restricted of HR colleagues have access on a need-to-know basis."""@en .
+
+edps:DataProtectionNoticeStaffSelection a dpv:OrganisationalMeasure ;
+    skos:broaderTransitive dpv:PrivacyNotice ;
+    dpv:hasLocation <https://edps.europa.eu/data-protection/our-work/publications/data-protection-notices/01-edps-data-protection-notice-staff_en> ;
+    skos:prefLabel "Data Protection Notice for Staff Selection"@en .
+
+# Rights
+edps:DataSubjectRights a dpv:DataSubjectRight ;
+    skos:broaderTransitive dpv-gdpr:A15, dpv-gdpr:A16, dpv-gdpr:A20, dpv-gdpr:A21 ;
+    skos:prefLabel "Information on exercising rights"@en ;
+    skos:editorialNote """For more information, including how to exercise your rights to access, rectification, object and data portability (where applicable), see the data protection notice: https://edps.europa.eu/data-protection/our-work/publications/data-protection-notices/01-edps-data-protection-notice-staff_en"""@en ;
+    dpv:hasLocation <https://edps.europa.eu/data-protection/our-work/publications/data-protection-notices/01-edps-data-protection-notice-staff_en> .

@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="utf-8">
+ <title>A Common Semantic Model for ROPA (CSM-ROPA)</title>
+ <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer></script>
+ <script class="remove">
+        // All config options at https://respec.org/docs/ 
+        var respecConfig = {
+         shortName: "CSM-ROPA",
+         title: "Common Semantic Model for ROPA",
+         subtitle: "version 0.2",
+         specStatus: "unofficial",
+         publishDate: "2022-04-02",
+         group: "dpvcg",
+         latestVersion: "https://w3id.org/dpcat/csm-ropa",
+         github: {
+          repoURL: "https://github.com/coolharsh55/DPCat",
+      },
+      subjectPrefix: "[dpcat]",
+      doJsonLd: true,
+      lint: { "no-unused-dfns": false },
+      canonicalUri: "https://w3id.org/dpcat",
+      editors: [
+      {
+          name: "Paul Ryan",
+          company: "Uniphar PLC; and Dublin City University",
+      },
+      {
+          name: "Rob Brennan",
+          company: "Dublin City University",
+          companyURL: "https://tcd.ie/"
+      },
+      {
+          name: "Harshvardhan J. Pandit",
+          url: "https://harshp.com",
+          company: "Trinity College Dublin",
+          companyURL: "https://tcd.ie/"
+      }
+      ],
+      localBiblio: {
+          "DPV": {
+            "href": "https://www.w3id.org/dpv",
+            "title": "Data Privacy Vocabulary (DPV) Specification"
+          },
+          "DPV-GDPR": {
+            "href": "https://www.w3id.org/dpv/dpv-gdpr",
+            "title": "GDPR Extension for Data Privacy Vocabulary (DPV-GDPR)"
+          },
+          "DPV-NACE": {
+            "href": "https://www.w3id.org/dpv/dpv-nace",
+            "title": "NACE Taxonomy serialised in RDFS"
+          },
+          "DPV-PD": {
+            "href": "https://www.w3id.org/dpv/dpv-pd",
+            "title": "Personal Data Categories Extension for Data Privacy Vocabulary (DPV-PD)"
+          },
+          "DPV-LEGAL": {
+            "href": "https://www.w3id.org/dpv/dpv-legal",
+            "title": "Legal Extension providing Jurisdictions, Laws, and Authorities for Data Privacy Vocabulary (DPV-LEGAL)"
+          },
+          "DPV-SKOS": {
+            "href": "https://www.w3id.org/dpv/dpv-skos",
+            "title": "Data Privacy Vocabulary serialised using SKOS+RDFS (DPV-SKOS)"
+          },
+          "DPV-OWL": {
+            "href": "https://www.w3id.org/dpv/dpv-owl",
+            "title": "Data Privacy Vocabulary serialised using OWL2 (DPV-OWL)"
+          },
+          "DPV-Primer": {
+            "href": "https://www.w3id.org/dpv/primer",
+            "title": "Primer for Data Privacy Vocabulary"
+          },
+          "DPVCG": {
+            "href": "https://www.w3.org/community/dpvcg/",
+            "title": "W3C Data Privacy Vocabularies and Controls Community Group (DPVCG)"
+          },
+          "GDPR": {
+            "href": "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+            "title": "General Data Protection Regulation (GDPR)"
+          },
+          "SPECIAL": {
+            "href": "https://www.specialprivacy.eu/",
+            "title": "SPECIAL H2020 Project"
+          },
+          "RDF": {
+            "href": "https://www.w3.org/TR/rdf11-concepts/",
+            "title": "RDF 1.1 Concepts and Abstract Syntax"
+          },
+          "RDFS": {
+            "href": "https://www.w3.org/TR/rdf-schema/",
+            "title": "RDF Schema 1.1"
+          },
+          "OWL" :{
+            "href": "https://www.w3.org/TR/owl2-overview/",
+            "title": "OWL 2 Web Ontology Language Document Overview (Second Edition)"
+          },
+          "SKOS": {
+            "href": "https://www.w3.org/TR/skos-reference/",
+            "title": "SKOS Simple Knowledge Organization System"
+          },
+          "DPV-ADOPTION": {
+            "href": "https://www.w3.org/community/dpvcg/wiki/Adoption_of_DPVCG",
+            "title": "Listing of DPV adoption and applications"
+          },
+          "DPV-GUIDES": {
+            "href": "https://w3id.org/dpv/guides",
+            "title": "Guidelines for Adoption and Use of DPV"
+          },
+          "DPV-GUIDE-OWL2": {
+            "href": "https://w3id.org/dpv/guides/dpv-owl",
+            "title": "Using DPV in OWL2"
+          },
+          "NACE": {
+            "href": "https://ec.europa.eu/eurostat/ramon/nomenclatures/index.cfm?TargetUrl=LST_NOM_DTL&StrNom=NACE_REV2",
+            "title": "Statistical Classification of Economic Activities in the European Community (NACE)"
+          },
+          "NAICS": {
+            "href": "https://www.census.gov/eos/www/naics/",
+            "title": "North American Industry Classification System (NAICS)"
+          },
+          "ISIC": {
+            "href": "https://unstats.un.org/unsd/classifications",
+            "title": "International Standard Industrial Classification of All Economic Activities (ISIC)"
+          },
+          "GICS": {
+            "href": "https://www.msci.com/gics",
+            "title": "Global Industry Classification Standard (GICS)"
+          },
+          "NACE-NAICS": {
+            "href": "https://ec.europa.eu/eurostat/ramon/nomenclatures/index.cfm?TargetUrl=LST_NOM_DTL&StrNom=NACE_REV2",
+            "title": "NACE to NAICS mapping"
+          },
+          "EnterPrivacy": {
+            "href": "https://enterprivacy.com/wp-content/uploads/2018/09/Categories-of-Personal-Information.pdf",
+            "title": "Taxonomy of Personal Data Categories"
+          },
+          "TIME": {
+            "href": "https://www.w3.org/TR/owl-time/",
+            "title": "Time Ontology in OWL"
+          },
+          "ISO-27017": {
+            "href": "https://www.iso.org/standard/43757.html",
+            "title": "ISO/IEC 27017:2015 Information technology — Security techniques — Code of practice for information security controls based on ISO/IEC 27002 for cloud services"
+          },
+          "DCAT": {
+            "href": "https://www.w3.org/TR/vocab-dcat-2/",
+            "title": "Data Catalog Vocabulary (DCAT) - Version 2"
+          },
+          "DCAT-AP": {
+            "href": "https://op.europa.eu/en/web/eu-vocabularies/dcat-ap",
+            "title": "DCAT Application profile for data portals in Europe (DCAT-AP)"
+          },
+          "EDPS-ROPA": {
+            "href": "https://edps.europa.eu/about/data-protection-within-edps/records-register_en",
+            "title": "Records Register - European Data Protection Supervisor"
+          }
+        }
+  };
+ </script>
+ <style type="text/css">
+    table {
+       text-align: justify;
+       border-collapse: collapse;
+       border: 1px solid black;
+       margin: auto;
+       display: block;
+       /*overflow: auto;*/
+       table-layout: auto;
+       margin-top: 2px;
+       margin-bottom: 2px;
+       width: 100%;
+    }
+    th {
+       font-weight: bold;
+    }
+    td,th {
+       border: 1px solid black;
+    }
+    .set-x {
+        color: red;
+        background-color: rgba(255, 0, 0, 0.1);
+    }
+    .set-y {
+        color: green;
+        background-color: rgba(0, 255, 0, 0.2);
+    }
+    table.definition {
+        border: none;
+    }
+    .definition td,th {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+ </style>
+</head>
+<body>
+     <section id="abstract">
+          <p>Despite a ROPA being based only on requirements established by [[GDPR]] Art. 30, our prior work found variance amongst ROPAs templates provided by 6 DPAs in terms of what information needed to be documented. The additional fields were related to what the DPAs considered best practices to assist organisations in collecting and representing information from their various business processes. We harmonised the requirements from different templates to construct a ’common semantic model’ for ROPA (CSM-ROPA) to enable the representation of all DPA-specified ROPA information. We then represented these information requirements through concepts from the [[[DPV]]] to provide an interoperable machine-readable vocabulary that can act as a mediation mechanism between stakeholders and tools operating on ROPA and associated compliance processes. In this section, we present results from our extended work where we analysed and incorporated ROPA templates from all EU DPAs to create a single (and truly) ‘common semantic model‘ for ROPA and represented it using DPV to provide a consistent and interoperable specification for representing ROPA and its relevant information.</p>
+     </section>
+    <p>The DPV provides a semantic vocabulary consisting of hierarchical taxonomies of concepts relevant to GDPR, such as personal data, purposes, processing operations, technical and organisational measures, legal bases, and entities. We chose DPV as it provides the most comprehensive vocabulary for our purposes, is open and accessible, has ongoing development and mechanisms to submit contributions, and is familiar to the authors.  The process of representing identified concepts using DPV used the methodology: for each term, we identified whether the DPV contained the (semantically) exact concept - which we call an '<i>exact match</i>', failing which we looked for the closest relevant term(s) which could be used as a substitute - called a '<i>partial match</i>', and if any existing term could not represent the term - we considered it a '<i>new term</i>' to be proposed to the DPVCG for inclusion in the DPV.</p>
+    <p>Of the 47 unique concepts found through ROPA templates analysis, we found 44 exact matches, one partial match, and two new terms proposed and added to the DPV. The output of this was the CSM-ROPA consisting of 47 concepts covering information requirements from GDPR and DPA templates for representing a ROPA. CSM-ROPA, through the use of DPV concepts, provides the ability to express a ROPA as a machine-readable and interoperable 'graph' that can be utilised in technological solutions for automating processes associated with ROPA and GDPR compliance. The CSM-ROPA data and analysis are available online at <a href="https://w3id.org/dpcat/csm-ropa">https://w3id.org/dpcat/csm-ropa</a>. The table below provide an overview of this mapping.</p>
+    <div>
+        <table>
+            <thead>
+                <th>GDPR</th>
+                <th>Field</th>
+                <th>DPV</th>
+                <th>Mapping</th>
+                <th>Controllers</th>
+                <th>Processors</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>5</td>
+                    <td>Location of personal data</td>
+                    <td>dpv:StorageLocation</td>
+                    <td>E</td>
+                    <td>R</td>
+                    <td>R</td>
+                </tr>
+                <tr>
+                    <td>5.1</td>
+                    <td>Data Sources</td>
+                    <td>dpv:DataSource</td>
+                    <td>E</td>
+                    <td>R</td>
+                    <td>O</td>
+                </tr>
+                <tr>
+                    <td>6.1</td>
+                    <td>Legal basis</td>
+                    <td>dpv:LegalBasis</td>
+                    <td>E</td>
+                    <td>M</td>
+                    <td>O</td>
+                </tr>
+                <tr>
+                    <td>6.1</td>
+                    <td>Link to record of consent</td>
+                    <td>dpv:Consent</td>
+                    <td>E</td>
+                    <td>R</td>
+                    <td>R</td>
+                </tr>
+                <tr>
+                    <td>9.1</td>
+                    <td>Special Personal Data</td>
+                    <td>dpv:SpecialCategoryPersonalData</td>
+                    <td>E</td>
+                    <td>R</td>
+                    <td>O</td>
+                </tr>
+                <tr>
+                    <td>9.1</td>
+                    <td>Vulnerable Data Subjects</td>
+                    <td>dpv:VulnerableDataSubject</td>
+                    <td>E</td>
+                    <td>R</td>
+                    <td>O</td>
+                </tr>
+                <tr>
+                    <td>22.1</td>
+                    <td>Automated decision-making or profiling</td>
+                    <td>dpv:AutomatedDecisionMaking</td>
+                    <td>E</td>
+                    <td>R</td>
+                    <td>R</td>
+                </tr>
+                <tr>
+                    <td>26.1</td>
+                    <td>Joint Controller agreement</td>
+                    <td>dpv:JointDataControllersAgreement</td>
+                    <td>E</td>
+                    <td>R</td>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <td>28</td>
+                    <td>Data Processors</td>
+                    <td>dpv:DataProcessor</td>
+                    <td>E</td>
+                    <td>R</td>
+                    <td>M</td>
+                </tr>
+                <tr>
+                    <td>28.3</td>
+                    <td>Data Processing Contract</td>
+                    <td>dpv:DataProcessingAgreement</td>
+                    <td>E</td>
+                    <td>R</td>
+                    <td>R</td>
+                </tr>
+                <tr>
+                    <td>28.3</td>
+                    <td>Data processor contract</td>
+                    <td>dpv:ControllerProcessorAgreement</td>
+                    <td>E</td>
+                    <td>R</td>
+                    <td>R</td>
+                </tr>
+                <tr>
+                    <td>30.1</td>
+                    <td>Status of processing</td>
+                    <td>dpv:Status</td>
+                    <td>S</td>
+                    <td>M</td>
+                    <td>M</td>
+                </tr>
+                <tr>
+                    <td>32</td>
+                    <td>Tech/Org measures implementation</td>
+                    <td>dpv:Technology</td>
+                    <td>E</td>
+                    <td>R</td>
+                    <td>R</td>
+                </tr>
+                <tr>
+                    <td>32</td>
+                    <td>Security measures</td>
+                    <td>dpv:TechnicalOrganisationalMeasure</td>
+                    <td>E</td>
+                    <td>R</td>
+                    <td>R</td>
+                </tr>
+                <tr>
+                    <td>32</td>
+                    <td>Technologies used</td>
+                    <td>dpv:Technology</td>
+                    <td>E</td>
+                    <td>R</td>
+                    <td>R</td>
+                </tr>
+                <tr>
+                    <td>33.5</td>
+                    <td>Data Breach</td>
+                    <td>dpcat:DataBreachRecord</td>
+                    <td>S</td>
+                    <td>R</td>
+                    <td>R</td>
+                </tr>
+                <tr>
+                    <td>35</td>
+                    <td>Risk management</td>
+                    <td>dpv:RiskMitigationMeasure</td>
+                    <td>E</td>
+                    <td>R</td>
+                    <td>O</td>
+                </tr>
+                <tr>
+                    <td>35</td>
+                    <td>DPIA Results</td>
+                    <td>dpv:DPIA</td>
+                    <td>E</td>
+                    <td>R</td>
+                    <td>O</td>
+                </tr>
+                <tr>
+                    <td>35</td>
+                    <td>Relevant DPIA</td>
+                    <td>dpv:DPIA</td>
+                    <td>E</td>
+                    <td>R</td>
+                    <td>R</td>
+                </tr>
+                <tr>
+                    <td>36.1</td>
+                    <td>Impact Assessments</td>
+                    <td>dpv:ImpactAssessment</td>
+                    <td>E</td>
+                    <td>R</td>
+                    <td>R</td>
+                </tr>
+                <tr>
+                    <td>36.1</td>
+                    <td>Prior Consulatations</td>
+                    <td>dpv:Consultation</td>
+                    <td>E</td>
+                    <td>R</td>
+                    <td>R</td>
+                </tr>
+                <tr>
+                    <td>37.6</td>
+                    <td>External DPO organisation</td>
+                    <td>dpv:DataProtectionOfficer</td>
+                    <td>E</td>
+                    <td>R</td>
+                    <td>R</td>
+                </tr>
+                <tr>
+                    <td class="set-x">&#10799;</td>
+                    <td>Name of Business Process</td>
+                    <td>dpv:PersonalDataHandling</td>
+                    <td>Pt</td>
+                    <td>O</td>
+                    <td>O</td>
+                </tr>
+                <tr>
+                    <td class="set-x">&#10799;</td>
+                    <td>Owner of Process</td>
+                    <td>dct:contactPoint</td>
+                    <td>E</td>
+                    <td>M</td>
+                    <td>M</td>
+                </tr>
+                <tr>
+                    <td class="set-x">&#10799;</td>
+                    <td>Type of Processing</td>
+                    <td>dpv:Processing</td>
+                    <td>E</td>
+                    <td>O</td>
+                    <td>O</td>
+                </tr>
+                <tr>
+                    <td>13, 14, 15</td>
+                    <td>Data Subject Rights</td>
+                    <td>dpv:DataSubjectRight</td>
+                    <td>E</td>
+                    <td>R</td>
+                    <td>O</td>
+                </tr>
+                <tr>
+                    <td>28, 30.1(c)</td>
+                    <td>Data Categories Transfer to Third Parties</td>
+                    <td>dpv:Transfer, dpv:PersonalData</td>
+                    <td>E</td>
+                    <td>R</td>
+                    <td>R</td>
+                </tr>
+                <tr>
+                    <td>30.1(a)</td>
+                    <td>DPO contact</td>
+                    <td>dpv:hasName, dpv:hasContact</td>
+                    <td>E</td>
+                    <td>MC</td>
+                    <td>MC</td>
+                </tr>
+                <tr>
+                    <td>30.1(a)</td>
+                    <td>Representative</td>
+                    <td>dpv:Representative</td>
+                    <td>E</td>
+                    <td>MC</td>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <td>30.1(a)</td>
+                    <td>Representative contact</td>
+                    <td>dpv:hasName, dpv:hasContact</td>
+                    <td>E</td>
+                    <td>MC</td>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <td>30.1(a)</td>
+                    <td>Name of joint controller</td>
+                    <td>dpv:JointDataController</td>
+                    <td>E</td>
+                    <td>MC</td>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <td>30.1(a)</td>
+                    <td>Contact details of joint controller</td>
+                    <td>dpv:hasName, dpv:hasContact</td>
+                    <td>E</td>
+                    <td>MC</td>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <td>30.1(b)</td>
+                    <td>Purposes of processing</td>
+                    <td>dpv: Purpose</td>
+                    <td>E</td>
+                    <td>M</td>
+                    <td>O</td>
+                </tr>
+                <tr>
+                    <td>30.1(b)</td>
+                    <td>Main/Auxilary Processing</td>
+                    <td>dpv:Importance (Primary, Secondary)</td>
+                    <td>E</td>
+                    <td>O</td>
+                    <td>O</td>
+                </tr>
+                <tr>
+                    <td>30.1(c)</td>
+                    <td>Personal Data Categories</td>
+                    <td>dpv:PersonalDataCategory</td>
+                    <td>E</td>
+                    <td>M</td>
+                    <td>M</td>
+                </tr>
+                <tr>
+                    <td>30.1(c)</td>
+                    <td>Categories of data subjects</td>
+                    <td>dpv:DataSubject</td>
+                    <td>E</td>
+                    <td>M</td>
+                    <td>M</td>
+                </tr>
+                <tr>
+                    <td>30.1(d)</td>
+                    <td>Categories of Recipients</td>
+                    <td>dpv:Recipient</td>
+                    <td>E</td>
+                    <td>MC</td>
+                    <td>MC</td>
+                </tr>
+                <tr>
+                    <td>30.1(e)</td>
+                    <td>Third Countries Data Transfer</td>
+                    <td>dpv:ThirdCountry</td>
+                    <td>E</td>
+                    <td>MC</td>
+                    <td>MC</td>
+                </tr>
+                <tr>
+                    <td>30.1(e)</td>
+                    <td>Appropriate Safeguards</td>
+                    <td>dpv:Safeguard</td>
+                    <td>E</td>
+                    <td>MC</td>
+                    <td>MC</td>
+                </tr>
+                <tr>
+                    <td>30.1(f)</td>
+                    <td>Retention/Deletion Periods</td>
+                    <td>dpv:StorageDuration,</td>
+                    <td>E</td>
+                    <td>M</td>
+                    <td>O</td>
+                </tr>
+                <tr>
+                    <td>30.1(g)</td>
+                    <td>Technical and organisational measures</td>
+                    <td>dpv:TechnicalOrganisationalMeasure</td>
+                    <td>E</td>
+                    <td>M</td>
+                    <td>M</td>
+                </tr>
+                <tr>
+                    <td>30(1)(a)</td>
+                    <td>Data Controller contact</td>
+                    <td>dpv:hasName, dpv:hasContact</td>
+                    <td>E</td>
+                    <td>M</td>
+                    <td>M</td>
+                </tr>
+                <tr>
+                    <td>30(1)(a)</td>
+                    <td>Data Protection Officer</td>
+                    <td>dpv:DataProtectionOfficer</td>
+                    <td>E</td>
+                    <td>MC</td>
+                    <td>MC</td>
+                </tr>
+                <tr>
+                    <td>44-47</td>
+                    <td>Nature of Transfer</td>
+                    <td>dpv:DataTransferLegalBasis</td>
+                    <td>E</td>
+                    <td>MC</td>
+                    <td>MC</td>
+                </tr>
+                <tr>
+                    <td>6.1(f)</td>
+                    <td>Legitimate interests</td>
+                    <td>dpv:LegitimateInterest</td>
+                    <td>E</td>
+                    <td>R</td>
+                    <td>R</td>
+                </tr>
+                <tr>
+                    <td>6.1(f)</td>
+                    <td>Legitimate interests assessment</td>
+                    <td>dpv:LegitimateInterestAssessment</td>
+                    <td>E</td>
+                    <td>R</td>
+                    <td>R</td>
+                </tr>
+                <tr>
+                    <td>6, 14, 30.1(b)</td>
+                    <td>Data Combination</td>
+                    <td>dpv:Combine</td>
+                    <td>E</td>
+                    <td>R</td>
+                    <td>O</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+</body>
+</html>
