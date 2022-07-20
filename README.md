@@ -1,8 +1,8 @@
-DPCat  
+ROPACS  
 The Data Processing Catalogue
 =====================================
 
-DPCat is a Specification for an Interoperable and Machine-Readable Data Processing Catalogue based on GDPR Requirements and EU DPA guidelines. It extends [DCAT v2](https://www.w3.org/TR/vocab-dcat-2/) and [DCAT-AP](https://op.europa.eu/en/web/eu-vocabularies/dcat-ap) standards and reuses [Data Privacy Vocabulary (DPV)](https://w3id.org/dpv/) to enable data governance of ROPA and ROAP related information across a wide variety of use-cases.
+ROPACS is a Specification for an Interoperable and Machine-Readable Data Processing Catalogue based on GDPR Requirements and EU DPA guidelines. It extends [DCAT v2](https://www.w3.org/TR/vocab-dcat-2/) and [DCAT-AP](https://op.europa.eu/en/web/eu-vocabularies/dcat-ap) standards and reuses [Data Privacy Vocabulary (DPV)](https://w3id.org/dpv/) to enable data governance of ROPA and ROAP related information across a wide variety of use-cases.
 
 See spec at: [https://w3id.org/dpcat](https://w3id.org/dpcat)
 
